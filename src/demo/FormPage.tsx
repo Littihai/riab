@@ -21,11 +21,18 @@ export function FormPage() {
   const submit = (e: FormEvent) => {
     e.preventDefault();
     const next: Record<string, string> = {};
+    const q = Number(qty);
+    const today = new Date().toISOString().slice(0, 10);
     if (!item.trim()) next.item = t("f.required");
-    if (!qty.trim() || Number(qty) <= 0) next.qty = t("f.qtyErr");
+    if (!qty.trim() || !Number.isInteger(q) || q <= 0) next.qty = t("f.qtyErr");
     if (!need) next.need = t("f.required");
+    else if (need < today) next.need = t("f.needPast");
     setErrors(next);
-    if (Object.keys(next).length > 0) return;
+    if (Object.keys(next).length > 0) {
+      // the keyboard lands on the first invalid field, and its error is read out
+      requestAnimationFrame(() => document.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
+      return;
+    }
     toast(t("form.saved"));
     setItem(""); setQty("1"); setNeed(""); setReason(""); setUrgent(false);
   };
@@ -43,11 +50,11 @@ export function FormPage() {
       <form className="card form-card" onSubmit={submit} noValidate>
         <div className="form-grid">
           <div className="form-span">
-            <Field label={t("f.item")} hint={t("f.itemHint")} error={errors.item}>
+            <Field label={t("f.item")} hint={t("f.itemHint")} error={errors.item} required>
               <Input value={item} invalid={!!errors.item} onChange={(e) => { setItem(e.target.value); clear("item"); }} placeholder={t("f.itemPh")} />
             </Field>
           </div>
-          <Field label={t("f.qty")} error={errors.qty}>
+          <Field label={t("f.qty")} error={errors.qty} required>
             <Input type="number" min={1} value={qty} invalid={!!errors.qty} onChange={(e) => { setQty(e.target.value); clear("qty"); }} />
           </Field>
           <Field label={t("f.unit")}>
@@ -57,7 +64,7 @@ export function FormPage() {
               <option value="kg">{t("f.unit.kg")}</option>
             </Select>
           </Field>
-          <Field label={t("f.need")} error={errors.need}>
+          <Field label={t("f.need")} error={errors.need} required>
             <Input type="date" value={need} invalid={!!errors.need} onChange={(e) => { setNeed(e.target.value); clear("need"); }} />
           </Field>
           <div className="form-span">

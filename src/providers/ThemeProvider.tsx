@@ -20,9 +20,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [pref, setPrefState] = useState<ThemePref>(() => {
     try {
       const v = localStorage.getItem(KEY);
-      return v === "light" || v === "dark" || v === "system" ? v : "light";
+      return v === "light" || v === "dark" || v === "system" ? v : "system";
     } catch {
-      return "light";
+      return "system";
     }
   });
   const [sysDark, setSysDark] = useState(() => systemDark());

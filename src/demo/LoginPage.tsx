@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { useI18n } from "@/providers/I18nProvider";
+import { useTheme } from "@/providers/ThemeProvider";
 import { Button } from "@/components/ui/Button";
 import { Field, Input } from "@/components/ui/Field";
 import { Switch } from "@/components/ui/Switch";
@@ -7,7 +8,8 @@ import { toast } from "@/components/ui/Toast";
 
 /** The bare sign-in screen: one card, no app frame. The logo links back to the landing page. */
 export function LoginPage() {
-  const { t } = useI18n();
+  const { t, lang, setLang } = useI18n();
+  const { resolved, setPref } = useTheme();
   const [emp, setEmp] = useState("");
   const [pwd, setPwd] = useState("");
   const [remember, setRemember] = useState(false);
@@ -27,7 +29,22 @@ export function LoginPage() {
   };
 
   return (
-    <div className="auth">
+    <main className="auth">
+      <div className="auth-tools">
+        <button
+          type="button"
+          className="icon-btn"
+          aria-label={t("header.theme")}
+          title={t("header.theme")}
+          onClick={() => setPref(resolved === "dark" ? "light" : "dark")}
+        >
+          ◐
+        </button>
+        <span className="lang-toggle" role="group" aria-label={t("header.lang")}>
+          <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>ไทย</button>
+          <button type="button" aria-pressed={lang === "en"} onClick={() => setLang("en")}>EN</button>
+        </span>
+      </div>
       <div className="auth-stack">
         <a className="auth-brand" href="#/" aria-label={t("app.name")}>
           <span className="tile">ร</span>
@@ -35,7 +52,7 @@ export function LoginPage() {
         </a>
         <form className="card auth-card" onSubmit={submit} noValidate aria-labelledby="login-title">
           <div>
-            <h2 id="login-title">{t("login.title")}</h2>
+            <h1 id="login-title" className="auth-title">{t("login.title")}</h1>
             <p className="sub muted">{t("login.sub")}</p>
           </div>
           <Field label={t("login.emp")} error={errors.emp}>
@@ -52,6 +69,6 @@ export function LoginPage() {
           <p className="hint muted">{t("login.demo")}</p>
         </form>
       </div>
-    </div>
+    </main>
   );
 }

@@ -10,8 +10,12 @@
   --surface: #ffffff;
   --surface-2: #f4f4f5;
   --border: #e4e4e7;
+  /* edges that must be perceivable (inputs, ghost buttons, switch tracks): >= 3:1 */
+  --border-strong: #8f8f98;
   --text: #18181b;
   --muted: #6b6b73;
+  --scrim: rgb(0 0 0 / 0.4);
+  --shadow-thumb: 0 1px 2px rgb(0 0 0 / 0.3);
 
   /* the accent is ink itself: near-black fill, black text links */
   --accent-fill: #18181b;
@@ -37,8 +41,11 @@
   --surface: #18181b;
   --surface-2: #212124;
   --border: #2b2b30;
+  --border-strong: #71717a;
   --text: #fafafa;
   --muted: #a1a1aa;
+  --scrim: rgb(0 0 0 / 0.55);
+  --shadow-thumb: 0 1px 2px rgb(0 0 0 / 0.5);
 
   --accent-fill: #fafafa;
   --accent-hover: #d4d4d8;
@@ -72,6 +79,8 @@
      (base 15, ratio ~1.2); Thai body never below 14px */
   --font-head: "Inter", "Noto Sans Thai", sans-serif;
   --font-body: "Inter", "Noto Sans Thai", sans-serif;
+  /* the smallest size any Thai text may use (table headers, stamps) */
+  --fs-micro: 12px;
   --fs-caption: 12px;
   --fs-small: 14px;
   --fs-body: 15px;

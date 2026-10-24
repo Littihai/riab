@@ -20,7 +20,8 @@ function useRoute(): Route {
     window.addEventListener("hashchange", on);
     return () => window.removeEventListener("hashchange", on);
   }, []);
-  const path = hash.replace(/^#\/?/, "").replace(/\/$/, "");
+  // tolerant parsing: #!/, trailing slash, case, query and sub-hash all resolve
+  const path = hash.replace(/^#!?\/?/, "").split(/[?#]/)[0].replace(/\/$/, "").toLowerCase();
   if (path === "") return "home";
   if (path === "components" || path === "form" || path === "table" || path === "login") return path;
   return "404";
@@ -41,6 +42,16 @@ function PageTitle({ route }: { route: Route }) {
   useEffect(() => {
     document.title = `riab · ${t(TITLE_KEY[route])}`;
   }, [route, lang]); // eslint-disable-line react-hooks/exhaustive-deps
+  // navigating scrolls back to the top and hands focus to the page heading,
+  // so keyboard and screen-reader users land on the new content
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const h = document.querySelector<HTMLElement>("main h1");
+    if (h) {
+      h.tabIndex = -1;
+      h.focus({ preventScroll: true });
+    }
+  }, [route]);
   return null;
 }
 

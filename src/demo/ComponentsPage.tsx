@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { useI18n } from "@/providers/I18nProvider";
 import { Alert } from "@/components/ui/Alert";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { Checkbox, Radio } from "@/components/ui/Choice";
 import { Field, Input, Select, Textarea } from "@/components/ui/Field";
+import { Skeleton, Spinner } from "@/components/ui/Loading";
 import { Modal } from "@/components/ui/Modal";
 import { Pager } from "@/components/ui/Pager";
 import { Stamp } from "@/components/ui/Stamp";
 import { Switch } from "@/components/ui/Switch";
-import { Tabs } from "@/components/ui/Tabs";
+import { Tabs, tabId } from "@/components/ui/Tabs";
 import { toast } from "@/components/ui/Toast";
 
 /** The component gallery: every piece of the set, live, in both languages and both modes. */
@@ -19,6 +21,11 @@ export function ComponentsPage() {
   const [tab, setTab] = useState("detail");
   const [modalOpen, setModalOpen] = useState(false);
   const [page, setPage] = useState(2);
+  const [digest, setDigest] = useState(true);
+  const [inApp, setInApp] = useState(false);
+  const [cadence, setCadence] = useState("week");
+  const tabsBase = useId();
+  const panelId = `${tabsBase}-panel`;
 
   const emailBad = email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const tabs = [
@@ -95,8 +102,8 @@ export function ComponentsPage() {
 
         <section className="card section-card">
           <h3>{t("cmp.tabs")}</h3>
-          <Tabs tabs={tabs} value={tab} onChange={setTab} ariaLabel={t("cmp.tabs")} />
-          <div className="tab-panel" role="tabpanel">
+          <Tabs tabs={tabs} value={tab} onChange={setTab} ariaLabel={t("cmp.tabs")} idBase={tabsBase} panelId={panelId} />
+          <div className="tab-panel" role="tabpanel" id={panelId} aria-labelledby={tabId(tabsBase, tab)}>
             {t("cmp.tab.body")} {tabs.find((x) => x.id === tab)?.label}
           </div>
           <h3>{t("cmp.pager")}</h3>
@@ -105,6 +112,32 @@ export function ComponentsPage() {
             label={(p, n) => t("pager.page").replace("%p", String(p)).replace("%n", String(n))}
             prevLabel={t("pager.prev")} nextLabel={t("pager.next")}
           />
+        </section>
+
+        <section className="card section-card">
+          <h3>{t("cmp.choices")}</h3>
+          <div className="col-gap">
+            <Checkbox label={t("cmp.check1")} checked={digest} onChange={setDigest} />
+            <Checkbox label={t("cmp.check2")} checked={inApp} onChange={setInApp} />
+          </div>
+          <div className="row-wrap" role="radiogroup" aria-label={t("cmp.cadence")}>
+            <Radio label={t("cmp.radio.day")} name="cadence" value="day" current={cadence} onChange={setCadence} />
+            <Radio label={t("cmp.radio.week")} name="cadence" value="week" current={cadence} onChange={setCadence} />
+            <Radio label={t("cmp.radio.month")} name="cadence" value="month" current={cadence} onChange={setCadence} />
+          </div>
+        </section>
+
+        <section className="card section-card">
+          <h3>{t("cmp.loading")}</h3>
+          <div className="row-wrap">
+            <Spinner label={t("cmp.loadingLabel")} />
+            <span className="muted">{t("cmp.loadingLabel")}</span>
+          </div>
+          <div className="col-gap">
+            <Skeleton w={100} />
+            <Skeleton w={75} />
+            <Skeleton w={50} />
+          </div>
         </section>
 
         <section className="card section-card">

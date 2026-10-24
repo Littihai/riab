@@ -63,6 +63,8 @@ export function TablePage() {
       </div>
 
       <section className="card panel">
+        {/* the result count is announced when search or filter changes it */}
+        <p className="sr-only" aria-live="polite">{t("tbl.count").replace("%n", String(rows.length))}</p>
         <div className="toolbar">
           <Input
             value={q}
@@ -90,8 +92,8 @@ export function TablePage() {
                   <th>{t("table.requester")}</th>
                   <th>{t("tbl.date")}</th>
                   <th>{t("table.status")}</th>
-                  <th className="num">
-                    <button type="button" className="th-sort" aria-pressed={sort !== "none"}
+                  <th className="num" aria-sort={sort === "asc" ? "ascending" : sort === "desc" ? "descending" : "none"}>
+                    <button type="button" className="th-sort"
                       onClick={() => setSort(sort === "desc" ? "asc" : "desc")}>
                       {t("table.amount")} {sort === "asc" ? "↑" : sort === "desc" ? "↓" : "↕"}
                     </button>
