@@ -32,7 +32,7 @@ export function Shell({ route, children }: { route: "home" | "components"; child
         >
           ◐
         </button>
-        <span className="lang-toggle" role="group" aria-label="Language">
+        <span className="lang-toggle" role="group" aria-label={t("header.lang")}>
           <button aria-pressed={lang === "th"} onClick={() => setLang("th")}>ไทย</button>
           <button aria-pressed={lang === "en"} onClick={() => setLang("en")}>EN</button>
         </span>

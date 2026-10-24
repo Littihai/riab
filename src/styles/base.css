@@ -77,7 +77,8 @@ a {
 /* entrance: "laid down on the desk" — rise 6px + fade, stagger with --delay */
 .rise {
   animation: rise var(--dur-2) var(--ease) backwards;
-  animation-delay: var(--delay, 0ms);
+  /* the stagger collapses with the duration, so reduced motion never hides content */
+  animation-delay: min(var(--delay, 0ms), var(--dur-2));
 }
 @keyframes rise {
   from {

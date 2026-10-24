@@ -89,6 +89,7 @@ export function DashboardPage() {
               <h3>{t("table.title")}</h3>
               <a href="#all">{t("table.all")} →</a>
             </div>
+            <div className="table-wrap" tabIndex={0} role="region" aria-label={t("table.title")}>
             <table className="ledger">
               <thead>
                 <tr>
@@ -109,6 +110,7 @@ export function DashboardPage() {
                 ))}
               </tbody>
             </table>
+            </div>
           </section>
 
           <section className="card panel empty">

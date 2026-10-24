@@ -21,8 +21,8 @@
   --chart-1: #52525b;
   --chart-2: #a16207;
 
-  --ok: #15803d;
-  --warn: #a16207;
+  --ok: #166534;
+  --warn: #854d0e;
   --stop: #b91c1c;
 
   --shadow-sm: 0 0 0 1px var(--border), 0 1px 2px rgb(0 0 0 / 0.04);

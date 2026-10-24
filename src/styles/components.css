@@ -79,6 +79,12 @@
   color: var(--muted);
 }
 
+/* a wide table scrolls inside its card instead of being clipped; the region is
+   keyboard-reachable so the scroll works without a mouse */
+.table-wrap {
+  overflow-x: auto;
+}
+
 /* ledger table: no zebra, dotted row separators, numbers right + tabular */
 .ledger {
   width: 100%;
@@ -97,6 +103,7 @@
   padding: 0 20px;
   height: var(--row-h);
   border-top: 1px dotted var(--border);
+  white-space: nowrap;
 }
 .ledger td.num,
 .ledger th.num {

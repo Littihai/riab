@@ -100,7 +100,11 @@ export function ComponentsPage() {
             {t("cmp.tab.body")} {tabs.find((x) => x.id === tab)?.label}
           </div>
           <h3>{t("cmp.pager")}</h3>
-          <Pager page={page} pages={5} onPage={setPage} label={(p, n) => t("pager.page").replace("%p", String(p)).replace("%n", String(n))} />
+          <Pager
+            page={page} pages={5} onPage={setPage}
+            label={(p, n) => t("pager.page").replace("%p", String(p)).replace("%n", String(n))}
+            prevLabel={t("pager.prev")} nextLabel={t("pager.next")}
+          />
         </section>
 
         <section className="card section-card">

@@ -5,12 +5,8 @@ type Entry = { th: string; en: string };
 export const DICT: Record<string, Entry> = {
   "app.name": { th: "riab", en: "riab" },
   "nav.home": { th: "หน้าแรก", en: "Home" },
-  "nav.overview": { th: "ภาพรวมระบบ", en: "Overview" },
-  "nav.docs": { th: "เอกสาร", en: "Documents" },
-  "nav.warehouse": { th: "คลังสินค้า", en: "Warehouse" },
   "header.search": { th: "ค้นหา", en: "Search" },
   "header.theme": { th: "สลับโหมดสี", en: "Toggle color mode" },
-  "header.density": { th: "ความหนาแน่น", en: "Density" },
 
   "home.crumb": { th: "หน้าแรก", en: "Home" },
   "home.title": { th: "สมุดงานของฉัน", en: "My ledger" },
@@ -99,6 +95,9 @@ export const DICT: Record<string, Entry> = {
   "common.confirm": { th: "ยืนยัน", en: "Confirm" },
   "cmp.pager": { th: "แบ่งหน้า", en: "Pagination" },
   "pager.page": { th: "หน้า %p จาก %n", en: "Page %p of %n" },
+  "pager.prev": { th: "หน้าก่อนหน้า", en: "Previous page" },
+  "pager.next": { th: "หน้าถัดไป", en: "Next page" },
+  "header.lang": { th: "ภาษา", en: "Language" },
 
   "footer.note": {
     th: "riab — ข้อมูลทั้งหมดเป็นข้อมูลสมมติ",
