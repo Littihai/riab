@@ -1,0 +1,109 @@
+/* ── riab design tokens — direction A "Kraft Ledger" ──
+   Rules: accent is three tokens (fill / on / text), never one. Every color pair
+   used as text passes WCAG 4.5:1 (measured) in both modes. Components read
+   tokens only; no hex values outside this file. */
+
+:root,
+[data-theme="light"] {
+  --bg: #faf6ef;
+  --surface: #fffdf8;
+  --surface-2: #f3ecdf;
+  --border: #e4d9c6;
+  --text: #2a2118;
+  --muted: #6b5d4f;
+
+  --accent-fill: #a63f24;
+  --accent-hover: #8e331b;
+  --on-accent: #fffdf8;
+  --accent-text: #a63f24;
+
+  --pine: #2f5d50;
+  --saffron: #e5a93b;
+
+  --ok: #3f6b2e;
+  --warn: #8a5a00;
+  --stop: #a62b2b;
+
+  --shadow-sm: 0 1px 0 var(--border), 0 1px 2px rgb(42 33 24 / 0.06);
+  --shadow-md: 0 1px 0 var(--border), 0 8px 20px -8px rgb(42 33 24 / 0.18);
+  --shadow-lg: 0 24px 48px -16px rgb(42 33 24 / 0.28);
+}
+
+[data-theme="dark"] {
+  --bg: #1b1612;
+  --surface: #241e18;
+  --surface-2: #2d251d;
+  --border: #3d3328;
+  --text: #f1e9dc;
+  --muted: #b3a593;
+
+  --accent-fill: #ee8f6b;
+  --accent-hover: #f2a585;
+  --on-accent: #1b1612;
+  --accent-text: #ee8f6b;
+
+  --pine: #86c2ab;
+  --saffron: #f0bc55;
+
+  --ok: #9ccb84;
+  --warn: #e8b65a;
+  --stop: #f08a80;
+
+  --shadow-sm: 0 1px 0 rgb(0 0 0 / 0.3), 0 1px 2px rgb(0 0 0 / 0.25);
+  --shadow-md: 0 1px 0 rgb(0 0 0 / 0.3), 0 8px 20px -8px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 24px 48px -16px rgb(0 0 0 / 0.6);
+}
+
+:root {
+  /* shape */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+
+  /* motion — "laid down on the desk" */
+  --dur-1: 200ms;
+  --dur-2: 320ms;
+  --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+
+  /* typography (base 15, ratio ~1.2); Thai body never below 14px */
+  --font-head: "Fraunces", "Noto Serif Thai", serif;
+  --font-body: "Source Sans 3", "Noto Sans Thai", sans-serif;
+  --fs-caption: 12px;
+  --fs-small: 14px;
+  --fs-body: 15px;
+  --fs-lead: 18px;
+  --fs-h3: 22px;
+  --fs-h2: 28px;
+  --fs-h1: 36px;
+  --fs-display: 48px;
+
+  /* density: comfortable by default */
+  --row-h: 52px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --page-pad: 32px;
+  --page-max: 1240px;
+}
+
+[data-density="compact"] {
+  --row-h: 36px;
+  --space-1: 4px;
+  --space-2: 10px;
+  --space-3: 16px;
+  --space-4: 22px;
+  --page-pad: 20px;
+}
+
+/* reduced motion: one switch for the whole system (OS flag or data-motion) */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) {
+    --dur-1: 0ms;
+    --dur-2: 0ms;
+  }
+}
+[data-motion="reduce"] {
+  --dur-1: 0ms;
+  --dur-2: 0ms;
+}
