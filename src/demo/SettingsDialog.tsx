@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { useI18n } from "@/providers/I18nProvider";
 import { useTheme, type ThemePref } from "@/providers/ThemeProvider";
-import { useAppearance, type Accent, type Density, type Motion, type Radius } from "@/providers/AppearanceProvider";
+import { useAppearance, type Accent, type Density, type Motion, type NavLayout, type Radius } from "@/providers/AppearanceProvider";
 import { Segmented } from "@/components/ui/Segmented";
 
 /**
@@ -119,6 +119,18 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                     { value: "none", label: t("set.radius.none") },
                     { value: "soft", label: t("set.radius.soft") },
                     { value: "round", label: t("set.radius.round") },
+                  ]}
+                />
+              ))}
+              {row(t("set.nav"), (
+                <Segmented
+                  ariaLabel={t("set.nav")}
+                  value={ap.nav}
+                  onChange={(v) => ap.set("nav", v as NavLayout)}
+                  options={[
+                    { value: "top", label: t("set.nav.top") },
+                    { value: "side", label: t("set.nav.side") },
+                    { value: "rail", label: t("set.nav.rail") },
                   ]}
                 />
               ))}

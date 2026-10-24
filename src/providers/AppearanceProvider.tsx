@@ -11,15 +11,17 @@ export type Accent = "ink" | "clay" | "pine" | "blue";
 export type Radius = "none" | "soft" | "round";
 export type Density = "comfortable" | "compact";
 export type Motion = "system" | "reduce";
+export type NavLayout = "top" | "side" | "rail";
 
 export interface Appearance {
   accent: Accent;
   radius: Radius;
   density: Density;
   motion: Motion;
+  nav: NavLayout;
 }
 
-const DEFAULTS: Appearance = { accent: "ink", radius: "soft", density: "comfortable", motion: "system" };
+const DEFAULTS: Appearance = { accent: "ink", radius: "soft", density: "comfortable", motion: "system", nav: "top" };
 const KEY = "riab.app";
 
 interface AppearanceValue extends Appearance {
