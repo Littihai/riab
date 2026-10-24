@@ -4,7 +4,12 @@
  */
 import { useRef } from "react";
 
-export function Segmented({ options, value, onChange, ariaLabel }: {
+export function Segmented({
+  options,
+  value,
+  onChange,
+  ariaLabel,
+}: {
   options: { value: string; label: string }[];
   value: string;
   onChange: (v: string) => void;
@@ -29,8 +34,13 @@ export function Segmented({ options, value, onChange, ariaLabel }: {
           onClick={() => onChange(o.value)}
           onKeyDown={(e) => {
             const i = options.findIndex((x) => x.value === value);
-            if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); go(i + 1); }
-            else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); go(i - 1); }
+            if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+              e.preventDefault();
+              go(i + 1);
+            } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+              e.preventDefault();
+              go(i - 1);
+            }
           }}
         >
           {o.label}

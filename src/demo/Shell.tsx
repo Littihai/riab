@@ -37,8 +37,22 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
   }, []);
 
   const commands: Command[] = [
-    ...NAV.map((n) => ({ id: n.route, label: t(n.key), hint: t("cmdk.goto"), run: () => { window.location.hash = n.hash; } })),
-    { id: "login", label: t("nav.login"), hint: t("cmdk.goto"), run: () => { window.location.hash = "#/login"; } },
+    ...NAV.map((n) => ({
+      id: n.route,
+      label: t(n.key),
+      hint: t("cmdk.goto"),
+      run: () => {
+        window.location.hash = n.hash;
+      },
+    })),
+    {
+      id: "login",
+      label: t("nav.login"),
+      hint: t("cmdk.goto"),
+      run: () => {
+        window.location.hash = "#/login";
+      },
+    },
     { id: "settings", label: t("set.title"), run: () => setSettingsOpen(true) },
     { id: "theme", label: t("header.theme"), run: () => setPref(resolved === "dark" ? "light" : "dark") },
   ];
@@ -86,10 +100,16 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
         <Icon name="gear" />
       </button>
       <span className="lang-toggle" role="group" aria-label={t("header.lang")}>
-        <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>ไทย</button>
-        <button type="button" aria-pressed={lang === "en"} onClick={() => setLang("en")}>EN</button>
+        <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>
+          ไทย
+        </button>
+        <button type="button" aria-pressed={lang === "en"} onClick={() => setLang("en")}>
+          EN
+        </button>
       </span>
-      <a className="nav-item login-link" href="#/login">{t("nav.login")}</a>
+      <a className="nav-item login-link" href="#/login">
+        {t("nav.login")}
+      </a>
     </header>
   );
 

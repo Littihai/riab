@@ -34,7 +34,9 @@ export function SideNav({ rail, route }: { rail: boolean; route: Route }) {
             aria-current={route === n.route ? "page" : undefined}
             title={rail ? t(n.key) : undefined}
           >
-            <span className="side-icon"><Icon name={n.icon} /></span>
+            <span className="side-icon">
+              <Icon name={n.icon} />
+            </span>
             <span className="side-label">{t(n.key)}</span>
           </a>
         ))}

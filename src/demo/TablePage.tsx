@@ -39,9 +39,10 @@ export function TablePage() {
   const [page, setPage] = useState(1);
 
   const rows = useMemo(() => {
-    let out = ROWS.filter((r) =>
-      (status === "all" || r.status === status) &&
-      (q.trim() === "" || r.doc.toLowerCase().includes(q.trim().toLowerCase()) || r.who.includes(q.trim())),
+    let out = ROWS.filter(
+      (r) =>
+        (status === "all" || r.status === status) &&
+        (q.trim() === "" || r.doc.toLowerCase().includes(q.trim().toLowerCase()) || r.who.includes(q.trim())),
     );
     if (sort !== "none") out = [...out].sort((a, b) => (sort === "asc" ? a.amount - b.amount : b.amount - a.amount));
     return out;
@@ -50,7 +51,10 @@ export function TablePage() {
   const pages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE));
   const shown = rows.slice((Math.min(page, pages) - 1) * PAGE_SIZE, Math.min(page, pages) * PAGE_SIZE);
 
-  const pick = <T,>(v: T, set: (x: T) => void) => { set(v); setPage(1); };
+  const pick = <T,>(v: T, set: (x: T) => void) => {
+    set(v);
+    setPage(1);
+  };
 
   return (
     <main className="page">
@@ -64,7 +68,9 @@ export function TablePage() {
 
       <section className="card panel">
         {/* the result count is announced when search or filter changes it */}
-        <p className="sr-only" aria-live="polite">{t("tbl.count").replace("%n", String(rows.length))}</p>
+        <p className="sr-only" aria-live="polite">
+          {t("tbl.count").replace("%n", String(rows.length))}
+        </p>
         <div className="toolbar">
           <Input
             value={q}
@@ -74,7 +80,11 @@ export function TablePage() {
           />
           <Select value={status} onChange={(e) => pick(e.target.value, setStatus)} aria-label={t("tbl.filter")}>
             <option value="all">{t("tbl.filter")}</option>
-            {STATES.map((s) => <option key={s.key} value={s.key}>{t(s.key)}</option>)}
+            {STATES.map((s) => (
+              <option key={s.key} value={s.key}>
+                {t(s.key)}
+              </option>
+            ))}
           </Select>
         </div>
 
@@ -93,9 +103,11 @@ export function TablePage() {
                   <th>{t("table.requester")}</th>
                   <th>{t("tbl.date")}</th>
                   <th>{t("table.status")}</th>
-                  <th className="num" aria-sort={sort === "asc" ? "ascending" : sort === "desc" ? "descending" : "none"}>
-                    <button type="button" className="th-sort"
-                      onClick={() => setSort(sort === "desc" ? "asc" : "desc")}>
+                  <th
+                    className="num"
+                    aria-sort={sort === "asc" ? "ascending" : sort === "desc" ? "descending" : "none"}
+                  >
+                    <button type="button" className="th-sort" onClick={() => setSort(sort === "desc" ? "asc" : "desc")}>
                       {t("table.amount")} {sort === "asc" ? "↑" : sort === "desc" ? "↓" : "↕"}
                     </button>
                   </th>
@@ -107,7 +119,9 @@ export function TablePage() {
                     <td className="doc">{r.doc}</td>
                     <td>{r.who}</td>
                     <td>{fmtDate(r.date)}</td>
-                    <td><Stamp tone={r.tone}>{t(r.status)}</Stamp></td>
+                    <td>
+                      <Stamp tone={r.tone}>{t(r.status)}</Stamp>
+                    </td>
                     <td className="num">{fmtMoney(r.amount)}</td>
                   </tr>
                 ))}
@@ -116,9 +130,12 @@ export function TablePage() {
           </div>
         )}
         <Pager
-          page={Math.min(page, pages)} pages={pages} onPage={setPage}
+          page={Math.min(page, pages)}
+          pages={pages}
+          onPage={setPage}
           label={(p, n) => t("pager.page").replace("%p", String(p)).replace("%n", String(n))}
-          prevLabel={t("pager.prev")} nextLabel={t("pager.next")}
+          prevLabel={t("pager.prev")}
+          nextLabel={t("pager.next")}
         />
       </section>
     </main>

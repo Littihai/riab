@@ -1,6 +1,6 @@
 # riab
 
-A free, themeable UI starter — **white, quiet, neat** ("riab" is Thai for *neat*).
+A free, themeable UI starter — **white, quiet, neat** ("riab" is Thai for _neat_).
 Ink-on-white minimal identity, design tokens, light/dark mode, Thai-first typography
 rules, and a th/en i18n skeleton. Vite + React + TypeScript, no runtime dependencies
 beyond React. MIT licensed.
@@ -23,13 +23,13 @@ Start deleting: `src/demo/` is the demo site (pages + shell); your app replaces 
 
 ## What is inside
 
-| Area | Files | Notes |
-|---|---|---|
+| Area          | Files                   | Notes                                                                                                                                                                |
+| ------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Design tokens | `src/styles/tokens.css` | colors (3-tier accent: `--accent-fill` / `--on-accent` / `--accent-text`), type scale, radius, shadows, motion (`--dur-*`), density (`data-density`), `color-scheme` |
-| Base rules | `src/styles/base.css` | reset, typography, the Thai rules, `.rise` entrance |
-| Components | `src/components/ui/` | Button, Field (Input/Select/Textarea), Switch, Badge, Stamp, Alert, Tabs, Modal, Toast, Pager |
-| Providers | `src/providers/` | ThemeProvider (light/dark/system), I18nProvider (th/en + one money/date formatter per locale) |
-| Demo pages | `src/demo/` | dashboard, component gallery, form, table, sign-in, 404 — a dependency-free hash router in `App.tsx` |
+| Base rules    | `src/styles/base.css`   | reset, typography, the Thai rules, `.rise` entrance                                                                                                                  |
+| Components    | `src/components/ui/`    | Button, Field (Input/Select/Textarea), Switch, Badge, Stamp, Alert, Tabs, Modal, Toast, Pager                                                                        |
+| Providers     | `src/providers/`        | ThemeProvider (light/dark/system), I18nProvider (th/en + one money/date formatter per locale)                                                                        |
+| Demo pages    | `src/demo/`             | dashboard, component gallery, form, table, sign-in, 404 — a dependency-free hash router in `App.tsx`                                                                 |
 
 ## House rules (what keeps it neat)
 

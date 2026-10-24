@@ -159,7 +159,10 @@ export const DICT: Record<string, Entry> = {
   "cmp.alert.warnTitle": { th: "ใกล้ครบกำหนด", en: "Due soon." },
   "cmp.alert.warnBody": { th: "มี 3 รายการต้องทำภายในพรุ่งนี้", en: "3 items are due by tomorrow." },
   "cmp.alert.stopTitle": { th: "บันทึกไม่สำเร็จ", en: "Could not save." },
-  "cmp.alert.stopBody": { th: "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ลองอีกครั้ง", en: "The server could not be reached. Try again." },
+  "cmp.alert.stopBody": {
+    th: "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ลองอีกครั้ง",
+    en: "The server could not be reached. Try again.",
+  },
   "cmp.form": { th: "ฟอร์ม", en: "Form" },
   "cmp.f.name": { th: "ชื่อเอกสาร", en: "Document name" },
   "cmp.f.nameHint": { th: "ตั้งชื่อให้ค้นหาเจอง่าย", en: "Pick a name that is easy to find" },

@@ -2,7 +2,15 @@ import { useRef, useState } from "react";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { useI18n } from "@/providers/I18nProvider";
 import { useTheme, type ThemePref } from "@/providers/ThemeProvider";
-import { useAppearance, type Accent, type Density, type Icons, type Motion, type NavLayout, type Radius } from "@/providers/AppearanceProvider";
+import {
+  useAppearance,
+  type Accent,
+  type Density,
+  type Icons,
+  type Motion,
+  type NavLayout,
+  type Radius,
+} from "@/providers/AppearanceProvider";
 import { Segmented } from "@/components/ui/Segmented";
 import { Icon } from "@/components/ui/Icon";
 
@@ -34,8 +42,21 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
   );
 
   return (
-    <div className="scrim" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label={t("set.title")} className="settings menu-slide">
+    <div
+      className="scrim"
+      role="presentation"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div
+        ref={ref}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t("set.title")}
+        className="settings menu-slide"
+      >
         <nav className="set-nav" aria-label={t("set.title")}>
           {SECTIONS.map((s) => (
             <button
@@ -53,12 +74,15 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
         <div className="set-body">
           <div className="set-head">
             <h2>{t(`set.${section}`)}</h2>
-            <button type="button" className="icon-btn" aria-label={t("set.close")} onClick={onClose}><Icon name="close" size={18} /></button>
+            <button type="button" className="icon-btn" aria-label={t("set.close")} onClick={onClose}>
+              <Icon name="close" size={18} />
+            </button>
           </div>
 
           {section === "general" && (
             <>
-              {row(t("set.theme"), (
+              {row(
+                t("set.theme"),
                 <Segmented
                   ariaLabel={t("set.theme")}
                   value={pref}
@@ -68,17 +92,22 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                     { value: "dark", label: t("set.theme.dark") },
                     { value: "system", label: t("set.theme.system") },
                   ]}
-                />
-              ))}
-              {row(t("header.lang"), (
+                />,
+              )}
+              {row(
+                t("header.lang"),
                 <Segmented
                   ariaLabel={t("header.lang")}
                   value={lang}
                   onChange={(v) => setLang(v as "th" | "en")}
-                  options={[{ value: "th", label: "ไทย" }, { value: "en", label: "English" }]}
-                />
-              ))}
-              {row(t("set.motion"), (
+                  options={[
+                    { value: "th", label: "ไทย" },
+                    { value: "en", label: "English" },
+                  ]}
+                />,
+              )}
+              {row(
+                t("set.motion"),
                 <Segmented
                   ariaLabel={t("set.motion")}
                   value={ap.motion}
@@ -87,14 +116,15 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                     { value: "system", label: t("set.motion.system") },
                     { value: "reduce", label: t("set.motion.reduce") },
                   ]}
-                />
-              ))}
+                />,
+              )}
             </>
           )}
 
           {section === "appearance" && (
             <>
-              {row(t("set.accent"), (
+              {row(
+                t("set.accent"),
                 <div className="accent-row" role="radiogroup" aria-label={t("set.accent")}>
                   {ACCENTS.map((a) => (
                     <button
@@ -109,9 +139,10 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                       onClick={() => ap.set("accent", a)}
                     />
                   ))}
-                </div>
-              ))}
-              {row(t("set.icons"), (
+                </div>,
+              )}
+              {row(
+                t("set.icons"),
                 <Segmented
                   ariaLabel={t("set.icons")}
                   value={ap.icons}
@@ -120,9 +151,10 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                     { value: "mono", label: t("set.icons.mono") },
                     { value: "color", label: t("set.icons.color") },
                   ]}
-                />
-              ))}
-              {row(t("set.radius"), (
+                />,
+              )}
+              {row(
+                t("set.radius"),
                 <Segmented
                   ariaLabel={t("set.radius")}
                   value={ap.radius}
@@ -132,9 +164,10 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                     { value: "soft", label: t("set.radius.soft") },
                     { value: "round", label: t("set.radius.round") },
                   ]}
-                />
-              ))}
-              {row(t("set.nav"), (
+                />,
+              )}
+              {row(
+                t("set.nav"),
                 <Segmented
                   ariaLabel={t("set.nav")}
                   value={ap.nav}
@@ -144,9 +177,10 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                     { value: "side", label: t("set.nav.side") },
                     { value: "rail", label: t("set.nav.rail") },
                   ]}
-                />
-              ))}
-              {row(t("set.density"), (
+                />,
+              )}
+              {row(
+                t("set.density"),
                 <Segmented
                   ariaLabel={t("set.density")}
                   value={ap.density}
@@ -155,15 +189,17 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                     { value: "comfortable", label: t("set.density.comfortable") },
                     { value: "compact", label: t("set.density.compact") },
                   ]}
-                />
-              ))}
+                />,
+              )}
             </>
           )}
 
           {section === "about" && (
             <div className="set-about">
               <p>{t("set.about.text")}</p>
-              <p className="muted">riab v0.2 · MIT · <a href="https://github.com/Littihai/riab">GitHub</a></p>
+              <p className="muted">
+                riab v0.2 · MIT · <a href="https://github.com/Littihai/riab">GitHub</a>
+              </p>
             </div>
           )}
         </div>

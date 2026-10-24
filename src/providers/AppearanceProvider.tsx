@@ -23,7 +23,14 @@ export interface Appearance {
   icons: Icons;
 }
 
-const DEFAULTS: Appearance = { accent: "ink", radius: "soft", density: "comfortable", motion: "system", nav: "top", icons: "mono" };
+const DEFAULTS: Appearance = {
+  accent: "ink",
+  radius: "soft",
+  density: "comfortable",
+  motion: "system",
+  nav: "top",
+  icons: "mono",
+};
 const KEY = "riab.app";
 
 interface AppearanceValue extends Appearance {

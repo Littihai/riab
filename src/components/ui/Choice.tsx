@@ -1,7 +1,12 @@
 import type { ReactNode } from "react";
 
 /** A labelled checkbox row. */
-export function Checkbox({ label, checked, onChange, disabled }: {
+export function Checkbox({
+  label,
+  checked,
+  onChange,
+  disabled,
+}: {
   label: ReactNode;
   checked: boolean;
   onChange: (v: boolean) => void;
@@ -16,7 +21,14 @@ export function Checkbox({ label, checked, onChange, disabled }: {
 }
 
 /** A labelled radio row; group them with a shared `name`. */
-export function Radio({ label, name, value, current, onChange, disabled }: {
+export function Radio({
+  label,
+  name,
+  value,
+  current,
+  onChange,
+  disabled,
+}: {
   label: ReactNode;
   name: string;
   value: string;
@@ -26,7 +38,14 @@ export function Radio({ label, name, value, current, onChange, disabled }: {
 }) {
   return (
     <label className="check-row">
-      <input type="radio" name={name} value={value} checked={current === value} disabled={disabled} onChange={() => onChange(value)} />
+      <input
+        type="radio"
+        name={name}
+        value={value}
+        checked={current === value}
+        disabled={disabled}
+        onChange={() => onChange(value)}
+      />
       <span>{label}</span>
     </label>
   );

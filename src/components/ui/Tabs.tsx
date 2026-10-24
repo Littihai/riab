@@ -9,7 +9,14 @@ export function tabId(base: string, id: string) {
   return `${base}-tab-${id}`;
 }
 
-export function Tabs({ tabs, value, onChange, ariaLabel, idBase, panelId }: {
+export function Tabs({
+  tabs,
+  value,
+  onChange,
+  ariaLabel,
+  idBase,
+  panelId,
+}: {
   tabs: { id: string; label: string }[];
   value: string;
   onChange: (id: string) => void;
@@ -41,10 +48,19 @@ export function Tabs({ tabs, value, onChange, ariaLabel, idBase, panelId }: {
           onClick={() => onChange(t.id)}
           onKeyDown={(e) => {
             const i = tabs.findIndex((x) => x.id === value);
-            if (e.key === "ArrowRight") { e.preventDefault(); go(i + 1); }
-            else if (e.key === "ArrowLeft") { e.preventDefault(); go(i - 1); }
-            else if (e.key === "Home") { e.preventDefault(); go(0); }
-            else if (e.key === "End") { e.preventDefault(); go(tabs.length - 1); }
+            if (e.key === "ArrowRight") {
+              e.preventDefault();
+              go(i + 1);
+            } else if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              go(i - 1);
+            } else if (e.key === "Home") {
+              e.preventDefault();
+              go(0);
+            } else if (e.key === "End") {
+              e.preventDefault();
+              go(tabs.length - 1);
+            }
           }}
         >
           {t.label}

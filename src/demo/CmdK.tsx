@@ -22,7 +22,10 @@ export function CmdK({ open, onClose, commands }: { open: boolean; onClose: () =
   useFocusTrap(ref, open, onClose);
 
   useEffect(() => {
-    if (open) { setQ(""); setIdx(0); }
+    if (open) {
+      setQ("");
+      setIdx(0);
+    }
   }, [open]);
 
   if (!open) return null;
@@ -36,8 +39,21 @@ export function CmdK({ open, onClose, commands }: { open: boolean; onClose: () =
   };
 
   return (
-    <div className="scrim scrim-top" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label={t("cmdk.title")} className="cmdk menu-slide">
+    <div
+      className="scrim scrim-top"
+      role="presentation"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div
+        ref={ref}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t("cmdk.title")}
+        className="cmdk menu-slide"
+      >
         <input
           className="input cmdk-input"
           role="combobox"
@@ -47,11 +63,21 @@ export function CmdK({ open, onClose, commands }: { open: boolean; onClose: () =
           aria-label={t("cmdk.title")}
           placeholder={t("cmdk.placeholder")}
           value={q}
-          onChange={(e) => { setQ(e.target.value); setIdx(0); }}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setIdx(0);
+          }}
           onKeyDown={(e) => {
-            if (e.key === "ArrowDown") { e.preventDefault(); setIdx((i) => (i + 1) % Math.max(1, shown.length)); }
-            else if (e.key === "ArrowUp") { e.preventDefault(); setIdx((i) => (i - 1 + shown.length) % Math.max(1, shown.length)); }
-            else if (e.key === "Enter" && shown[at]) { e.preventDefault(); pick(shown[at]); }
+            if (e.key === "ArrowDown") {
+              e.preventDefault();
+              setIdx((i) => (i + 1) % Math.max(1, shown.length));
+            } else if (e.key === "ArrowUp") {
+              e.preventDefault();
+              setIdx((i) => (i - 1 + shown.length) % Math.max(1, shown.length));
+            } else if (e.key === "Enter" && shown[at]) {
+              e.preventDefault();
+              pick(shown[at]);
+            }
           }}
         />
         {shown.length === 0 ? (
@@ -66,7 +92,10 @@ export function CmdK({ open, onClose, commands }: { open: boolean; onClose: () =
                 aria-selected={i === at}
                 className="cmdk-item"
                 onMouseEnter={() => setIdx(i)}
-                onMouseDown={(e) => { e.preventDefault(); pick(c); }}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  pick(c);
+                }}
               >
                 <span>{c.label}</span>
                 {c.hint && <span className="cmdk-hint">{c.hint}</span>}

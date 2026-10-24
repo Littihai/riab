@@ -42,8 +42,12 @@ export function LoginPage() {
           <Icon name="contrast" />
         </button>
         <span className="lang-toggle" role="group" aria-label={t("header.lang")}>
-          <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>ไทย</button>
-          <button type="button" aria-pressed={lang === "en"} onClick={() => setLang("en")}>EN</button>
+          <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>
+            ไทย
+          </button>
+          <button type="button" aria-pressed={lang === "en"} onClick={() => setLang("en")}>
+            EN
+          </button>
         </span>
       </div>
       <div className="auth-stack">
@@ -53,14 +57,34 @@ export function LoginPage() {
         </a>
         <form className="card auth-card" onSubmit={submit} noValidate aria-labelledby="login-title">
           <div>
-            <h1 id="login-title" className="auth-title">{t("login.title")}</h1>
+            <h1 id="login-title" className="auth-title">
+              {t("login.title")}
+            </h1>
             <p className="sub muted">{t("login.sub")}</p>
           </div>
           <Field label={t("login.emp")} error={errors.emp}>
-            <Input value={emp} invalid={!!errors.emp} onChange={(e) => { setEmp(e.target.value); setErrors((x) => ({ ...x, emp: "" })); }} placeholder="90000001" autoComplete="username" />
+            <Input
+              value={emp}
+              invalid={!!errors.emp}
+              onChange={(e) => {
+                setEmp(e.target.value);
+                setErrors((x) => ({ ...x, emp: "" }));
+              }}
+              placeholder="90000001"
+              autoComplete="username"
+            />
           </Field>
           <Field label={t("login.pwd")} error={errors.pwd}>
-            <Input type="password" value={pwd} invalid={!!errors.pwd} onChange={(e) => { setPwd(e.target.value); setErrors((x) => ({ ...x, pwd: "" })); }} autoComplete="current-password" />
+            <Input
+              type="password"
+              value={pwd}
+              invalid={!!errors.pwd}
+              onChange={(e) => {
+                setPwd(e.target.value);
+                setErrors((x) => ({ ...x, pwd: "" }));
+              }}
+              autoComplete="current-password"
+            />
           </Field>
           <label className="row-wrap switch-row">
             <Switch checked={remember} onChange={setRemember} />

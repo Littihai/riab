@@ -22,7 +22,11 @@ function useRoute(): Route {
     return () => window.removeEventListener("hashchange", on);
   }, []);
   // tolerant parsing: #!/, trailing slash, case, query and sub-hash all resolve
-  const path = hash.replace(/^#!?\/?/, "").split(/[?#]/)[0].replace(/\/$/, "").toLowerCase();
+  const path = hash
+    .replace(/^#!?\/?/, "")
+    .split(/[?#]/)[0]
+    .replace(/\/$/, "")
+    .toLowerCase();
   if (path === "") return "home";
   if (path === "components" || path === "form" || path === "table" || path === "login") return path;
   return "404";
@@ -73,7 +77,13 @@ export function App() {
       <AppearanceProvider>
         <I18nProvider>
           <PageTitle route={route} />
-          {route === "login" ? <Page /> : <Shell route={route}><Page /></Shell>}
+          {route === "login" ? (
+            <Page />
+          ) : (
+            <Shell route={route}>
+              <Page />
+            </Shell>
+          )}
           <ToastHost />
         </I18nProvider>
       </AppearanceProvider>

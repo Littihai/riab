@@ -24,8 +24,13 @@ export function useFocusTrap(ref: RefObject<HTMLElement | null>, active: boolean
       const first = list[0];
       const last = list[list.length - 1];
       const at = document.activeElement;
-      if (e.shiftKey && (at === first || at === ref.current)) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && at === last) { e.preventDefault(); first.focus(); }
+      if (e.shiftKey && (at === first || at === ref.current)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && at === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     return () => {

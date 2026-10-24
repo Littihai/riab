@@ -72,9 +72,15 @@ export function ComponentsPage() {
 
         <section className="card section-card">
           <h3>{t("cmp.alerts")}</h3>
-          <Alert tone="ok" title={t("cmp.alert.okTitle")}>{t("cmp.alert.okBody")}</Alert>
-          <Alert tone="warn" title={t("cmp.alert.warnTitle")}>{t("cmp.alert.warnBody")}</Alert>
-          <Alert tone="stop" title={t("cmp.alert.stopTitle")}>{t("cmp.alert.stopBody")}</Alert>
+          <Alert tone="ok" title={t("cmp.alert.okTitle")}>
+            {t("cmp.alert.okBody")}
+          </Alert>
+          <Alert tone="warn" title={t("cmp.alert.warnTitle")}>
+            {t("cmp.alert.warnBody")}
+          </Alert>
+          <Alert tone="stop" title={t("cmp.alert.stopTitle")}>
+            {t("cmp.alert.stopBody")}
+          </Alert>
         </section>
 
         <section className="card section-card">
@@ -102,15 +108,25 @@ export function ComponentsPage() {
 
         <section className="card section-card">
           <h3>{t("cmp.tabs")}</h3>
-          <Tabs tabs={tabs} value={tab} onChange={setTab} ariaLabel={t("cmp.tabs")} idBase={tabsBase} panelId={panelId} />
+          <Tabs
+            tabs={tabs}
+            value={tab}
+            onChange={setTab}
+            ariaLabel={t("cmp.tabs")}
+            idBase={tabsBase}
+            panelId={panelId}
+          />
           <div className="tab-panel" role="tabpanel" id={panelId} aria-labelledby={tabId(tabsBase, tab)}>
             {t("cmp.tab.body")} {tabs.find((x) => x.id === tab)?.label}
           </div>
           <h3>{t("cmp.pager")}</h3>
           <Pager
-            page={page} pages={5} onPage={setPage}
+            page={page}
+            pages={5}
+            onPage={setPage}
             label={(p, n) => t("pager.page").replace("%p", String(p)).replace("%n", String(n))}
-            prevLabel={t("pager.prev")} nextLabel={t("pager.next")}
+            prevLabel={t("pager.prev")}
+            nextLabel={t("pager.next")}
           />
         </section>
 
@@ -144,7 +160,9 @@ export function ComponentsPage() {
           <h3>{t("cmp.overlays")}</h3>
           <div className="row-wrap">
             <Button onClick={() => setModalOpen(true)}>{t("cmp.openModal")}</Button>
-            <Button variant="ghost" onClick={() => toast(t("cmp.toastMsg"))}>{t("cmp.sendToast")}</Button>
+            <Button variant="ghost" onClick={() => toast(t("cmp.toastMsg"))}>
+              {t("cmp.sendToast")}
+            </Button>
           </div>
         </section>
       </div>
@@ -155,8 +173,17 @@ export function ComponentsPage() {
         title={t("cmp.modal.title")}
         footer={
           <>
-            <Button variant="ghost" onClick={() => setModalOpen(false)}>{t("common.cancel")}</Button>
-            <Button onClick={() => { setModalOpen(false); toast(t("cmp.toastMsg")); }}>{t("common.confirm")}</Button>
+            <Button variant="ghost" onClick={() => setModalOpen(false)}>
+              {t("common.cancel")}
+            </Button>
+            <Button
+              onClick={() => {
+                setModalOpen(false);
+                toast(t("cmp.toastMsg"));
+              }}
+            >
+              {t("common.confirm")}
+            </Button>
           </>
         }
       >

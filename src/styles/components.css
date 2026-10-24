@@ -12,7 +12,9 @@
   background: var(--accent-fill);
   color: var(--on-accent);
   box-shadow: var(--shadow-sm);
-  transition: transform 90ms var(--ease), background var(--dur-1) var(--ease);
+  transition:
+    transform 90ms var(--ease),
+    background var(--dur-1) var(--ease);
 }
 .btn:hover {
   background: var(--accent-hover);
@@ -35,7 +37,9 @@
   background: var(--surface);
   border-radius: var(--r-md);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+  transition:
+    transform var(--dur-1) var(--ease),
+    box-shadow var(--dur-1) var(--ease);
 }
 .card.lift:hover {
   transform: translateY(-1px);
@@ -152,7 +156,9 @@
   height: 100%;
   border-radius: 999px;
   background: var(--border-strong);
-  transition: background var(--dur-1) var(--ease), opacity var(--dur-1) var(--ease);
+  transition:
+    background var(--dur-1) var(--ease),
+    opacity var(--dur-1) var(--ease);
   pointer-events: none;
 }
 .switch .switch-track::after {
@@ -206,7 +212,9 @@
   border-radius: var(--r-sm);
   padding: 9px 12px;
   font-size: var(--fs-small);
-  transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+  transition:
+    border-color var(--dur-1) var(--ease),
+    box-shadow var(--dur-1) var(--ease);
 }
 .input:hover:not(:disabled) {
   border-color: var(--text);
@@ -457,10 +465,18 @@ textarea.input {
     background-position: -200% 0;
   }
 }
-.skeleton.w-25 { width: 25%; }
-.skeleton.w-50 { width: 50%; }
-.skeleton.w-75 { width: 75%; }
-.skeleton.w-100 { width: 100%; }
+.skeleton.w-25 {
+  width: 25%;
+}
+.skeleton.w-50 {
+  width: 50%;
+}
+.skeleton.w-75 {
+  width: 75%;
+}
+.skeleton.w-100 {
+  width: 100%;
+}
 @media (prefers-reduced-motion: reduce) {
   :root:not([data-motion="full"]) .skeleton {
     animation: none;
