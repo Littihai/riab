@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>riab — Kraft Ledger mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Noto+Serif+Thai:wght@500;600&family=Source+Sans+3:wght@400;600&family=Noto+Sans+Thai:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  /* ── Kraft Ledger tokens (direction A) ── */
+  :root, [data-theme="light"] {
+    --bg: #FAF6EF; --surface: #FFFDF8; --surface-2: #F3ECDF;
+    --border: #E4D9C6; --text: #2A2118; --muted: #6B5D4F;
+    --accent-fill: #A63F24; --accent-hover: #8E331B; --on-accent: #FFFDF8; --accent-text: #A63F24;
+    --pine: #2F5D50; --saffron: #E5A93B;
+    --ok: #3F6B2E; --warn: #8A5A00; --stop: #A62B2B;
+    --shadow-sm: 0 1px 0 var(--border), 0 1px 2px rgb(42 33 24 / .06);
+    --shadow-md: 0 1px 0 var(--border), 0 8px 20px -8px rgb(42 33 24 / .18);
+    --shadow-lg: 0 24px 48px -16px rgb(42 33 24 / .28);
+  }
+  [data-theme="dark"] {
+    --bg: #1B1612; --surface: #241E18; --surface-2: #2D251D;
+    --border: #3D3328; --text: #F1E9DC; --muted: #B3A593;
+    --accent-fill: #EE8F6B; --accent-hover: #F2A585; --on-accent: #1B1612; --accent-text: #EE8F6B;
+    --pine: #86C2AB; --saffron: #F0BC55;
+    --ok: #9CCB84; --warn: #E8B65A; --stop: #F08A80;
+    --shadow-sm: 0 1px 0 rgb(0 0 0 / .3), 0 1px 2px rgb(0 0 0 / .25);
+    --shadow-md: 0 1px 0 rgb(0 0 0 / .3), 0 8px 20px -8px rgb(0 0 0 / .45);
+    --shadow-lg: 0 24px 48px -16px rgb(0 0 0 / .6);
+  }
+  :root {
+    --r-sm: 6px; --r-md: 12px; --r-lg: 20px;
+    --dur-1: 200ms; --dur-2: 320ms; --ease: cubic-bezier(.22,.7,.2,1);
+    --font-head: "Fraunces", "Noto Serif Thai", serif;
+    --font-body: "Source Sans 3", "Noto Sans Thai", sans-serif;
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.65; transition: background var(--dur-1) var(--ease); }
+  button { font: inherit; cursor: pointer; color: inherit; }
+  h1,h2,h3 { font-family: var(--font-head); font-weight: 600; margin: 0; }
+
+  /* header: 64px, surface + 1px rule */
+  header { position: sticky; top: 0; z-index: 10; height: 64px; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 6px; padding: 0 28px; }
+  .logo { font-family: var(--font-head); font-size: 23px; font-weight: 600; letter-spacing: -0.01em; margin-right: 18px; display: flex; align-items: center; gap: 9px; border: 0; background: none; padding: 0; }
+  .logo .tile { width: 30px; height: 30px; border-radius: 8px; background: var(--accent-fill); color: var(--on-accent); display: grid; place-items: center; font-size: 17px; }
+  nav { display: flex; gap: 2px; }
+  .nav-item { position: relative; border: 0; background: none; padding: 9px 13px; font-size: 14.5px; font-weight: 600; color: var(--muted); border-radius: var(--r-sm); }
+  .nav-item:hover { color: var(--text); background: var(--surface-2); }
+  .nav-item[aria-current="page"] { color: var(--text); }
+  .nav-item[aria-current="page"]::after { content: ""; position: absolute; left: 13px; right: 13px; bottom: -1px; height: 2px; background: var(--accent-fill); animation: ink var(--dur-1) var(--ease); transform-origin: left; }
+  @keyframes ink { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .spacer { flex: 1; }
+  .search { display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 7px 13px; font-size: 13.5px; color: var(--muted); }
+  .search kbd { font-family: var(--font-body); font-size: 11px; border: 1px solid var(--border); border-radius: 4px; padding: 0 5px; background: var(--surface); }
+  .icon-btn { width: 38px; height: 38px; display: grid; place-items: center; border: 0; background: none; border-radius: var(--r-sm); font-size: 17px; }
+  .icon-btn:hover { background: var(--surface-2); }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--pine); color: var(--surface); font-size: 13px; font-weight: 600; display: grid; place-items: center; font-family: var(--font-body); }
+
+  main { max-width: 1240px; margin: 0 auto; padding: 32px 28px 72px; }
+  .crumb { font-size: 12.5px; color: var(--muted); margin-bottom: 4px; }
+  .page-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+  .page-head h1 { font-size: 36px; line-height: 1.25; }
+  .page-head p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+  .btn { border: 0; border-radius: var(--r-sm); padding: 10px 18px; font-size: 14.5px; font-weight: 600; background: var(--accent-fill); color: var(--on-accent); box-shadow: var(--shadow-sm); transition: transform 90ms var(--ease), background var(--dur-1); }
+  .btn:hover { background: var(--accent-hover); }
+  .btn:active { transform: translateY(1px); }
+  .btn.ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+
+  /* KPI cards */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-bottom: 28px; }
+  .kpi { background: var(--surface); border-radius: var(--r-md); box-shadow: var(--shadow-sm); padding: 18px 20px 16px; transition: transform var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease); animation: rise var(--dur-2) var(--ease) backwards; }
+  .kpi:nth-child(2) { animation-delay: 40ms; } .kpi:nth-child(3) { animation-delay: 80ms; } .kpi:nth-child(4) { animation-delay: 120ms; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
+  .kpi:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .kpi .label { font-size: 12px; font-weight: 600; color: var(--muted); }
+  .kpi .num { font-family: var(--font-head); font-size: 36px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; margin: 2px 0 6px; }
+  .kpi .sub { display: flex; align-items: baseline; font-size: 12.5px; color: var(--muted); }
+  .kpi .leader { flex: 1; border-bottom: 1px dotted var(--border); margin: 0 8px 3px; }
+  .chip { font-size: 12px; font-weight: 600; border-radius: 999px; padding: 1px 8px; }
+  .chip.up { color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+  .chip.down { color: var(--stop); background: color-mix(in srgb, var(--stop) 12%, transparent); }
+  .spark { margin-top: 10px; }
+
+  .columns { display: grid; grid-template-columns: 1.7fr 1fr; gap: 16px; align-items: start; }
+  @media (max-width: 900px) { .columns { grid-template-columns: 1fr; } }
+
+  /* table: no zebra, dotted separators, stamp badges */
+  .panel { background: var(--surface); border-radius: var(--r-md); box-shadow: var(--shadow-sm); overflow: hidden; }
+  .panel-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; }
+  .panel-head h3 { font-size: 22px; line-height: 1.35; }
+  .panel-head a { font-size: 13px; color: var(--accent-text); font-weight: 600; text-decoration: none; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th { background: var(--surface-2); color: var(--muted); font-size: 11.5px; font-weight: 600; text-align: left; padding: 8px 20px; }
+  td { padding: 13px 20px; border-top: 1px dotted var(--border); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody tr { transition: background var(--dur-1); }
+  tbody tr:hover { background: var(--surface-2); }
+  tr.selected { box-shadow: inset 3px 0 0 var(--accent-fill); background: var(--surface-2); }
+  .doc { font-weight: 600; }
+  .stamp { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; border: 1px solid currentColor; border-radius: 4px; padding: 1.5px 7px; }
+  .stamp.ok { color: var(--ok); } .stamp.warn { color: var(--warn); } .stamp.stop { color: var(--stop); } .stamp.muted { color: var(--muted); }
+
+  /* empty state: line drawing on a circle */
+  .empty { padding: 36px 24px 40px; text-align: center; }
+  .empty .ring { width: 108px; height: 108px; margin: 0 auto 16px; border-radius: 50%; background: var(--surface-2); display: grid; place-items: center; }
+  .empty h3 { font-size: 22px; margin-bottom: 6px; }
+  .empty p { color: var(--muted); font-size: 13.5px; margin: 0 0 16px; }
+
+  footer { max-width: 1240px; margin: 0 auto; padding: 0 28px 40px; color: var(--muted); font-size: 12.5px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  @media (max-width: 760px) {
+    header { padding: 0 14px; } nav { display: none; } .search span.hint { display: none; }
+    main { padding: 22px 16px 56px; }
+    .page-head h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <button class="logo" aria-label="riab"><span class="tile">ร</span>riab</button>
+  <nav aria-label="เมนูหลัก">
+    <button class="nav-item" aria-current="page">หน้าแรก</button>
+    <button class="nav-item">ภาพรวมระบบ</button>
+    <button class="nav-item">เอกสาร</button>
+    <button class="nav-item">คลังสินค้า</button>
+  </nav>
+  <div class="spacer"></div>
+  <button class="search"><span>⌕</span><span class="hint">ค้นหา</span><kbd>Ctrl K</kbd></button>
+  <button class="icon-btn" id="themeToggle" aria-label="สลับโหมดสี">◐</button>
+  <button class="icon-btn" aria-label="การแจ้งเตือน">🔔︎</button>
+  <span class="avatar">สม</span>
+</header>
+
+<main>
+  <div class="crumb">หน้าแรก</div>
+  <div class="page-head">
+    <div>
+      <h1>สมุดงานของฉัน</h1>
+      <p>งานที่รอคุณ และสถานะของโมดูลที่คุณใช้ — ข้อมูลสมมติเพื่อการสาธิต</p>
+    </div>
+    <div style="display:flex; gap:10px">
+      <button class="btn ghost">ดูรายงาน</button>
+      <button class="btn">เปิดใบขอซื้อ</button>
+    </div>
+  </div>
+
+  <section class="kpis" aria-label="ตัวเลขสรุป">
+    <div class="kpi">
+      <div class="label">ใบขอซื้อรออนุมัติ</div>
+      <div class="num">12</div>
+      <div class="sub"><span>จากสัปดาห์ก่อน</span><span class="leader"></span><span class="chip up">▲ 3</span></div>
+      <svg class="spark" width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,20 15,16 30,18 45,12 60,14 75,9 90,11 105,6 120,8" fill="none" stroke="var(--pine)" stroke-width="1.5"/></svg>
+    </div>
+    <div class="kpi">
+      <div class="label">มูลค่าจัดซื้อเดือนนี้</div>
+      <div class="num">฿1,245,300</div>
+      <div class="sub"><span>งบที่ใช้ไป</span><span class="leader"></span><span>62%</span></div>
+      <svg class="spark" width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,24 15,22 30,19 45,20 60,15 75,13 90,12 105,9 120,5" fill="none" stroke="var(--pine)" stroke-width="1.5"/></svg>
+    </div>
+    <div class="kpi">
+      <div class="label">สินค้าต่ำกว่าจุดปลอดภัย</div>
+      <div class="num">4</div>
+      <div class="sub"><span>ต้องสั่งเติมภายใน</span><span class="leader"></span><span>5 วัน</span></div>
+      <svg class="spark" width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,8 15,10 30,9 45,14 60,12 75,18 90,16 105,21 120,19" fill="none" stroke="var(--saffron)" stroke-width="1.5"/></svg>
+    </div>
+    <div class="kpi">
+      <div class="label">งานรับเข้าวันนี้</div>
+      <div class="num">7</div>
+      <div class="sub"><span>เสร็จแล้ว</span><span class="leader"></span><span>5 รายการ</span></div>
+      <svg class="spark" width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,22 15,20 30,16 45,17 60,12 75,14 90,10 105,12 120,7" fill="none" stroke="var(--pine)" stroke-width="1.5"/></svg>
+    </div>
+  </section>
+
+  <div class="columns">
+    <section class="panel" aria-label="ใบขอซื้อล่าสุด">
+      <div class="panel-head">
+        <h3>ใบขอซื้อล่าสุด</h3>
+        <a href="#">ดูทั้งหมด →</a>
+      </div>
+      <table>
+        <thead><tr><th>เอกสาร</th><th>ผู้ขอ</th><th>สถานะ</th><th class="num">มูลค่า</th></tr></thead>
+        <tbody>
+          <tr><td class="doc">PR-2610-0041</td><td>สมหมาย ใจดี</td><td><span class="stamp warn">◷ รออนุมัติ</span></td><td class="num">฿86,400</td></tr>
+          <tr class="selected"><td class="doc">PR-2610-0040</td><td>วรรณา ศรีสุข</td><td><span class="stamp ok">✓ อนุมัติแล้ว</span></td><td class="num">฿312,510</td></tr>
+          <tr><td class="doc">PR-2610-0039</td><td>ประเสริฐ มั่นคง</td><td><span class="stamp stop">✕ ไม่อนุมัติ</span></td><td class="num">฿46,800</td></tr>
+          <tr><td class="doc">PR-2610-0038</td><td>สมหมาย ใจดี</td><td><span class="stamp muted">— แบบร่าง</span></td><td class="num">฿110,370</td></tr>
+          <tr><td class="doc">PR-2610-0037</td><td>อรทัย แก้วใส</td><td><span class="stamp ok">✓ อนุมัติแล้ว</span></td><td class="num">฿58,200</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel empty" aria-label="คำขอราคา">
+      <div class="ring">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="12" y="8" width="40" height="48" rx="4" stroke="var(--accent-fill)" stroke-width="2"/>
+          <path d="M20 20h24M20 29h24M20 38h14" stroke="var(--pine)" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 5"/>
+          <circle cx="46" cy="46" r="10" fill="var(--surface)" stroke="var(--accent-fill)" stroke-width="2"/>
+          <path d="M42 46l3 3 5-6" stroke="var(--accent-fill)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>ยังไม่มีคำขอราคา</h3>
+      <p>เปิดคำขอราคาให้ผู้ขายเสนอราคา ก่อนออกใบขอซื้อจริง</p>
+      <button class="btn">เปิดคำขอราคา</button>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <span>riab · Kraft Ledger mockup — ข้อมูลทั้งหมดเป็นข้อมูลสมมติ</span>
+  <span>Fraunces + Noto Serif Thai · Source Sans 3 + Noto Sans Thai</span>
+</footer>
+
+<script>
+  const t = document.getElementById("themeToggle");
+  t.addEventListener("click", () => {
+    const el = document.documentElement;
+    el.dataset.theme = el.dataset.theme === "dark" ? "light" : "dark";
+  });
+</script>
+</body>
+</html>
