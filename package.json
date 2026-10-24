@@ -1,7 +1,7 @@
 {
   "name": "riab",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "description": "A themeable UI starter: design tokens, dark mode, user-customizable appearance, th/en i18n",
   "license": "MIT",

@@ -2,7 +2,7 @@
 
 All notable changes to this project. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/) (0.x: minor versions may change things).
 
-## [Unreleased]
+## [0.5.0] - 2026-10-25
 
 ### Changed
 
@@ -76,6 +76,7 @@ All notable changes to this project. Format follows [Keep a Changelog](https://k
 
 - First public release: Riab Minimal theme (tokens, light and dark, three-layer accent at 4.5:1), Inter + Noto Sans Thai, Thai/English with one formatter per language, form fields, modal, toast, tabs, alert, badge, stamp, pager, and six demo pages with a hash router.
 
+[0.5.0]: https://github.com/Littihai/riab/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Littihai/riab/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Littihai/riab/compare/v0.2...v0.3.0
 [0.2.0]: https://github.com/Littihai/riab/compare/v0.1...v0.2
