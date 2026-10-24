@@ -88,8 +88,12 @@
 
   /* typography: one sans family, weight does the hierarchy
      (base 15, ratio ~1.2); Thai body never below 14px */
-  --font-head: "Inter Variable", "Inter", "Noto Sans Thai Variable", "Noto Sans Thai", sans-serif;
-  --font-body: "Inter Variable", "Inter", "Noto Sans Thai Variable", "Noto Sans Thai", sans-serif;
+  --font-inter: "Inter Variable", "Inter", "Noto Sans Thai Variable", "Noto Sans Thai", sans-serif;
+  --font-plex: "IBM Plex Sans", "IBM Plex Sans Thai", sans-serif;
+  --font-sarabun: "Sarabun", sans-serif;
+  --font-system: system-ui, -apple-system, "Segoe UI", "Leelawadee UI", "Noto Sans Thai", sans-serif;
+  --font-head: var(--font-inter);
+  --font-body: var(--font-inter);
   /* the smallest size any Thai text may use (table headers, stamps) */
   --fs-micro: 12px;
   --fs-caption: 12px;
@@ -114,11 +118,17 @@
   --accent-tint: color-mix(in srgb, var(--accent-fill) 9%, var(--surface));
 
   /* Customize swatches show each preset regardless of the active one */
+  --swatch-on: #ffffff;
   --swatch-ink: #18181b;
-  --swatch-clay: #a63f24;
-  --swatch-pine: #2f5d50;
   --swatch-blue: #1d4ed8;
+  --swatch-azure: #0369a1;
+  --swatch-teal: #0f766e;
+  --swatch-green: #15803d;
   --swatch-indigo: #4f46e5;
+  --swatch-violet: #7c3aed;
+  --swatch-rose: #be123c;
+  --swatch-amber: #b45309;
+  --swatch-slate: #475569;
 }
 
 [data-density="compact"] {
@@ -130,31 +140,7 @@
   --page-pad: 20px;
 }
 
-/* ── Customize: accent presets (every pair measured >= 4.5:1 as text) ── */
-[data-accent="clay"] {
-  --accent-fill: #a63f24;
-  --accent-hover: #8e331b;
-  --on-accent: #fffdf8;
-  --accent-text: #a63f24;
-}
-[data-theme="dark"][data-accent="clay"] {
-  --accent-fill: #ee8f6b;
-  --accent-hover: #f2a585;
-  --on-accent: #1b1612;
-  --accent-text: #ee8f6b;
-}
-[data-accent="pine"] {
-  --accent-fill: #2f5d50;
-  --accent-hover: #264c41;
-  --on-accent: #ffffff;
-  --accent-text: #2f5d50;
-}
-[data-theme="dark"][data-accent="pine"] {
-  --accent-fill: #86c2ab;
-  --accent-hover: #a3d2bf;
-  --on-accent: #0f1f1a;
-  --accent-text: #86c2ab;
-}
+/* ── Customize: accent presets (every pair measured >= 4.5:1 as text, light and dark) ── */
 [data-accent="blue"] {
   --accent-fill: #1d4ed8;
   --accent-hover: #1e40af;
@@ -167,7 +153,42 @@
   --on-accent: #0f172a;
   --accent-text: #93c5fd;
 }
-
+[data-accent="azure"] {
+  --accent-fill: #0369a1;
+  --accent-hover: #075985;
+  --on-accent: #ffffff;
+  --accent-text: #0369a1;
+}
+[data-theme="dark"][data-accent="azure"] {
+  --accent-fill: #7dd3fc;
+  --accent-hover: #bae6fd;
+  --on-accent: #082f49;
+  --accent-text: #7dd3fc;
+}
+[data-accent="teal"] {
+  --accent-fill: #0f766e;
+  --accent-hover: #115e59;
+  --on-accent: #ffffff;
+  --accent-text: #0f766e;
+}
+[data-theme="dark"][data-accent="teal"] {
+  --accent-fill: #5eead4;
+  --accent-hover: #99f6e4;
+  --on-accent: #042f2e;
+  --accent-text: #5eead4;
+}
+[data-accent="green"] {
+  --accent-fill: #15803d;
+  --accent-hover: #14532d;
+  --on-accent: #ffffff;
+  --accent-text: #166534;
+}
+[data-theme="dark"][data-accent="green"] {
+  --accent-fill: #86efac;
+  --accent-hover: #bbf7d0;
+  --on-accent: #052e16;
+  --accent-text: #86efac;
+}
 [data-accent="indigo"] {
   --accent-fill: #4f46e5;
   --accent-hover: #4338ca;
@@ -179,6 +200,176 @@
   --accent-hover: #c7d2fe;
   --on-accent: #12122b;
   --accent-text: #a5b4fc;
+}
+[data-accent="violet"] {
+  --accent-fill: #7c3aed;
+  --accent-hover: #6d28d9;
+  --on-accent: #ffffff;
+  --accent-text: #6d28d9;
+}
+[data-theme="dark"][data-accent="violet"] {
+  --accent-fill: #c4b5fd;
+  --accent-hover: #ddd6fe;
+  --on-accent: #1e1b4b;
+  --accent-text: #c4b5fd;
+}
+[data-accent="rose"] {
+  --accent-fill: #be123c;
+  --accent-hover: #9f1239;
+  --on-accent: #ffffff;
+  --accent-text: #be123c;
+}
+[data-theme="dark"][data-accent="rose"] {
+  --accent-fill: #fda4af;
+  --accent-hover: #fecdd3;
+  --on-accent: #4c0519;
+  --accent-text: #fda4af;
+}
+[data-accent="amber"] {
+  --accent-fill: #b45309;
+  --accent-hover: #92400e;
+  --on-accent: #ffffff;
+  --accent-text: #92400e;
+}
+[data-theme="dark"][data-accent="amber"] {
+  --accent-fill: #fcd34d;
+  --accent-hover: #fde68a;
+  --on-accent: #451a03;
+  --accent-text: #fcd34d;
+}
+[data-accent="slate"] {
+  --accent-fill: #475569;
+  --accent-hover: #334155;
+  --on-accent: #ffffff;
+  --accent-text: #475569;
+}
+[data-theme="dark"][data-accent="slate"] {
+  --accent-fill: #cbd5e1;
+  --accent-hover: #e2e8f0;
+  --on-accent: #0f172a;
+  --accent-text: #cbd5e1;
+}
+
+/* ── Customize: theme base (the gray palette behind every surface). Zinc is the default,
+   written out too so a preview can pin it. ── */
+[data-base="zinc"],
+[data-base="zinc"] [data-theme="light"] {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --border: #e4e4e7;
+  --border-strong: #8f8f98;
+  --text: #18181b;
+  --muted: #6b6b73;
+}
+[data-theme="dark"][data-base="zinc"],
+[data-theme="dark"] [data-base="zinc"],
+[data-base="zinc"] [data-theme="dark"] {
+  --bg: #0f0f10;
+  --surface: #18181b;
+  --surface-2: #212124;
+  --border: #2b2b30;
+  --border-strong: #71717a;
+  --text: #fafafa;
+  --muted: #a1a1aa;
+}
+[data-base="slate"],
+[data-base="slate"] [data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --border: #e2e8f0;
+  --border-strong: #818fa4;
+  --text: #0f172a;
+  --muted: #5f6e85;
+}
+[data-theme="dark"][data-base="slate"],
+[data-theme="dark"] [data-base="slate"],
+[data-base="slate"] [data-theme="dark"] {
+  --bg: #020617;
+  --surface: #0f172a;
+  --surface-2: #1e293b;
+  --border: #334155;
+  --border-strong: #64748b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+}
+[data-base="gray"],
+[data-base="gray"] [data-theme="light"] {
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --surface-2: #f3f4f6;
+  --border: #e5e7eb;
+  --border-strong: #868d99;
+  --text: #111827;
+  --muted: #676e7c;
+}
+[data-theme="dark"][data-base="gray"],
+[data-theme="dark"] [data-base="gray"],
+[data-base="gray"] [data-theme="dark"] {
+  --bg: #030712;
+  --surface: #111827;
+  --surface-2: #1f2937;
+  --border: #374151;
+  --border-strong: #6b7280;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+}
+[data-base="neutral"],
+[data-base="neutral"] [data-theme="light"] {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f5f5f5;
+  --border: #e5e5e5;
+  --border-strong: #8d8d8d;
+  --text: #171717;
+  --muted: #6f6f6f;
+}
+[data-theme="dark"][data-base="neutral"],
+[data-theme="dark"] [data-base="neutral"],
+[data-base="neutral"] [data-theme="dark"] {
+  --bg: #0a0a0a;
+  --surface: #171717;
+  --surface-2: #262626;
+  --border: #404040;
+  --border-strong: #737373;
+  --text: #fafafa;
+  --muted: #a3a3a3;
+}
+[data-base="stone"],
+[data-base="stone"] [data-theme="light"] {
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f5f5f4;
+  --border: #e7e5e4;
+  --border-strong: #928c88;
+  --text: #1c1917;
+  --muted: #746d69;
+}
+[data-theme="dark"][data-base="stone"],
+[data-theme="dark"] [data-base="stone"],
+[data-base="stone"] [data-theme="dark"] {
+  --bg: #0c0a09;
+  --surface: #1c1917;
+  --surface-2: #292524;
+  --border: #44403c;
+  --border-strong: #78716c;
+  --text: #fafaf9;
+  --muted: #a8a29e;
+}
+
+/* ── Customize: font family (all four read Thai) ── */
+[data-font="plex"] {
+  --font-head: var(--font-plex);
+  --font-body: var(--font-plex);
+}
+[data-font="sarabun"] {
+  --font-head: var(--font-sarabun);
+  --font-body: var(--font-sarabun);
+}
+[data-font="system"] {
+  --font-head: var(--font-system);
+  --font-body: var(--font-system);
 }
 
 /* ── Customize: corner presets (default is the "soft" 6/10/16 above) ── */

@@ -1,13 +1,15 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 /**
- * The Customize choices: accent, corners, density, icon tone, motion. Each applies as a
+ * The Customize choices: accent, theme base, font, corners, density, icon tone, motion. Each applies as a
  * data attribute on <html> (the default removes the attribute), persists in
  * one localStorage key, and is re-applied before first paint by the inline
  * script in index.html.
  */
 
-export type Accent = "ink" | "clay" | "pine" | "blue" | "indigo";
+export type Accent = "ink" | "blue" | "azure" | "teal" | "green" | "indigo" | "violet" | "rose" | "amber" | "slate";
+export type ThemeBase = "zinc" | "slate" | "gray" | "neutral" | "stone";
+export type FontFamily = "inter" | "plex" | "sarabun" | "system";
 export type Radius = "none" | "soft" | "round";
 export type Density = "comfortable" | "compact";
 export type Motion = "system" | "reduce";
@@ -21,6 +23,8 @@ export interface Appearance {
   motion: Motion;
   nav: NavLayout;
   icons: Icons;
+  base: ThemeBase;
+  font: FontFamily;
 }
 
 const DEFAULTS: Appearance = {
@@ -30,6 +34,8 @@ const DEFAULTS: Appearance = {
   motion: "system",
   nav: "top",
   icons: "mono",
+  base: "zinc",
+  font: "inter",
 };
 const KEY = "riab.app";
 
@@ -41,8 +47,13 @@ const AppearanceContext = createContext<AppearanceValue | null>(null);
 
 function load(): Appearance {
   try {
-    const raw = JSON.parse(localStorage.getItem(KEY) ?? "{}") as Partial<Appearance>;
-    return { ...DEFAULTS, ...raw };
+    const raw = JSON.parse(localStorage.getItem(KEY) ?? "{}") as Partial<Omit<Appearance, "accent">> & {
+      accent?: string;
+    };
+    // v0.2 presets that were replaced: clay and pine map to their nearest colors
+    const { accent: saved, ...rest } = raw;
+    const accent = saved === "clay" ? "amber" : saved === "pine" ? "green" : saved;
+    return { ...DEFAULTS, ...rest, ...(accent ? { accent: accent as Accent } : {}) };
   } catch {
     return DEFAULTS;
   }
@@ -61,6 +72,8 @@ export function AppearanceProvider({ children }: { children: ReactNode }) {
     apply("radius", state.radius, DEFAULTS.radius);
     apply("density", state.density, DEFAULTS.density);
     apply("icons", state.icons, DEFAULTS.icons);
+    apply("base", state.base, DEFAULTS.base);
+    apply("font", state.font, DEFAULTS.font);
     apply("motion", state.motion === "reduce" ? "reduce" : "system", "system");
   }, [state]);
 

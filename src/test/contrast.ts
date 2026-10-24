@@ -26,12 +26,18 @@ function parseRules(css: string): Rule[] {
 
 const RULES = parseRules(readFileSync(TOKENS, "utf8"));
 
-export const ACCENTS = ["ink", "clay", "pine", "blue", "indigo"] as const;
+export const ACCENTS = ["ink", "blue", "azure", "teal", "green", "indigo", "violet", "rose", "amber", "slate"] as const;
+export const BASES = ["zinc", "slate", "gray", "neutral", "stone"] as const;
 export type Theme = "light" | "dark";
 
-export function resolve(theme: Theme, accent: (typeof ACCENTS)[number]): Vars {
-  const picks: string[] = [":root", '[data-theme="light"]'];
-  if (theme === "dark") picks.push('[data-theme="dark"]');
+/** Custom properties for a theme, accent and gray base, in cascade order. */
+export function resolve(
+  theme: Theme,
+  accent: (typeof ACCENTS)[number] = "ink",
+  base: (typeof BASES)[number] = "zinc",
+): Vars {
+  const picks: string[] = [":root", '[data-theme="light"]', `[data-base="${base}"]`];
+  if (theme === "dark") picks.push('[data-theme="dark"]', `[data-theme="dark"][data-base="${base}"]`);
   if (accent !== "ink") {
     picks.push(`[data-accent="${accent}"]`);
     if (theme === "dark") picks.push(`[data-theme="dark"][data-accent="${accent}"]`);

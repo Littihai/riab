@@ -1,62 +1,63 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
-import { ACCENTS, TOKENS, hex, mix, ratio, resolve, type Theme } from "@/test/contrast";
+import { ACCENTS, BASES, TOKENS, hex, mix, ratio, resolve, type Theme } from "@/test/contrast";
 
 const THEMES: Theme[] = ["light", "dark"];
 
 describe("token contrast (WCAG 2.2 AA)", () => {
   for (const theme of THEMES) {
-    describe(theme, () => {
-      const base = resolve(theme, "ink");
+    for (const gray of BASES)
+      describe(`${theme} / ${gray}`, () => {
+        const base = resolve(theme, "ink", gray);
 
-      it("body and muted text pass 4.5:1 on every surface", () => {
-        for (const fg of ["--text", "--muted"]) {
-          for (const bg of ["--bg", "--surface", "--surface-2"]) {
-            expect(ratio(hex(base, fg), hex(base, bg)), `${fg} on ${bg}`).toBeGreaterThanOrEqual(4.5);
+        it("body and muted text pass 4.5:1 on every surface", () => {
+          for (const fg of ["--text", "--muted"]) {
+            for (const bg of ["--bg", "--surface", "--surface-2"]) {
+              expect(ratio(hex(base, fg), hex(base, bg)), `${fg} on ${bg}`).toBeGreaterThanOrEqual(4.5);
+            }
           }
-        }
-      });
-
-      it("status colors pass 4.5:1 as text", () => {
-        for (const fg of ["--ok", "--warn", "--stop"]) {
-          for (const bg of ["--bg", "--surface"]) {
-            expect(ratio(hex(base, fg), hex(base, bg)), `${fg} on ${bg}`).toBeGreaterThanOrEqual(4.5);
-          }
-        }
-      });
-
-      it("category hues pass 4.5:1 on the surface (icon chips)", () => {
-        for (const h of ["blue", "teal", "amber", "violet"]) {
-          expect(ratio(hex(base, `--hue-${h}`), hex(base, "--surface")), h).toBeGreaterThanOrEqual(4.5);
-        }
-      });
-
-      it("control borders are perceivable (>= 3:1)", () => {
-        for (const bg of ["--bg", "--surface"]) {
-          expect(ratio(hex(base, "--border-strong"), hex(base, bg)), bg).toBeGreaterThanOrEqual(3);
-        }
-      });
-
-      for (const accent of ACCENTS) {
-        it(`accent "${accent}": all three layers pass`, () => {
-          const v = resolve(theme, accent);
-          const on = ratio(hex(v, "--on-accent"), hex(v, "--accent-fill"));
-          expect(on, "on-accent on accent-fill").toBeGreaterThanOrEqual(4.5);
-          for (const bg of ["--bg", "--surface"]) {
-            expect(ratio(hex(v, "--accent-text"), hex(v, bg)), `accent-text on ${bg}`).toBeGreaterThanOrEqual(4.5);
-          }
-          const tint = mix(hex(v, "--accent-fill"), hex(v, "--surface"), 0.09);
-          expect(ratio(hex(v, "--accent-text"), tint), "accent-text on the active-row wash").toBeGreaterThanOrEqual(
-            4.5,
-          );
-          expect(
-            ratio(hex(v, "--accent-fill"), hex(v, "--surface")),
-            "accent-fill as a UI edge",
-          ).toBeGreaterThanOrEqual(3);
         });
-      }
-    });
+
+        it("status colors pass 4.5:1 as text", () => {
+          for (const fg of ["--ok", "--warn", "--stop"]) {
+            for (const bg of ["--bg", "--surface"]) {
+              expect(ratio(hex(base, fg), hex(base, bg)), `${fg} on ${bg}`).toBeGreaterThanOrEqual(4.5);
+            }
+          }
+        });
+
+        it("category hues pass 4.5:1 on the surface (icon chips)", () => {
+          for (const h of ["blue", "teal", "amber", "violet"]) {
+            expect(ratio(hex(base, `--hue-${h}`), hex(base, "--surface")), h).toBeGreaterThanOrEqual(4.5);
+          }
+        });
+
+        it("control borders are perceivable (>= 3:1)", () => {
+          for (const bg of ["--bg", "--surface"]) {
+            expect(ratio(hex(base, "--border-strong"), hex(base, bg)), bg).toBeGreaterThanOrEqual(3);
+          }
+        });
+
+        for (const accent of ACCENTS) {
+          it(`accent "${accent}": all three layers pass`, () => {
+            const v = resolve(theme, accent, gray);
+            const on = ratio(hex(v, "--on-accent"), hex(v, "--accent-fill"));
+            expect(on, "on-accent on accent-fill").toBeGreaterThanOrEqual(4.5);
+            for (const bg of ["--bg", "--surface"]) {
+              expect(ratio(hex(v, "--accent-text"), hex(v, bg)), `accent-text on ${bg}`).toBeGreaterThanOrEqual(4.5);
+            }
+            const tint = mix(hex(v, "--accent-fill"), hex(v, "--surface"), 0.09);
+            expect(ratio(hex(v, "--accent-text"), tint), "accent-text on the active-row wash").toBeGreaterThanOrEqual(
+              4.5,
+            );
+            expect(
+              ratio(hex(v, "--accent-fill"), hex(v, "--surface")),
+              "accent-fill as a UI edge",
+            ).toBeGreaterThanOrEqual(3);
+          });
+        }
+      });
   }
 });
 
