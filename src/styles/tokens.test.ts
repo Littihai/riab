@@ -99,4 +99,12 @@ describe("house rule: tokens only", () => {
     const offenders = files.filter((f) => /\sstyle=\{/.test(readFileSync(f, "utf8")));
     expect(offenders.map((f) => relative(SRC, f))).toEqual([]);
   });
+  it("has no literal font size below 14px (use --fs-micro for the 12px floor)", () => {
+    const offenders = files
+      .filter((f) => f.endsWith(".css") && f !== TOKENS)
+      .filter((f) =>
+        [...readFileSync(f, "utf8").matchAll(/font-size:\s*([\d.]+)px/g)].some((m) => parseFloat(m[1]) < 14),
+      );
+    expect(offenders.map((f) => relative(SRC, f))).toEqual([]);
+  });
 });
