@@ -88,8 +88,8 @@
 
   /* typography: one sans family, weight does the hierarchy
      (base 15, ratio ~1.2); Thai body never below 14px */
-  --font-head: "Inter", "Noto Sans Thai", sans-serif;
-  --font-body: "Inter", "Noto Sans Thai", sans-serif;
+  --font-head: "Inter Variable", "Inter", "Noto Sans Thai Variable", "Noto Sans Thai", sans-serif;
+  --font-body: "Inter Variable", "Inter", "Noto Sans Thai Variable", "Noto Sans Thai", sans-serif;
   /* the smallest size any Thai text may use (table headers, stamps) */
   --fs-micro: 12px;
   --fs-caption: 12px;

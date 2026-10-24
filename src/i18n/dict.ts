@@ -248,6 +248,7 @@ export const DICT = {
   "cmp.empty.title": { th: "ยังไม่มีรายการ", en: "Nothing here yet" },
   "cmp.empty.desc": { th: "เมื่อมีข้อมูล จะแสดงที่นี่", en: "Items appear here once they exist." },
   "cmp.empty.cta": { th: "สร้างรายการ", en: "Create one" },
+  "a11y.skip": { th: "ข้ามไปยังเนื้อหา", en: "Skip to content" },
 } as const satisfies Record<string, Entry>;
 
 /** A key that exists in the dictionary: a typo in `t("...")` fails to compile. */

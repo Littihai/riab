@@ -120,8 +120,20 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
     </footer>
   );
 
+  // the router owns the hash, so the skip link moves focus instead of navigating
+  const skip = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const main = document.querySelector<HTMLElement>("main");
+    if (!main) return;
+    main.tabIndex = -1;
+    main.focus();
+  };
+
   return (
     <>
+      <a className="skip-link" href="#main" onClick={skip}>
+        {t("a11y.skip")}
+      </a>
       {sideMode ? (
         <div className="layout">
           <SideNav rail={navMode === "rail"} route={route} />
