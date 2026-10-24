@@ -775,3 +775,52 @@ textarea.input {
 .skip-link:focus {
   transform: none;
 }
+
+/* option cards: a single choice as little pictures (Customize) */
+.opt-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.opt-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0;
+  text-align: start;
+  color: var(--text);
+}
+.opt-preview {
+  display: block;
+  width: 144px;
+  height: 76px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--bg);
+  transition: transform var(--dur-1) var(--ease);
+}
+.opt-cards[data-size="sm"] .opt-preview {
+  width: 112px;
+  height: 62px;
+}
+.opt-card:hover .opt-preview {
+  transform: translateY(-1px);
+}
+.opt-card[aria-checked="true"] .opt-preview {
+  outline: 2px solid var(--accent-fill);
+  outline-offset: 2px;
+}
+.opt-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 20px;
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+.opt-card[aria-checked="true"] .opt-label {
+  color: var(--text);
+  font-weight: 600;
+}

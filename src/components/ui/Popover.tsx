@@ -14,12 +14,18 @@ export function Popover({
   label,
   children,
   align = "start",
+  triggerClassName = "btn ghost",
+  triggerLabel,
 }: {
   trigger: ReactNode;
   /** accessible name of the panel */
   label: string;
   children: ReactNode;
   align?: "start" | "end";
+  /** replaces the default ghost-button look of the trigger (for icon buttons) */
+  triggerClassName?: string;
+  /** accessible name when the trigger content is not text */
+  triggerLabel?: string;
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
@@ -46,7 +52,8 @@ export function Popover({
       <button
         ref={button}
         type="button"
-        className="btn ghost"
+        className={triggerClassName}
+        aria-label={triggerLabel}
         aria-expanded={open}
         aria-controls={open ? id : undefined}
         onClick={() => {

@@ -8,6 +8,9 @@ import { SettingsDialog } from "@/demo/SettingsDialog";
 import { CmdK, type Command } from "@/demo/CmdK";
 import { SideNav, NAV } from "@/demo/SideNav";
 import { Icon } from "@/components/ui/Icon";
+import { Menu } from "@/components/ui/Menu";
+import { Popover } from "@/components/ui/Popover";
+import type { DictKey } from "@/i18n/dict";
 
 /**
  * The app frame every demo page shares. The nav lives where the Customize
@@ -57,6 +60,12 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
     { id: "theme", label: t("header.theme"), run: () => setPref(resolved === "dark" ? "light" : "dark") },
   ];
 
+  const go = (hash: string) => () => {
+    window.location.hash = hash;
+  };
+  const appsCurrent = route === "form" || route === "table";
+  const notifs: DictKey[] = ["bell.n1", "bell.n2", "bell.n3"];
+
   const header = (
     <header className="app-header">
       {!sideMode && (
@@ -66,11 +75,21 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
             {t("app.name")}
           </span>
           <nav className="app-nav" aria-label={t("nav.home")}>
-            {NAV.map((n) => (
+            {NAV.filter((n) => n.route === "home" || n.route === "components").map((n) => (
               <a key={n.route} className="nav-item" aria-current={route === n.route ? "page" : undefined} href={n.hash}>
                 {t(n.key)}
               </a>
             ))}
+            <Menu
+              label={t("nav.apps")}
+              triggerClassName="nav-item nav-menu"
+              current={appsCurrent}
+              items={NAV.filter((n) => n.route === "form" || n.route === "table").map((n) => ({
+                id: n.route,
+                label: t(n.key),
+                onSelect: go(n.hash),
+              }))}
+            />
           </nav>
         </>
       )}
@@ -99,6 +118,29 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
       >
         <Icon name="gear" />
       </button>
+      <Popover
+        align="end"
+        label={t("bell.title")}
+        triggerClassName="icon-btn bell-btn"
+        triggerLabel={t("bell.label").replace("%n", String(notifs.length))}
+        trigger={
+          <>
+            <Icon name="bell" />
+            <span className="bell-badge" aria-hidden="true">
+              {notifs.length}
+            </span>
+          </>
+        }
+      >
+        <div className="notif">
+          <h2 className="notif-title">{t("bell.title")}</h2>
+          <ul className="notif-list">
+            {notifs.map((k) => (
+              <li key={k}>{t(k)}</li>
+            ))}
+          </ul>
+        </div>
+      </Popover>
       <span className="lang-toggle" role="group" aria-label={t("header.lang")}>
         <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>
           ไทย
@@ -107,9 +149,27 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
           EN
         </button>
       </span>
-      <a className="nav-item login-link" href="#/login">
-        {t("nav.login")}
-      </a>
+      <Menu
+        align="end"
+        chevron={false}
+        triggerClassName="user-chip"
+        triggerLabel={t("user.menu")}
+        label={
+          <>
+            <span className="avatar" aria-hidden="true">
+              <Icon name="user" size={18} />
+            </span>
+            <span className="user-text">
+              <span className="user-name">{t("user.name")}</span>
+              <span className="user-role">{t("user.role")}</span>
+            </span>
+          </>
+        }
+        items={[
+          { id: "settings", label: t("set.title"), onSelect: () => setSettingsOpen(true) },
+          { id: "signout", label: t("user.signout"), onSelect: go("#/login") },
+        ]}
+      />
     </header>
   );
 

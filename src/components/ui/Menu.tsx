@@ -22,10 +22,21 @@ export function Menu({
   label,
   items,
   align = "start",
+  triggerClassName = "btn ghost",
+  triggerLabel,
+  chevron = true,
+  current,
 }: {
   label: ReactNode;
   items: MenuItem[];
   align?: "start" | "end";
+  /** replaces the default ghost-button look of the trigger (for nav items, avatars) */
+  triggerClassName?: string;
+  /** accessible name when the trigger content is not text */
+  triggerLabel?: string;
+  chevron?: boolean;
+  /** marks the trigger as the current section of the page (aria-current) */
+  current?: boolean;
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
@@ -85,7 +96,9 @@ export function Menu({
       <button
         ref={trigger}
         type="button"
-        className="btn ghost"
+        className={triggerClassName}
+        aria-label={triggerLabel}
+        aria-current={current ? "page" : undefined}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={open ? id : undefined}
@@ -93,7 +106,7 @@ export function Menu({
         onKeyDown={onTriggerKey}
       >
         {label}
-        <Icon name="chevronDown" size={16} />
+        {chevron && <Icon name="chevronDown" size={16} />}
       </button>
       {open && (
         <div
