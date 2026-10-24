@@ -1,3 +1,4 @@
+import type { DictKey } from "@/i18n/dict";
 import { useMemo, useState } from "react";
 import { useI18n } from "@/providers/I18nProvider";
 import { Input, Select } from "@/components/ui/Field";
@@ -6,10 +7,10 @@ import { Stamp, type StampTone } from "@/components/ui/Stamp";
 
 /** A full ledger: search, status filter, amount sort, pagination, and an empty state when nothing matches. */
 
-type Row = { doc: string; who: string; date: Date; tone: StampTone; status: string; amount: number };
+type Row = { doc: string; who: string; date: Date; tone: StampTone; status: DictKey; amount: number };
 
 const WHO = ["สมหมาย ใจดี", "วรรณา ศรีสุข", "ประเสริฐ มั่นคง", "อรทัย แก้วใส", "พิชัย รุ่งเรือง", "สุดา ทองสุข"];
-const STATES: { tone: StampTone; key: string }[] = [
+const STATES: { tone: StampTone; key: DictKey }[] = [
   { tone: "ok", key: "status.approved" },
   { tone: "warn", key: "status.pending" },
   { tone: "stop", key: "status.rejected" },

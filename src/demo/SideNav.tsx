@@ -1,9 +1,10 @@
+import type { DictKey } from "@/i18n/dict";
 import type { Route } from "@/App";
 import { useI18n } from "@/providers/I18nProvider";
 import { useAppearance } from "@/providers/AppearanceProvider";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
-export const NAV: { route: Route; hash: string; key: string; icon: IconName; hue: "violet" | "blue" | "teal" }[] = [
+export const NAV: { route: Route; hash: string; key: DictKey; icon: IconName; hue: "violet" | "blue" | "teal" }[] = [
   { route: "home", hash: "#/", key: "nav.home", icon: "home", hue: "blue" },
   { route: "components", hash: "#/components", key: "nav.components", icon: "grid", hue: "violet" },
   { route: "form", hash: "#/form", key: "nav.form", icon: "form", hue: "blue" },

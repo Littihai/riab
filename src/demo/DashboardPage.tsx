@@ -1,3 +1,4 @@
+import type { DictKey } from "@/i18n/dict";
 import { useState } from "react";
 import { useI18n } from "@/providers/I18nProvider";
 import { Button } from "@/components/ui/Button";
@@ -7,7 +8,7 @@ import "./demo.css";
 
 /** One page that exercises every locked token: header, KPI cards, ledger table, empty state. */
 
-const ROWS: { doc: string; who: string; tone: StampTone; status: string; amount: number }[] = [
+const ROWS: { doc: string; who: string; tone: StampTone; status: DictKey; amount: number }[] = [
   { doc: "PR-2610-0041", who: "สมหมาย ใจดี", tone: "warn", status: "status.pending", amount: 86400 },
   { doc: "PR-2610-0040", who: "วรรณา ศรีสุข", tone: "ok", status: "status.approved", amount: 312510 },
   { doc: "PR-2610-0039", who: "ประเสริฐ มั่นคง", tone: "stop", status: "status.rejected", amount: 46800 },

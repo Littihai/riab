@@ -1,3 +1,4 @@
+import type { DictKey } from "@/i18n/dict";
 import { useEffect, useState } from "react";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { AppearanceProvider } from "@/providers/AppearanceProvider";
@@ -32,7 +33,7 @@ function useRoute(): Route {
   return "404";
 }
 
-const TITLE_KEY: Record<Route, string> = {
+const TITLE_KEY: Record<Route, DictKey> = {
   home: "nav.home",
   components: "nav.components",
   form: "nav.form",

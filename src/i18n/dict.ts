@@ -2,7 +2,7 @@
 export type Lang = "th" | "en";
 type Entry = { th: string; en: string };
 
-export const DICT: Record<string, Entry> = {
+export const DICT = {
   "app.name": { th: "riab", en: "riab" },
   "nav.home": { th: "หน้าแรก", en: "Home" },
   "header.search": { th: "ค้นหา", en: "Search" },
@@ -208,4 +208,7 @@ export const DICT: Record<string, Entry> = {
     th: "riab — ข้อมูลทั้งหมดเป็นข้อมูลสมมติ",
     en: "riab — all data is fictional",
   },
-};
+} as const satisfies Record<string, Entry>;
+
+/** A key that exists in the dictionary: a typo in `t("...")` fails to compile. */
+export type DictKey = keyof typeof DICT;

@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { DICT, type Lang } from "@/i18n/dict";
+import { DICT, type DictKey, type Lang } from "@/i18n/dict";
 
 const KEY = "riab.lang";
 
 interface I18nValue {
   lang: Lang;
   setLang: (l: Lang) => void;
-  t: (key: string) => string;
+  t: (key: DictKey) => string;
   /** one formatter per locale — never format dates or money ad hoc */
   fmtMoney: (n: number) => string;
   fmtDate: (d: Date) => string;
@@ -36,7 +36,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const t = (key: string) => DICT[key]?.[lang] ?? key;
+  const t = (key: DictKey) => DICT[key][lang];
   // Gregorian calendar in both languages so document numbers and years never drift (lesson from lotline)
   const money = new Intl.NumberFormat(lang === "th" ? "th-TH" : "en-GB", {
     style: "currency",
