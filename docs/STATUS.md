@@ -9,13 +9,12 @@
   SettingsDialog 3 section, Ctrl K command palette, Segmented + useFocusTrap/useMediaQuery
   · ยังไม่ได้รีวิวโดย QA/UX (session ของทีมชนลิมิตวันนั้น)
 
-`package.json` เป็น 0.2.0 · tag ในเครื่อง: v0.1 = `e54a472` (README ครบ หลังผ่าน QA 2 รอบ),
+`package.json` เป็น 0.2.0 · tag + GitHub Release ทำแล้ว: v0.1 = `e54a472` (README ครบ หลังผ่าน QA 2 รอบ),
 v0.2 = commit ที่อัปเวอร์ชัน (รวมชุดไอคอน SVG, เมนูข้างแบบลื่นไหล, accent Indigo, สวิตช์สีไอคอน)
-· ยังไม่ได้ push tag / ทำ GitHub Release
 
 ## งานค้าง (เรียงตามที่เจ้าของน่าจะได้ประโยชน์ก่อน)
 
-1. **push tag + GitHub Release v0.1/v0.2** (เล็ก — tag อยู่ในเครื่องแล้ว)
+1. ~~Tag + Release v0.1/v0.2~~ — เสร็จแล้ว
 2. **รีวิว v0.2** — จุดที่ควรเช็ก: SettingsDialog บนมือถือ, rail + keyboard, CmdK กับ screen reader,
    สลับโหมดเมนูแล้ว focus/current ถูก
 3. **CI** — เพิ่ม workflow typecheck+build (+deploy Pages) เมื่อโควตา Actions ของบัญชีรีเซ็ต
