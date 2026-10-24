@@ -67,6 +67,8 @@ const PATHS = {
   arrowRight: <path d="M5 12h14m-5-5 5 5-5 5" />,
   arrowLeft: <path d="M19 12H5m5-5-5 5 5 5" />,
   chevronLeft: <path d="m15 6-6 6 6 6" />,
+  chevronRight: <path d="m9 6 6 6-6 6" />,
+  chevronDown: <path d="m6 9 6 6 6-6" />,
   doc: (
     <>
       <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />

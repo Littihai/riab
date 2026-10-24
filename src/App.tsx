@@ -70,6 +70,11 @@ const PAGES: Record<Route, () => JSX.Element> = {
   "404": NotFoundPage,
 };
 
+function DemoToastHost() {
+  const { t } = useI18n();
+  return <ToastHost closeLabel={t("toast.close")} />;
+}
+
 export function App() {
   const route = useRoute();
   const Page = PAGES[route];
@@ -85,7 +90,7 @@ export function App() {
               <Page />
             </Shell>
           )}
-          <ToastHost />
+          <DemoToastHost />
         </I18nProvider>
       </AppearanceProvider>
     </ThemeProvider>

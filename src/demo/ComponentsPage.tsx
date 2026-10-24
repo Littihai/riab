@@ -6,7 +6,15 @@ import { Button } from "@/components/ui/Button";
 import { Checkbox, Radio } from "@/components/ui/Choice";
 import { Field, Input, Select, Textarea } from "@/components/ui/Field";
 import { Skeleton, Spinner } from "@/components/ui/Loading";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { Card } from "@/components/ui/Card";
+import { Drawer } from "@/components/ui/Drawer";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { Icon } from "@/components/ui/Icon";
+import { Menu } from "@/components/ui/Menu";
 import { Modal } from "@/components/ui/Modal";
+import { Popover } from "@/components/ui/Popover";
+import { Tooltip } from "@/components/ui/Tooltip";
 import { Pager } from "@/components/ui/Pager";
 import { Stamp } from "@/components/ui/Stamp";
 import { Switch } from "@/components/ui/Switch";
@@ -20,6 +28,8 @@ export function ComponentsPage() {
   const [notify, setNotify] = useState(true);
   const [tab, setTab] = useState("detail");
   const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [pendingOnly, setPendingOnly] = useState(true);
   const [page, setPage] = useState(2);
   const [digest, setDigest] = useState(true);
   const [inApp, setInApp] = useState(false);
@@ -160,12 +170,101 @@ export function ComponentsPage() {
           <h2>{t("cmp.overlays")}</h2>
           <div className="row-wrap">
             <Button onClick={() => setModalOpen(true)}>{t("cmp.openModal")}</Button>
+            <Button variant="ghost" onClick={() => setDrawerOpen(true)}>
+              {t("cmp.drawer.open")}
+            </Button>
             <Button variant="ghost" onClick={() => toast(t("cmp.toastMsg"))}>
               {t("cmp.sendToast")}
             </Button>
+            <Button variant="ghost" onClick={() => toast(t("cmp.toast.okMsg"), "ok")}>
+              {t("cmp.toast.ok")}
+            </Button>
+            <Button variant="ghost" onClick={() => toast(t("cmp.toast.stopMsg"), "stop")}>
+              {t("cmp.toast.stop")}
+            </Button>
           </div>
         </section>
+
+        <section className="card section-card">
+          <h2>{t("cmp.menu")}</h2>
+          <div className="row-wrap">
+            <Menu
+              label={t("cmp.menu.trigger")}
+              items={[
+                { id: "edit", label: t("cmp.menu.edit"), onSelect: () => toast(t("cmp.menu.edit")) },
+                { id: "dup", label: t("cmp.menu.dup"), onSelect: () => toast(t("cmp.menu.dup")) },
+                { id: "arc", label: t("cmp.menu.archive"), onSelect: () => {}, disabled: true },
+                { id: "del", label: t("cmp.menu.delete"), onSelect: () => toast(t("cmp.menu.delete")), danger: true },
+              ]}
+            />
+          </div>
+        </section>
+
+        <section className="card section-card">
+          <h2>{t("cmp.tooltip")}</h2>
+          <div className="row-wrap">
+            <Tooltip label={t("cmp.tooltip.hint")}>
+              <Button variant="ghost">{t("cmp.tooltip.btn")}</Button>
+            </Tooltip>
+          </div>
+        </section>
+
+        <section className="card section-card">
+          <h2>{t("cmp.popover")}</h2>
+          <div className="row-wrap">
+            <Popover trigger={t("cmp.popover.trigger")} label={t("cmp.popover.label")}>
+              <div className="row-wrap">
+                <Switch ariaLabel={t("cmp.popover.switch")} checked={pendingOnly} onChange={setPendingOnly} />
+                <span>{t("cmp.popover.switch")}</span>
+              </div>
+            </Popover>
+          </div>
+        </section>
+
+        <section className="card section-card">
+          <h2>{t("cmp.breadcrumb")}</h2>
+          <Breadcrumb
+            ariaLabel={t("cmp.breadcrumb.label")}
+            items={[
+              { label: t("nav.home"), href: "#/" },
+              { label: t("nav.components"), href: "#/components" },
+              { label: t("cmp.breadcrumb.leaf") },
+            ]}
+          />
+        </section>
+
+        <Card
+          title={t("cmp.card.title")}
+          actions={
+            <Button variant="ghost">
+              {t("cmp.card.action")}
+              <Icon name="arrowRight" size={16} />
+            </Button>
+          }
+        >
+          <p className="muted">{t("cmp.card.body")}</p>
+        </Card>
+
+        <section className="card section-card">
+          <h2>{t("cmp.card")}</h2>
+          <EmptyState
+            icon={<Icon name="doc" size={36} />}
+            title={t("cmp.empty.title")}
+            description={t("cmp.empty.desc")}
+            action={<Button>{t("cmp.empty.cta")}</Button>}
+          />
+        </section>
       </div>
+
+      <Drawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        title={t("cmp.drawer.title")}
+        closeLabel={t("common.close")}
+        footer={<Button onClick={() => setDrawerOpen(false)}>{t("common.confirm")}</Button>}
+      >
+        <p className="muted">{t("cmp.drawer.body")}</p>
+      </Drawer>
 
       <Modal
         open={modalOpen}

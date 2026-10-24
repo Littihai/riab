@@ -2,6 +2,7 @@ import type { DictKey } from "@/i18n/dict";
 import { useMemo, useState } from "react";
 import { useI18n } from "@/providers/I18nProvider";
 import { Input, Select } from "@/components/ui/Field";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { Pager } from "@/components/ui/Pager";
 import { Stamp, type StampTone } from "@/components/ui/Stamp";
 
@@ -90,10 +91,7 @@ export function TablePage() {
         </div>
 
         {shown.length === 0 ? (
-          <div className="empty">
-            <h2>{t("tbl.empty")}</h2>
-            <p className="sub">{t("tbl.emptyHint")}</p>
-          </div>
+          <EmptyState title={t("tbl.empty")} description={t("tbl.emptyHint")} />
         ) : (
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- keyboard-reachable scroll region
           <div className="table-wrap" tabIndex={0} role="region" aria-label={t("tbl.title")}>
