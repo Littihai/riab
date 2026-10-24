@@ -52,7 +52,7 @@ export const DICT: Record<string, Entry> = {
   "empty.cta": { th: "เปิดคำขอราคา", en: "New request for quotation" },
 
   "footer.note": {
-    th: "riab · Kraft Ledger — ข้อมูลทั้งหมดเป็นข้อมูลสมมติ",
-    en: "riab · Kraft Ledger — all data is fictional",
+    th: "riab — ข้อมูลทั้งหมดเป็นข้อมูลสมมติ",
+    en: "riab — all data is fictional",
   },
 };

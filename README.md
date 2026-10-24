@@ -1,8 +1,8 @@
 # riab
 
-A themeable UI starter in the **Kraft Ledger** direction: warm paper-and-ink visual
-identity, design tokens, light/dark mode, Thai-first typography rules, and a th/en
-i18n skeleton. Built with Vite + React + TypeScript.
+A themeable UI starter — **white, quiet, neat** ("riab" is Thai for *neat*): an
+ink-on-white minimal identity, design tokens, light/dark mode, Thai-first
+typography rules, and a th/en i18n skeleton. Built with Vite + React + TypeScript.
 
 ## Run
 
@@ -24,7 +24,8 @@ npm run build
 - **No inline styles, no hardcoded colors** in components — everything reads tokens.
 - One toast channel, one dialog style (to be added), one date/number formatter per locale.
 
-`mockup/dashboard.html` is the original static mockup the tokens were extracted from.
+`mockup/dashboard.html` is the first static mockup (the earlier warm "Kraft Ledger"
+exploration), kept for reference.
 
 ## License
 

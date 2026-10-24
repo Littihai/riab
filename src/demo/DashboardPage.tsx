@@ -15,7 +15,7 @@ const ROWS: { doc: string; who: string; tone: StampTone; status: string; amount:
   { doc: "PR-2610-0037", who: "อรทัย แก้วใส", tone: "ok", status: "status.approved", amount: 58200 },
 ];
 
-function Spark({ points, tone = "pine" }: { points: string; tone?: "pine" | "saffron" }) {
+function Spark({ points, tone = "chart-1" }: { points: string; tone?: "chart-1" | "chart-2" }) {
   return (
     <svg className="spark" width="100%" height="28" viewBox="0 0 120 28" preserveAspectRatio="none" aria-hidden="true">
       <polyline points={points} fill="none" stroke={`var(--${tone})`} strokeWidth="1.5" />
@@ -103,7 +103,7 @@ export function DashboardPage() {
               <span className="leader" />
               <span>{t("kpi.lowStock.val")}</span>
             </div>
-            <Spark points="0,8 15,10 30,9 45,14 60,12 75,18 90,16 105,21 120,19" tone="saffron" />
+            <Spark points="0,8 15,10 30,9 45,14 60,12 75,18 90,16 105,21 120,19" tone="chart-2" />
           </div>
           <div className="card lift kpi rise">
             <div className="label">{t("kpi.receive")}</div>
@@ -149,7 +149,7 @@ export function DashboardPage() {
             <div className="ring">
               <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
                 <rect x="12" y="8" width="40" height="48" rx="4" stroke="var(--accent-fill)" strokeWidth="2" />
-                <path d="M20 20h24M20 29h24M20 38h14" stroke="var(--pine)" strokeWidth="2" strokeLinecap="round" strokeDasharray="1 5" />
+                <path d="M20 20h24M20 29h24M20 38h14" stroke="var(--chart-1)" strokeWidth="2" strokeLinecap="round" strokeDasharray="1 5" />
                 <circle cx="46" cy="46" r="10" fill="var(--surface)" stroke="var(--accent-fill)" strokeWidth="2" />
                 <path d="M42 46l3 3 5-6" stroke="var(--accent-fill)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -163,7 +163,7 @@ export function DashboardPage() {
 
       <footer className="app-footer">
         <span>{t("footer.note")}</span>
-        <span>Fraunces + Noto Serif Thai · Source Sans 3 + Noto Sans Thai</span>
+        <span>Inter + Noto Sans Thai</span>
       </footer>
     </>
   );

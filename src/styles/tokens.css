@@ -1,81 +1,83 @@
-/* ── riab design tokens — direction A "Kraft Ledger" ──
+/* ── riab design tokens — "Riab Minimal": white, quiet, neat ──
    Rules: accent is three tokens (fill / on / text), never one. Every color pair
-   used as text passes WCAG 4.5:1 (measured) in both modes. Components read
-   tokens only; no hex values outside this file. */
+   used as text passes WCAG 4.5:1 in both modes. Components read tokens only;
+   no hex values outside this file. */
 
 :root,
 [data-theme="light"] {
-  --bg: #faf6ef;
-  --surface: #fffdf8;
-  --surface-2: #f3ecdf;
-  --border: #e4d9c6;
-  --text: #2a2118;
-  --muted: #6b5d4f;
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --border: #e4e4e7;
+  --text: #18181b;
+  --muted: #6b6b73;
 
-  --accent-fill: #a63f24;
-  --accent-hover: #8e331b;
-  --on-accent: #fffdf8;
-  --accent-text: #a63f24;
+  /* the accent is ink itself: near-black fill, black text links */
+  --accent-fill: #18181b;
+  --accent-hover: #3f3f46;
+  --on-accent: #ffffff;
+  --accent-text: #18181b;
 
-  --pine: #2f5d50;
-  --saffron: #e5a93b;
+  --chart-1: #52525b;
+  --chart-2: #a16207;
 
-  --ok: #3f6b2e;
-  --warn: #8a5a00;
-  --stop: #a62b2b;
+  --ok: #15803d;
+  --warn: #a16207;
+  --stop: #b91c1c;
 
-  --shadow-sm: 0 1px 0 var(--border), 0 1px 2px rgb(42 33 24 / 0.06);
-  --shadow-md: 0 1px 0 var(--border), 0 8px 20px -8px rgb(42 33 24 / 0.18);
-  --shadow-lg: 0 24px 48px -16px rgb(42 33 24 / 0.28);
+  --shadow-sm: 0 0 0 1px var(--border), 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 0 0 1px var(--border), 0 6px 16px -6px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.16);
 }
 
 [data-theme="dark"] {
-  --bg: #1b1612;
-  --surface: #241e18;
-  --surface-2: #2d251d;
-  --border: #3d3328;
-  --text: #f1e9dc;
-  --muted: #b3a593;
+  --bg: #0f0f10;
+  --surface: #18181b;
+  --surface-2: #212124;
+  --border: #2b2b30;
+  --text: #fafafa;
+  --muted: #a1a1aa;
 
-  --accent-fill: #ee8f6b;
-  --accent-hover: #f2a585;
-  --on-accent: #1b1612;
-  --accent-text: #ee8f6b;
+  --accent-fill: #fafafa;
+  --accent-hover: #d4d4d8;
+  --on-accent: #111113;
+  --accent-text: #fafafa;
 
-  --pine: #86c2ab;
-  --saffron: #f0bc55;
+  --chart-1: #a1a1aa;
+  --chart-2: #e8c063;
 
-  --ok: #9ccb84;
-  --warn: #e8b65a;
-  --stop: #f08a80;
+  --ok: #5fd38d;
+  --warn: #e8c063;
+  --stop: #f38b82;
 
-  --shadow-sm: 0 1px 0 rgb(0 0 0 / 0.3), 0 1px 2px rgb(0 0 0 / 0.25);
-  --shadow-md: 0 1px 0 rgb(0 0 0 / 0.3), 0 8px 20px -8px rgb(0 0 0 / 0.45);
+  --shadow-sm: 0 0 0 1px var(--border), 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 0 0 1px var(--border), 0 8px 20px -8px rgb(0 0 0 / 0.45);
   --shadow-lg: 0 24px 48px -16px rgb(0 0 0 / 0.6);
 }
 
 :root {
-  /* shape */
+  /* shape: quiet corners, hairline borders */
   --r-sm: 6px;
-  --r-md: 12px;
-  --r-lg: 20px;
+  --r-md: 10px;
+  --r-lg: 16px;
 
-  /* motion — "laid down on the desk" */
-  --dur-1: 200ms;
-  --dur-2: 320ms;
+  /* motion: short and even */
+  --dur-1: 160ms;
+  --dur-2: 260ms;
   --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
 
-  /* typography (base 15, ratio ~1.2); Thai body never below 14px */
-  --font-head: "Fraunces", "Noto Serif Thai", serif;
-  --font-body: "Source Sans 3", "Noto Sans Thai", sans-serif;
+  /* typography: one sans family, weight does the hierarchy
+     (base 15, ratio ~1.2); Thai body never below 14px */
+  --font-head: "Inter", "Noto Sans Thai", sans-serif;
+  --font-body: "Inter", "Noto Sans Thai", sans-serif;
   --fs-caption: 12px;
   --fs-small: 14px;
   --fs-body: 15px;
   --fs-lead: 18px;
-  --fs-h3: 22px;
-  --fs-h2: 28px;
-  --fs-h1: 36px;
-  --fs-display: 48px;
+  --fs-h3: 21px;
+  --fs-h2: 26px;
+  --fs-h1: 32px;
+  --fs-display: 44px;
 
   /* density: comfortable by default */
   --row-h: 52px;
