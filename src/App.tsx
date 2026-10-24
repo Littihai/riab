@@ -5,24 +5,43 @@ import { ToastHost } from "@/components/ui/Toast";
 import { Shell } from "@/demo/Shell";
 import { DashboardPage } from "@/demo/DashboardPage";
 import { ComponentsPage } from "@/demo/ComponentsPage";
+import { FormPage } from "@/demo/FormPage";
+import { TablePage } from "@/demo/TablePage";
+import { LoginPage } from "@/demo/LoginPage";
+import { NotFoundPage } from "@/demo/NotFoundPage";
+
+export type Route = "home" | "components" | "form" | "table" | "login" | "404";
 
 /** Dependency-free hash routes — enough for a template demo. */
-function useRoute(): "home" | "components" {
+function useRoute(): Route {
   const [hash, setHash] = useState(() => window.location.hash);
   useEffect(() => {
     const on = () => setHash(window.location.hash);
     window.addEventListener("hashchange", on);
     return () => window.removeEventListener("hashchange", on);
   }, []);
-  return hash.startsWith("#/components") ? "components" : "home";
+  const path = hash.replace(/^#\/?/, "").replace(/\/$/, "");
+  if (path === "") return "home";
+  if (path === "components" || path === "form" || path === "table" || path === "login") return path;
+  return "404";
 }
+
+const PAGES: Record<Route, () => JSX.Element> = {
+  home: DashboardPage,
+  components: ComponentsPage,
+  form: FormPage,
+  table: TablePage,
+  login: LoginPage,
+  "404": NotFoundPage,
+};
 
 export function App() {
   const route = useRoute();
+  const Page = PAGES[route];
   return (
     <ThemeProvider>
       <I18nProvider>
-        <Shell route={route}>{route === "components" ? <ComponentsPage /> : <DashboardPage />}</Shell>
+        {route === "login" ? <Page /> : <Shell route={route}><Page /></Shell>}
         <ToastHost />
       </I18nProvider>
     </ThemeProvider>

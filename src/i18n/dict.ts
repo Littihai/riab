@@ -48,6 +48,53 @@ export const DICT: Record<string, Entry> = {
   "empty.cta": { th: "เปิดคำขอราคา", en: "New request for quotation" },
 
   "nav.components": { th: "คอมโพเนนต์", en: "Components" },
+  "nav.form": { th: "ฟอร์ม", en: "Form" },
+  "nav.table": { th: "ตาราง", en: "Table" },
+  "nav.login": { th: "เข้าสู่ระบบ", en: "Sign in" },
+
+  "form.title": { th: "สร้างใบขอซื้อ", en: "New purchase request" },
+  "form.sub": {
+    th: "ตัวอย่างฟอร์มจริง: ตรวจค่าตอนส่ง แสดงข้อผิดพลาดใต้ช่อง และยืนยันด้วย toast",
+    en: "A realistic form: validated on submit, inline errors, success as a toast",
+  },
+  "f.item": { th: "สินค้า", en: "Item" },
+  "f.itemHint": { th: "ชื่อสินค้าหรือรหัสจาก master", en: "Item name or master code" },
+  "f.qty": { th: "จำนวน", en: "Quantity" },
+  "f.qtyErr": { th: "จำนวนต้องมากกว่า 0", en: "Quantity must be above zero" },
+  "f.unit": { th: "หน่วย", en: "Unit" },
+  "f.unit.pc": { th: "ชิ้น", en: "Piece" },
+  "f.unit.box": { th: "กล่อง", en: "Box" },
+  "f.unit.kg": { th: "กิโลกรัม", en: "Kilogram" },
+  "f.need": { th: "วันที่ต้องการ", en: "Needed by" },
+  "f.reason": { th: "เหตุผล", en: "Reason" },
+  "f.urgent": { th: "งานด่วน แจ้งผู้อนุมัติทันที", en: "Urgent — notify the approver now" },
+  "f.submit": { th: "ส่งเข้าสายอนุมัติ", en: "Submit for approval" },
+  "f.required": { th: "กรอกช่องนี้", en: "This field is required" },
+  "form.saved": { th: "ส่งใบขอซื้อแล้ว", en: "Purchase request submitted" },
+
+  "tbl.title": { th: "รายการใบขอซื้อ", en: "Purchase requests" },
+  "tbl.sub": {
+    th: "ตาราง ledger เต็มรูป: ค้นหา กรองสถานะ เรียงมูลค่า และแบ่งหน้า",
+    en: "The full ledger table: search, status filter, amount sort and paging",
+  },
+  "tbl.search": { th: "ค้นหาเอกสารหรือผู้ขอ...", en: "Search document or requester..." },
+  "tbl.filter": { th: "ทุกสถานะ", en: "All statuses" },
+  "tbl.date": { th: "วันที่", en: "Date" },
+  "tbl.empty": { th: "ไม่พบรายการ", en: "Nothing matches" },
+  "tbl.emptyHint": { th: "ลองเปลี่ยนคำค้นหรือสถานะที่กรอง", en: "Try a different search or status" },
+
+  "login.title": { th: "เข้าสู่ระบบ", en: "Sign in" },
+  "login.sub": { th: "ใช้รหัสพนักงานของคุณ", en: "Use your employee code" },
+  "login.emp": { th: "รหัสพนักงาน", en: "Employee code" },
+  "login.pwd": { th: "รหัสผ่าน", en: "Password" },
+  "login.remember": { th: "จดจำฉันไว้", en: "Remember me" },
+  "login.go": { th: "เข้าสู่ระบบ", en: "Sign in" },
+  "login.demo": { th: "หน้าเดโม: กรอกค่าใดก็ได้", en: "Demo page: any value works" },
+  "login.ok": { th: "เข้าสู่ระบบสำเร็จ", en: "Signed in" },
+
+  "nf.title": { th: "ไม่พบหน้านี้", en: "Page not found" },
+  "nf.sub": { th: "ลิงก์อาจพิมพ์ผิด หรือหน้าถูกย้ายไปแล้ว", en: "The link may be mistyped, or the page has moved" },
+  "nf.home": { th: "กลับหน้าแรก", en: "Back to home" },
 
   "cmp.title": { th: "คอมโพเนนต์", en: "Components" },
   "cmp.sub": {
