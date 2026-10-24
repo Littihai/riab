@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { Route } from "@/App";
 import { useI18n } from "@/providers/I18nProvider";
 import { useTheme } from "@/providers/ThemeProvider";
@@ -10,24 +10,10 @@ const NAV: { route: Route; hash: string; key: string }[] = [
   { route: "table", hash: "#/table", key: "nav.table" },
 ];
 
-const TITLE_KEY: Record<Route, string> = {
-  home: "nav.home",
-  components: "nav.components",
-  form: "nav.form",
-  table: "nav.table",
-  login: "login.title",
-  "404": "nf.title",
-};
-
 /** The app frame every demo page shares: header (brand, nav, theme, language) and footer. */
 export function Shell({ route, children }: { route: Route; children: ReactNode }) {
   const { t, lang, setLang } = useI18n();
   const { resolved, setPref } = useTheme();
-
-  // the tab title follows the page (and the language)
-  useEffect(() => {
-    document.title = `riab · ${t(TITLE_KEY[route])}`;
-  }, [route, lang]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

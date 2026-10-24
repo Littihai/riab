@@ -18,10 +18,12 @@ export function LoginPage() {
     const next: Record<string, string> = {};
     if (!emp.trim()) next.emp = t("f.required");
     if (!pwd) next.pwd = t("f.required");
+    // (demo only — nothing is checked or stored)
     setErrors(next);
     if (Object.keys(next).length > 0) return;
     toast(t("login.ok"));
-    window.location.hash = "#/";
+    // replace, not push: Back after signing in must not return to the sign-in page
+    window.location.replace("#/");
   };
 
   return (
@@ -37,10 +39,10 @@ export function LoginPage() {
             <p className="sub muted">{t("login.sub")}</p>
           </div>
           <Field label={t("login.emp")} error={errors.emp}>
-            <Input value={emp} invalid={!!errors.emp} onChange={(e) => setEmp(e.target.value)} placeholder="90000001" autoComplete="username" />
+            <Input value={emp} invalid={!!errors.emp} onChange={(e) => { setEmp(e.target.value); setErrors((x) => ({ ...x, emp: "" })); }} placeholder="90000001" autoComplete="username" />
           </Field>
           <Field label={t("login.pwd")} error={errors.pwd}>
-            <Input type="password" value={pwd} invalid={!!errors.pwd} onChange={(e) => setPwd(e.target.value)} autoComplete="current-password" />
+            <Input type="password" value={pwd} invalid={!!errors.pwd} onChange={(e) => { setPwd(e.target.value); setErrors((x) => ({ ...x, pwd: "" })); }} autoComplete="current-password" />
           </Field>
           <label className="row-wrap switch-row">
             <Switch checked={remember} onChange={setRemember} />

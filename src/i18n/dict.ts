@@ -59,6 +59,7 @@ export const DICT: Record<string, Entry> = {
   },
   "f.item": { th: "สินค้า", en: "Item" },
   "f.itemHint": { th: "ชื่อสินค้าหรือรหัสจาก master", en: "Item name or master code" },
+  "f.itemPh": { th: "เพลาเหล็ก S45C Ø25", en: "Steel shaft S45C Ø25" },
   "f.qty": { th: "จำนวน", en: "Quantity" },
   "f.qtyErr": { th: "จำนวนต้องมากกว่า 0", en: "Quantity must be above zero" },
   "f.unit": { th: "หน่วย", en: "Unit" },

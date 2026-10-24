@@ -15,6 +15,8 @@ export function FormPage() {
   const [reason, setReason] = useState("");
   const [urgent, setUrgent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  // an error leaves as soon as the person edits the field, not on the next submit
+  const clear = (k: string) => setErrors((e) => (e[k] ? Object.fromEntries(Object.entries(e).filter(([x]) => x !== k)) : e));
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -42,11 +44,11 @@ export function FormPage() {
         <div className="form-grid">
           <div className="form-span">
             <Field label={t("f.item")} hint={t("f.itemHint")} error={errors.item}>
-              <Input value={item} invalid={!!errors.item} onChange={(e) => setItem(e.target.value)} placeholder="เพลาเหล็ก S45C Ø25" />
+              <Input value={item} invalid={!!errors.item} onChange={(e) => { setItem(e.target.value); clear("item"); }} placeholder={t("f.itemPh")} />
             </Field>
           </div>
           <Field label={t("f.qty")} error={errors.qty}>
-            <Input type="number" min={1} value={qty} invalid={!!errors.qty} onChange={(e) => setQty(e.target.value)} />
+            <Input type="number" min={1} value={qty} invalid={!!errors.qty} onChange={(e) => { setQty(e.target.value); clear("qty"); }} />
           </Field>
           <Field label={t("f.unit")}>
             <Select value={unit} onChange={(e) => setUnit(e.target.value)}>
@@ -56,7 +58,7 @@ export function FormPage() {
             </Select>
           </Field>
           <Field label={t("f.need")} error={errors.need}>
-            <Input type="date" value={need} invalid={!!errors.need} onChange={(e) => setNeed(e.target.value)} />
+            <Input type="date" value={need} invalid={!!errors.need} onChange={(e) => { setNeed(e.target.value); clear("need"); }} />
           </Field>
           <div className="form-span">
             <Field label={t("f.reason")}>

@@ -409,21 +409,24 @@
 }
 
 @media (max-width: 760px) {
+  /* the nav gets its own full-width row under the brand, so every link stays
+     visible on a phone (QA module-2 M1) */
   .app-header {
-    padding: 0 10px;
+    height: auto;
+    flex-wrap: wrap;
+    padding: 6px 10px 0;
     gap: 4px;
+    row-gap: 0;
   }
   .brand {
     margin-right: 8px;
   }
-  /* the nav stays reachable on a phone: it shrinks and scrolls sideways (QA M3) */
   .app-nav {
+    order: 10;
+    flex-basis: 100%;
     min-width: 0;
     overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .app-nav::-webkit-scrollbar {
-    display: none;
+    padding-bottom: 4px;
   }
   .nav-item {
     white-space: nowrap;
