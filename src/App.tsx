@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { AppearanceProvider } from "@/providers/AppearanceProvider";
 import { I18nProvider, useI18n } from "@/providers/I18nProvider";
 import { ToastHost } from "@/components/ui/Toast";
 import { Shell } from "@/demo/Shell";
@@ -69,11 +70,13 @@ export function App() {
   const Page = PAGES[route];
   return (
     <ThemeProvider>
-      <I18nProvider>
-        <PageTitle route={route} />
-        {route === "login" ? <Page /> : <Shell route={route}><Page /></Shell>}
-        <ToastHost />
-      </I18nProvider>
+      <AppearanceProvider>
+        <I18nProvider>
+          <PageTitle route={route} />
+          {route === "login" ? <Page /> : <Shell route={route}><Page /></Shell>}
+          <ToastHost />
+        </I18nProvider>
+      </AppearanceProvider>
     </ThemeProvider>
   );
 }

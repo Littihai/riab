@@ -109,6 +109,56 @@
   --page-pad: 20px;
 }
 
+/* ── Customize: accent presets (every pair measured >= 4.5:1 as text) ── */
+[data-accent="clay"] {
+  --accent-fill: #a63f24;
+  --accent-hover: #8e331b;
+  --on-accent: #fffdf8;
+  --accent-text: #a63f24;
+}
+[data-theme="dark"][data-accent="clay"] {
+  --accent-fill: #ee8f6b;
+  --accent-hover: #f2a585;
+  --on-accent: #1b1612;
+  --accent-text: #ee8f6b;
+}
+[data-accent="pine"] {
+  --accent-fill: #2f5d50;
+  --accent-hover: #264c41;
+  --on-accent: #ffffff;
+  --accent-text: #2f5d50;
+}
+[data-theme="dark"][data-accent="pine"] {
+  --accent-fill: #86c2ab;
+  --accent-hover: #a3d2bf;
+  --on-accent: #0f1f1a;
+  --accent-text: #86c2ab;
+}
+[data-accent="blue"] {
+  --accent-fill: #1d4ed8;
+  --accent-hover: #1e40af;
+  --on-accent: #ffffff;
+  --accent-text: #1d4ed8;
+}
+[data-theme="dark"][data-accent="blue"] {
+  --accent-fill: #93c5fd;
+  --accent-hover: #bfdbfe;
+  --on-accent: #0f172a;
+  --accent-text: #93c5fd;
+}
+
+/* ── Customize: corner presets (default is the "soft" 6/10/16 above) ── */
+[data-radius="none"] {
+  --r-sm: 0px;
+  --r-md: 0px;
+  --r-lg: 0px;
+}
+[data-radius="round"] {
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+}
+
 /* reduced motion: one switch for the whole system (OS flag or data-motion) */
 @media (prefers-reduced-motion: reduce) {
   :root:not([data-motion="full"]) {

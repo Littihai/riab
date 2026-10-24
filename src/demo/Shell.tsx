@@ -1,7 +1,8 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import type { Route } from "@/App";
 import { useI18n } from "@/providers/I18nProvider";
 import { useTheme } from "@/providers/ThemeProvider";
+import { SettingsDialog } from "@/demo/SettingsDialog";
 
 const NAV: { route: Route; hash: string; key: string }[] = [
   { route: "home", hash: "#/", key: "nav.home" },
@@ -14,6 +15,7 @@ const NAV: { route: Route; hash: string; key: string }[] = [
 export function Shell({ route, children }: { route: Route; children: ReactNode }) {
   const { t, lang, setLang } = useI18n();
   const { resolved, setPref } = useTheme();
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   return (
     <>
@@ -44,12 +46,24 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
         >
           ◐
         </button>
+        <button
+          type="button"
+          className="icon-btn"
+          aria-label={t("set.title")}
+          title={t("set.title")}
+          aria-haspopup="dialog"
+          onClick={() => setSettingsOpen(true)}
+        >
+          ⛭
+        </button>
         <span className="lang-toggle" role="group" aria-label={t("header.lang")}>
           <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>ไทย</button>
           <button type="button" aria-pressed={lang === "en"} onClick={() => setLang("en")}>EN</button>
         </span>
         <a className="nav-item login-link" href="#/login">{t("nav.login")}</a>
       </header>
+
+      <SettingsDialog open={settingsOpen} onClose={() => setSettingsOpen(false)} />
 
       {children}
 

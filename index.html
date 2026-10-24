@@ -11,6 +11,11 @@
         var dark = t === "dark" || ((!t || t === "system") && matchMedia("(prefers-color-scheme: dark)").matches);
         document.documentElement.dataset.theme = dark ? "dark" : "light";
         if (localStorage.getItem("riab.lang") === "en") document.documentElement.lang = "en";
+        var a = JSON.parse(localStorage.getItem("riab.app") || "{}");
+        if (a.accent && a.accent !== "ink") document.documentElement.dataset.accent = a.accent;
+        if (a.radius && a.radius !== "soft") document.documentElement.dataset.radius = a.radius;
+        if (a.density && a.density !== "comfortable") document.documentElement.dataset.density = a.density;
+        if (a.motion === "reduce") document.documentElement.dataset.motion = "reduce";
       } catch (e) {}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
