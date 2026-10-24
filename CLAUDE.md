@@ -17,7 +17,7 @@ https://littihai.github.io/riab/ · สถานะล่าสุดกับ�
 - **Token เท่านั้น**: ห้าม inline style ห้ามค่าสี hex นอก `src/styles/tokens.css`
   สี accent มี 3 ชั้นเสมอ (`--accent-fill` / `--on-accent` / `--accent-text`) ทุกคู่ที่เป็นตัวหนังสือต้องผ่าน WCAG 4.5:1 ทั้ง light/dark
 - **อย่างละหนึ่ง**: toast ช่องเดียว (aria-live), dialog สไตล์เดียว (focus trap ใช้ `hooks/useFocusTrap`), formatter วันที่/เงินตัวเดียวต่อภาษา (ปฏิทินเกรกอเรียนทั้งคู่)
-- **ฟอนต์ไทย**: เนื้อหา ≥ 14px (เล็กสุดทั้งระบบ = `--fs-micro` 12px), line-height ≥ 1.55, ห้าม letter-spacing / uppercase กับข้อความไทย
+- **ฟอนต์ไทย**: ฟอนต์ bundle เอง (@fontsource ไม่ใช้ CDN) · เนื้อหา ≥ 14px (เล็กสุดทั้งระบบ = `--fs-micro` 12px), line-height ≥ 1.55, ห้าม letter-spacing / uppercase กับข้อความไทย
 - **ข้อความผู้ใช้เห็นทุกคำ** อยู่ใน `src/i18n/dict.ts` พร้อม {th, en}
 - **Motion** อ่าน `--dur-*` เสมอ · reduced-motion (OS หรือ `data-motion="reduce"`) ต้องดับทุกอย่างจากสวิตช์เดียว
 - สถานะห้ามใช้สีอย่างเดียว ต้องคู่ไอคอน+ข้อความ · ขอบ control ใช้ `--border-strong` (≥3:1)
@@ -29,6 +29,9 @@ https://littihai.github.io/riab/ · สถานะล่าสุดกับ�
 npm ci
 npm run dev          # http://localhost:5280
 npm run typecheck
+npm run lint
+npm test             # Vitest: keyboard, contrast ทุก accent, กฎบ้าน, axe ทุกหน้า
+npm run check        # typecheck + lint + format:check + test (รันก่อน push)
 npm run build
 npm run build:pages  # build ด้วย --base=/riab/ สำหรับ GitHub Pages
 ```
@@ -40,6 +43,7 @@ build:pages → ใน `dist/`: `git init -b gh-pages` → fetch gh-pages จา
 ## โครง
 
 `src/styles/` tokens, base (กฎไทย+sr-only), components · `src/components/ui/` ชุดคอมโพเนนต์
-· `src/providers/` Theme / Appearance (Customize) / I18n · `src/hooks/` useFocusTrap, useMediaQuery
+· `src/providers/` Theme / Appearance (Customize) / I18n · `src/hooks/` useFocusTrap, useDismiss, usePlacement, useMediaQuery
 · `src/demo/` เว็บ demo ทั้งหมด (Shell, SideNav, CmdK, SettingsDialog, หน้า 6 หน้า + hash router ใน `App.tsx`)
+· `src/test/` helper ของเทสต์ · `docs/` เอกสาร component/tokens/hooks (เพิ่มคอมโพเนนต์ใหม่ต้องมีหน้าใน `docs/components/` + เทสต์ keyboard)
 — คนเอา template ไปใช้จะลบ `src/demo/` ทิ้งแล้วเก็บส่วนที่เหลือ

@@ -2,27 +2,27 @@
 
 ## เวอร์ชันที่ผ่านมา
 
-- **v0.1** — ธีม Riab Minimal (ขาว/หมึก), คอมโพเนนต์พื้นฐาน 10 ตัว, หน้า demo 6 หน้า
-  (dashboard, gallery, form, table, login, 404), hash router, demo ขึ้น GitHub Pages,
-  เปิด Template repository · ผ่านรีวิว QA 2 รอบ (โน้ตรีวิวอยู่ฝั่งทีม lotline)
-- **v0.2** — ระบบ Customize (accent 5 สี + สวิตช์สีไอคอน / มุมโค้ง 3 แบบ / ความหนาแน่น / motion / เมนู 3 โหมด),
-  SettingsDialog 3 section, Ctrl K command palette, Segmented + useFocusTrap/useMediaQuery
-  · ยังไม่ได้รีวิวโดย QA/UX (session ของทีมชนลิมิตวันนั้น)
+- **v0.1** — ธีม Riab Minimal, คอมโพเนนต์พื้นฐาน, หน้า demo 6 หน้า, hash router, demo บน GitHub Pages,
+  Template repository · ผ่านรีวิว QA 2 รอบ (tag `v0.1` = `e54a472`)
+- **v0.2** — ระบบ Customize, SettingsDialog, เมนู 3 โหมด, Ctrl K, ชุดไอคอน SVG, accent Indigo, สวิตช์สีไอคอน
+- **v0.3** — คอมโพเนนต์ใหม่ 7 ตัว (Menu, Tooltip, Popover, Drawer, Breadcrumb, Card, EmptyState), toast ปิดได้/มี tone/หยุดเมื่อ hover,
+  skip link, ฟอนต์ bundle เอง, ESLint + Prettier, Vitest (keyboard, contrast, กฎบ้าน, axe), เอกสารต่อหน้า component,
+  CI workflow, CHANGELOG/CONTRIBUTING/SECURITY/templates
 
-`package.json` เป็น 0.2.0 · tag + GitHub Release ทำแล้ว: v0.1 = `e54a472` (README ครบ หลังผ่าน QA 2 รอบ),
-v0.2 = commit ที่อัปเวอร์ชัน (รวมชุดไอคอน SVG, เมนูข้างแบบลื่นไหล, accent Indigo, สวิตช์สีไอคอน)
+## คะแนนประเมินตัวเอง (ก่อน/หลัง v0.3)
+
+ก่อน ≈ 6.5/10 → หลัง ≈ 8.7/10 ที่ยังขาดไปถึง 10: ทดสอบกับ screen reader จริง (NVDA/VoiceOver) และผู้ใช้จริง,
+ทดสอบบนอุปกรณ์มือถือจริง, คอมโพเนนต์ที่ยังไม่มี (ด้านล่าง), CI ที่รันจริง
 
 ## งานค้าง (เรียงตามที่เจ้าของน่าจะได้ประโยชน์ก่อน)
 
-1. ~~Tag + Release v0.1/v0.2~~ — เสร็จแล้ว
-2. **รีวิว v0.2** — จุดที่ควรเช็ก: SettingsDialog บนมือถือ, rail + keyboard, CmdK กับ screen reader,
-   สลับโหมดเมนูแล้ว focus/current ถูก
-3. **CI** — เพิ่ม workflow typecheck+build (+deploy Pages) เมื่อโควตา Actions ของบัญชีรีเซ็ต
-4. **คอมโพเนนต์ที่ยังขาด** (จากรีวิว QA): Dropdown menu, Tooltip, Popover, Drawer,
-   Breadcrumb/EmptyState/Card เป็นคอมโพเนนต์จริง, toast แบบมีปุ่มปิด/ค้างเมื่อ hover, (ชุดไอคอน SVG ทำแล้วใน v0.2)
-5. **เอกสารต่อหน้า component** (props + a11y notes) ใน `docs/`
-6. **Tests** — อย่างน้อย keyboard ของ Modal/Tabs/CmdK (เคยเจอบั๊ก keyboard 2 ตัวตอนรีวิว)
-7. ความเข้มงวดที่เหลือจากรีวิว: ฟอนต์ไทยจุดที่ยัง 12.5–13.5px, สีหมวดหมู่เพิ่มเติม
+1. **ทดสอบกับ screen reader จริง** (NVDA + Firefox/Chrome, VoiceOver + Safari) โดยเฉพาะ Menu, Popover, Ctrl K, เมนูข้าง — axe จับได้แค่โครงสร้าง
+2. **ทดสอบมือถือจริง** (iOS Safari, Android Chrome): Drawer, Settings, Menu ที่ flip
+3. **CI รันจริง** — โควตา GitHub Actions ของบัญชีเต็ม ตอนนี้ deploy demo มือ (ดู `CLAUDE.md`) ต้องรีเซ็ตโควตาแล้วเช็กว่า `ci.yml` ผ่านบน GitHub
+4. **คอมโพเนนต์ที่ยังขาด**: Date picker, Combobox/autocomplete, Table ที่เรียง/กรองได้ในตัว, Progress, Avatar, Accordion, typeahead ใน Menu
+5. **Tooltip/Menu ชนขอบจอ**: Tooltip ยังไม่ flip (Menu/Popover flip แล้ว)
+6. สีหมวดหมู่เพิ่มเติม · og.jpg ขนาดแนะนำ 1200x630 (ตอนนี้ 800x506)
+7. Landing page (แนวทางที่ออกแบบไว้: mockup แบบ Apple / React Bits ยังไม่ได้ทำ — เจ้าของยังไม่เลือก)
 
 ## ความเป็นมาสั้น ๆ
 

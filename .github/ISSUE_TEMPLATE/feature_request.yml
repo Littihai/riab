@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest a component or a change
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What do you need
+      description: The problem first; the solution second. Which page of your app wants this?
+    validations:
+      required: true
+  - type: textarea
+    id: a11y
+    attributes:
+      label: Keyboard and accessibility expectations
+      description: How should it work with a keyboard and a screen reader? Link a pattern (for example a WAI-ARIA APG page) if one fits.

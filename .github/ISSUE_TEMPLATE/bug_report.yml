@@ -1,0 +1,25 @@
+name: Bug report
+description: Something looks or behaves wrong
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you saw instead. A screenshot helps.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Component or page
+      placeholder: Menu, #/table, Settings dialog
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Browser and version, operating system, keyboard or screen reader if relevant, light or dark mode, language.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
