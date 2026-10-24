@@ -4,6 +4,10 @@ All notable changes to this project. Format follows [Keep a Changelog](https://k
 
 ## [Unreleased]
 
+### Changed
+
+- "Quiet luxury" pass over the default look: the default theme base is now Stone (warm ivory `#f7f6f3` with warm ink), cards lose their border ring for two layered soft shadows and a larger corner (`--r-lg`), primary buttons gain a quiet accent-tinted glow and a softer corner, the ledger head sits on hairlines instead of a gray band (rows use a new derived `--border-soft`), `--fs-h1` grows to 34px with tighter KPI numerals, and the English breadcrumb and table heads become spaced small caps (never applied to Thai). Dark mode keeps a hairline card ring and turns warm charcoal. Zinc stays available in Customize; every pair still measures at least 4.5:1.
+
 ### Added
 
 - A footer with the brand, links to GitHub, the docs, the changelog and a contact page (GitHub issues), and the license line. External links open in a new tab with `rel="noopener noreferrer"` and say so to screen readers. `src/demo/links.ts` holds the URLs.

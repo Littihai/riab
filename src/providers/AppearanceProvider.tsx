@@ -34,7 +34,7 @@ const DEFAULTS: Appearance = {
   motion: "system",
   nav: "top",
   icons: "mono",
-  base: "zinc",
+  base: "stone",
   font: "inter",
 };
 const KEY = "riab.app";

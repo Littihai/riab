@@ -6,25 +6,25 @@
 :root,
 [data-theme="light"] {
   color-scheme: light;
-  --bg: #fafafa;
+  --bg: #f7f6f3;
   --surface: #ffffff;
-  --surface-2: #f4f4f5;
-  --border: #e4e4e7;
+  --surface-2: #f1efec;
+  --border: #e5e2dd;
   /* edges that must be perceivable (inputs, ghost buttons, switch tracks): >= 3:1 */
-  --border-strong: #8f8f98;
-  --text: #18181b;
-  --muted: #6b6b73;
+  --border-strong: #8d8680;
+  --text: #1c1917;
+  --muted: #6c655f;
   --scrim: rgb(0 0 0 / 0.4);
   --shadow-thumb: 0 1px 2px rgb(0 0 0 / 0.3);
 
   /* the accent is ink itself: near-black fill, black text links */
-  --accent-fill: #18181b;
-  --accent-hover: #3f3f46;
+  --accent-fill: #1c1917;
+  --accent-hover: #44403c;
   --on-accent: #ffffff;
-  --accent-text: #18181b;
+  --accent-text: #1c1917;
 
-  --chart-1: #52525b;
-  --chart-2: #a16207;
+  --chart-1: #8a8276;
+  --chart-2: #a3841a;
 
   /* category hues: used for icon chips only when Customize "icons: color" is on */
   --hue-blue: #2563eb;
@@ -36,29 +36,29 @@
   --warn: #854d0e;
   --stop: #b91c1c;
 
-  --shadow-sm: 0 0 0 1px var(--border), 0 1px 2px rgb(0 0 0 / 0.04);
-  --shadow-md: 0 0 0 1px var(--border), 0 6px 16px -6px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 16px 40px -12px rgb(0 0 0 / 0.16);
+  --shadow-sm: 0 1px 2px rgb(28 25 23 / 0.04), 0 8px 24px -12px rgb(28 25 23 / 0.12);
+  --shadow-md: 0 2px 4px rgb(28 25 23 / 0.05), 0 18px 40px -16px rgb(28 25 23 / 0.18);
+  --shadow-lg: 0 24px 56px -16px rgb(28 25 23 / 0.22);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0f0f10;
-  --surface: #18181b;
-  --surface-2: #212124;
-  --border: #2b2b30;
-  --border-strong: #71717a;
-  --text: #fafafa;
-  --muted: #a1a1aa;
+  --bg: #0c0a09;
+  --surface: #1c1917;
+  --surface-2: #292524;
+  --border: #37332f;
+  --border-strong: #78716c;
+  --text: #fafaf9;
+  --muted: #a8a29e;
   --scrim: rgb(0 0 0 / 0.55);
   --shadow-thumb: 0 1px 2px rgb(0 0 0 / 0.5);
 
-  --accent-fill: #fafafa;
-  --accent-hover: #d4d4d8;
-  --on-accent: #111113;
-  --accent-text: #fafafa;
+  --accent-fill: #fafaf9;
+  --accent-hover: #d6d3d1;
+  --on-accent: #171412;
+  --accent-text: #fafaf9;
 
-  --chart-1: #a1a1aa;
+  --chart-1: #a8a29e;
   --chart-2: #e8c063;
 
   --hue-blue: #93c5fd;
@@ -102,7 +102,7 @@
   --fs-lead: 18px;
   --fs-h3: 21px;
   --fs-h2: 26px;
-  --fs-h1: 32px;
+  --fs-h1: 34px;
   --fs-display: 44px;
 
   /* density: comfortable by default */
@@ -116,10 +116,12 @@
 
   /* active-row wash: a whisper of the accent over the surface */
   --accent-tint: color-mix(in srgb, var(--accent-fill) 9%, var(--surface));
+  /* hairline between table rows: softer than --border, derived so every base follows */
+  --border-soft: color-mix(in srgb, var(--border) 60%, var(--surface));
 
   /* Customize swatches show each preset regardless of the active one */
   --swatch-on: #ffffff;
-  --swatch-ink: #18181b;
+  --swatch-ink: #1c1917;
   --swatch-blue: #1d4ed8;
   --swatch-azure: #0369a1;
   --swatch-teal: #0f766e;
@@ -338,13 +340,13 @@
 }
 [data-base="stone"],
 [data-base="stone"] [data-theme="light"] {
-  --bg: #fafaf9;
+  --bg: #f7f6f3;
   --surface: #ffffff;
-  --surface-2: #f5f5f4;
-  --border: #e7e5e4;
-  --border-strong: #928c88;
+  --surface-2: #f1efec;
+  --border: #e5e2dd;
+  --border-strong: #8d8680;
   --text: #1c1917;
-  --muted: #746d69;
+  --muted: #6c655f;
 }
 [data-theme="dark"][data-base="stone"],
 [data-theme="dark"] [data-base="stone"],
@@ -352,7 +354,7 @@
   --bg: #0c0a09;
   --surface: #1c1917;
   --surface-2: #292524;
-  --border: #44403c;
+  --border: #37332f;
   --border-strong: #78716c;
   --text: #fafaf9;
   --muted: #a8a29e;

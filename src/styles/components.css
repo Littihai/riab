@@ -5,13 +5,13 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border-radius: var(--r-sm);
+  border-radius: var(--r-md);
   padding: 10px 18px;
   font-size: 14.5px;
   font-weight: 600;
   background: var(--accent-fill);
   color: var(--on-accent);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 8px 20px -10px color-mix(in srgb, var(--accent-fill) 60%, transparent);
   transition:
     transform 90ms var(--ease),
     background var(--dur-1) var(--ease);
@@ -35,7 +35,7 @@
 /* card: paper sheet */
 .card {
   background: var(--surface);
-  border-radius: var(--r-md);
+  border-radius: var(--r-lg);
   box-shadow: var(--shadow-sm);
   transition:
     transform var(--dur-1) var(--ease),
@@ -101,18 +101,26 @@
   font-size: var(--fs-small);
 }
 .ledger thead th {
-  background: var(--surface-2);
+  background: transparent;
   color: var(--muted);
   font-size: var(--fs-micro);
   font-weight: 600;
   text-align: left;
   padding: 8px 20px;
+  border-block: 1px solid var(--border-soft);
+}
+html[lang="en"] .ledger thead th {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 .ledger td {
   padding: 0 20px;
   height: var(--row-h);
-  border-top: 1px dotted var(--border);
+  border-top: 1px solid var(--border-soft);
   white-space: nowrap;
+}
+.ledger tbody tr:first-child td {
+  border-top: 0;
 }
 .ledger td.num,
 .ledger th.num {

@@ -116,8 +116,15 @@
 }
 .crumb {
   font-size: var(--fs-small);
+  font-weight: 500;
   color: var(--muted);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+}
+html[lang="en"] .crumb {
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 .page-head {
   display: flex;
@@ -125,7 +132,7 @@
   justify-content: space-between;
   gap: var(--space-2);
   flex-wrap: wrap;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 .page-head .sub {
   margin-top: 4px;
@@ -198,8 +205,9 @@
 .kpi .num {
   font-family: var(--font-head);
   font-size: var(--fs-h1);
-  font-weight: 600;
-  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
   font-variant-numeric: tabular-nums;
   margin: 2px 0 6px;
 }

@@ -31,7 +31,7 @@ import { BasePreview, FontPreview, NavPreview, RadiusPreview, SchemePreview } fr
 
 const ACCENTS: Accent[] = ["ink", "blue", "azure", "teal", "green", "indigo", "violet", "rose", "amber", "slate"];
 const FONTS: FontFamily[] = ["inter", "plex", "sarabun", "system"];
-const BASES: ThemeBase[] = ["zinc", "slate", "gray", "neutral", "stone"];
+const BASES: ThemeBase[] = ["stone", "zinc", "slate", "gray", "neutral"];
 const RADII: Radius[] = ["none", "soft", "round"];
 const NAVS: NavLayout[] = ["top", "side", "rail"];
 
