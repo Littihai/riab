@@ -4,12 +4,14 @@
 
 A non-modal panel anchored to a button, for a few controls or a short piece of content (filters, a quick edit). The page behind stays usable. For a blocking choice use [Modal](Modal.md); for a list of commands use [Menu](Menu.md).
 
-| Prop       | Type               | Default   | Notes                                        |
-| ---------- | ------------------ | --------- | -------------------------------------------- |
-| `trigger`  | `ReactNode`        | required  | Content of the trigger button.               |
-| `label`    | `string`           | required  | Accessible name of the panel.                |
-| `children` | `ReactNode`        | required  | Panel content.                               |
-| `align`    | `"start" \| "end"` | `"start"` | Edge of the trigger the panel lines up with. |
+| Prop               | Type               | Default       | Notes                                                 |
+| ------------------ | ------------------ | ------------- | ----------------------------------------------------- |
+| `trigger`          | `ReactNode`        | required      | Content of the trigger button.                        |
+| `label`            | `string`           | required      | Accessible name of the panel.                         |
+| `children`         | `ReactNode`        | required      | Panel content.                                        |
+| `align`            | `"start" \| "end"` | `"start"`     | Edge of the trigger the panel lines up with.          |
+| `triggerClassName` | `string`           | `"btn ghost"` | Replaces the trigger look (icon button).              |
+| `triggerLabel`     | `string`           |               | Accessible name when the trigger content is not text. |
 
 ```tsx
 <Popover trigger="Filters" label="Document filters">

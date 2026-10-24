@@ -4,11 +4,15 @@
 
 An action menu (menu button pattern): one trigger, a list of commands. For revealing content or a small form use [Popover](Popover.md).
 
-| Prop    | Type               | Default   | Notes                                              |
-| ------- | ------------------ | --------- | -------------------------------------------------- |
-| `label` | `ReactNode`        | required  | Trigger content. A chevron is added.               |
-| `items` | `MenuItem[]`       | required  | See below.                                         |
-| `align` | `"start" \| "end"` | `"start"` | Which edge of the trigger the panel lines up with. |
+| Prop               | Type               | Default       | Notes                                                             |
+| ------------------ | ------------------ | ------------- | ----------------------------------------------------------------- |
+| `label`            | `ReactNode`        | required      | Trigger content. A chevron is added.                              |
+| `items`            | `MenuItem[]`       | required      | See below.                                                        |
+| `align`            | `"start" \| "end"` | `"start"`     | Which edge of the trigger the panel lines up with.                |
+| `triggerClassName` | `string`           | `"btn ghost"` | Replaces the trigger's look (nav item, avatar chip).              |
+| `triggerLabel`     | `string`           |               | Accessible name when the trigger content is not text.             |
+| `chevron`          | `boolean`          | `true`        | Show the down chevron.                                            |
+| `current`          | `boolean`          |               | Marks the trigger as the current section (`aria-current="page"`). |
 
 `MenuItem`: `{ id: string; label: string; onSelect: () => void; disabled?: boolean; danger?: boolean }`. A `danger` item uses the stop color and keeps its text label.
 

@@ -22,11 +22,11 @@ Returns whether a media query currently matches and updates when it changes. The
 
 Mount them in this order (see `App.tsx`): `ThemeProvider` > `AppearanceProvider` > `I18nProvider`.
 
-| Provider             | Hook              | What it owns                                                                                                                                                                         |
-| -------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `ThemeProvider`      | `useTheme()`      | `pref` (`light`, `dark`, `system`), `resolved`, `setPref`. Sets `data-theme` on `<html>`; saved as `riab.theme`.                                                                     |
-| `AppearanceProvider` | `useAppearance()` | `accent`, `radius`, `density`, `motion`, `nav`, `icons`, and `set(key, value)`. Each applies as a data attribute on `<html>` (the default removes it); saved together as `riab.app`. |
-| `I18nProvider`       | `useI18n()`       | `lang`, `setLang`, `t(key)`, `fmtMoney`, `fmtDate`. Saved as `riab.lang`.                                                                                                            |
+| Provider             | Hook              | What it owns                                                                                                                                                                                                                                                                      |
+| -------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ThemeProvider`      | `useTheme()`      | `pref` (`light`, `dark`, `system`), `resolved`, `setPref`. Sets `data-theme` on `<html>`; saved as `riab.theme`.                                                                                                                                                                  |
+| `AppearanceProvider` | `useAppearance()` | `accent`, `base`, `font`, `radius`, `density`, `motion`, `nav`, `icons`, and `set(key, value)`. Saved values from v0.2 (`clay`, `pine`) are migrated to `amber` and `green`. Each applies as a data attribute on `<html>` (the default removes it); saved together as `riab.app`. |
+| `I18nProvider`       | `useI18n()`       | `lang`, `setLang`, `t(key)`, `fmtMoney`, `fmtDate`. Saved as `riab.lang`.                                                                                                                                                                                                         |
 
 ### Translations
 

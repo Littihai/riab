@@ -24,7 +24,15 @@ Never one color for everything:
 | `--on-accent`   | Text and icons drawn on `--accent-fill`.                 |
 | `--accent-text` | Links and accent-colored text on surfaces.               |
 
-`--accent-hover` is the hover fill and `--accent-tint` (derived) is the faint wash for active rows. The default accent is ink itself. The Customize presets (`data-accent="clay | pine | blue | indigo"`) override the three layers for both modes. `src/styles/tokens.test.ts` measures every pair, for every preset, in light and dark: add a preset and the test tells you whether it passes.
+`--accent-hover` is the hover fill and `--accent-tint` (derived) is the faint wash for active rows. The default accent is ink itself. The Customize presets (`data-accent="blue | azure | teal | green | indigo | violet | rose | amber | slate"`) override the three layers for both modes. `src/styles/tokens.test.ts` measures every pair, for every preset, in light and dark: add a preset and the test tells you whether it passes.
+
+## Theme base: the gray palette
+
+`data-base="zinc | slate | gray | neutral | stone"` swaps `--bg`, `--surface`, `--surface-2`, `--border`, `--border-strong`, `--text` and `--muted` for both modes (zinc is the default and is written out too, so a preview can pin it). Each base keeps `--muted` at 4.5:1 and `--border-strong` at 3:1 on its own surfaces; the tests check every base with every accent.
+
+## Font family
+
+`data-font="inter | plex | sarabun | system"` sets `--font-head` and `--font-body` from `--font-inter`, `--font-plex`, `--font-sarabun` or `--font-system`. All four read Thai (Inter pairs with Noto Sans Thai, IBM Plex with IBM Plex Sans Thai, Sarabun carries both scripts, System uses the platform fonts). The three web families are bundled; the browser downloads only the files for the family in use.
 
 ## Status and data colors
 
@@ -55,6 +63,6 @@ Thai typography rules (kept by tests and review): content at 14px or more, body 
 1. Pick surfaces and ink for both modes (`:root` and `[data-theme="dark"]`).
 2. Set the accent three times per mode, then run `npm test`: the contrast tests tell you which pair fails.
 3. Adjust radii, shadows and durations to taste.
-4. If you add a preset, add its swatch (`--swatch-*`), the `Accent` type in `AppearanceProvider.tsx`, the `ACCENTS` list in `SettingsDialog.tsx`, its name in `dict.ts`, and its name in `src/test/contrast.ts`.
+4. If you add an accent preset, add its swatch (`--swatch-*`), the `Accent` type in `AppearanceProvider.tsx`, the `ACCENTS` list in `SettingsDialog.tsx`, its name in `dict.ts`, the `.accent-dot` rule in `demo.css`, and its name in `src/test/contrast.ts`. A new gray base or font family follows the same path (`ThemeBase`, `FontFamily`, the settings list, `dict.ts`, `contrast.ts`).
 
 The saved user choices (`riab.theme`, `riab.lang`, `riab.app`) are applied before first paint by the inline script in `index.html`; if you add a Customize option, teach that script about it too.

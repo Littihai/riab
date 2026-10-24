@@ -2,21 +2,22 @@
 
 A free, themeable React UI starter. White, quiet, neat: "riab" is Thai for _neat_.
 
-Ink-on-white minimal identity, design tokens with dark mode, Thai-first typography, Thai/English out of the box, a user-facing **Customize** panel, and 21 accessible components. Vite + React + TypeScript, no runtime dependencies beyond React. MIT licensed.
+Ink-on-white minimal identity, design tokens with dark mode, Thai-first typography, Thai/English out of the box, a user-facing **Customize** panel, and 22 accessible components. Vite + React + TypeScript, no runtime dependencies beyond React. MIT licensed.
 
 **Live demo:** https://littihai.github.io/riab/
 
-|                                   Sidebar, light                                   |                      Icon rail, dark, indigo, color icons                      |
-| :--------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
-| ![Dashboard with the labelled sidebar in light mode](docs/img/dashboard-light.jpg) | ![Dashboard with the icon rail in dark mode](docs/img/dashboard-dark-rail.jpg) |
+|                           Top bar, teal accent                            |                         Settings page                          |                            Icon rail, dark, indigo                             |
+| :-----------------------------------------------------------------------: | :------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+| ![Dashboard with the top bar and teal accent](docs/img/dashboard-top.jpg) | ![The settings page with picture cards](docs/img/settings.jpg) | ![Dashboard with the icon rail in dark mode](docs/img/dashboard-dark-rail.jpg) |
 
 ## What you get
 
 - **Tokens, not magic numbers.** One file (`src/styles/tokens.css`) holds every color, radius, shadow, duration and type size. Retheme by editing it.
 - **Light and dark** that follow the system or the user's choice, with every text pair measured against WCAG 4.5:1 (a test does the measuring, for every accent, in both modes).
-- **Customize panel:** five accent colors, three corner styles, two densities, mono or colored icons, one reduced-motion switch, and three navigation layouts (top bar, sidebar, icon rail). Choices persist and apply before first paint.
-- **Thai-first:** Inter + Noto Sans Thai (bundled, no font CDN), Thai-safe sizes and line heights, Thai and English text for every string, one date and money formatter per language.
-- **21 components** with keyboard support and written accessibility notes: see [docs](docs/README.md).
+- **Customize panel** (a full settings page with picture cards): ten accent colors, five gray bases, four font families (all read Thai), three corner styles, three navigation layouts (top bar, sidebar, icon rail), two densities, mono or colored icons, light/dark/system, and one reduced-motion switch. Choices persist and apply before first paint.
+- **Navigation bar** with an Apps menu, a notifications popover, a language switch and a user menu.
+- **Thai-first:** Inter + Noto Sans Thai by default, IBM Plex and Sarabun as options (all bundled, no font CDN), Thai-safe sizes and line heights, Thai and English text for every string, one date and money formatter per language.
+- **22 components** with keyboard support and written accessibility notes: see [docs](docs/README.md).
 - **Ctrl K command palette**, **skip link**, **toasts** with tones and a close button.
 - **Quality gates:** TypeScript strict, ESLint (including jsx-a11y), Prettier, and a Vitest suite that covers keyboard behavior, contrast, house rules and an axe pass over every demo page.
 

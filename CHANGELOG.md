@@ -2,6 +2,28 @@
 
 All notable changes to this project. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/) (0.x: minor versions may change things).
 
+## [0.4.0] - 2026-10-24
+
+### Added
+
+- A full settings page (replaces the small dialog): a grouped section list (General, Account, Notifications, About) and titled blocks with picture cards for color scheme, font, gray base, corners and navigation layout.
+- Customize: ten accent colors (Ink, Blue, Azure, Teal, Green, Indigo, Violet, Rose, Amber, Slate), five gray bases (Zinc, Slate, Gray, Neutral, Stone), four font families (Inter, IBM Plex, Sarabun, System; all read Thai). Saved v0.2 values `clay` and `pine` migrate to `amber` and `green`.
+- New navigation bar: underlined tabs, an Apps menu, a notifications popover with a count, a language switch and a user menu (settings, sign out).
+- `OptionCards` component (radiogroup of picture cards); `Menu` and `Popover` accept a custom trigger (`triggerClassName`, `triggerLabel`) and `Menu` a `current` flag.
+- Icons: user, bell.
+- Tests: contrast for every accent on every gray base in light and dark (100 combinations), settings and navbar behavior, axe over every settings section.
+
+### Changed
+
+- The default look is unchanged (ink on zinc, Inter); everything above is opt-in.
+- Fonts IBM Plex and Sarabun are bundled alongside Inter and Noto Sans Thai; the browser downloads only the family in use.
+- The clay and pine accents were replaced by amber and green.
+- The demo's "sign in" link moved into the user menu as "Sign out".
+
+### Fixed
+
+- The green accent's text on the active-row wash was 4.46:1; it now passes 4.5:1 (found by the new contrast matrix).
+
 ## [0.3.0] - 2026-10-24
 
 ### Added
@@ -43,6 +65,7 @@ All notable changes to this project. Format follows [Keep a Changelog](https://k
 
 - First public release: Riab Minimal theme (tokens, light and dark, three-layer accent at 4.5:1), Inter + Noto Sans Thai, Thai/English with one formatter per language, form fields, modal, toast, tabs, alert, badge, stamp, pager, and six demo pages with a hash router.
 
+[0.4.0]: https://github.com/Littihai/riab/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Littihai/riab/compare/v0.2...v0.3.0
 [0.2.0]: https://github.com/Littihai/riab/compare/v0.1...v0.2
 [0.1.0]: https://github.com/Littihai/riab/releases/tag/v0.1

@@ -9,6 +9,8 @@
   skip link, ฟอนต์ bundle เอง, ESLint + Prettier, Vitest (keyboard, contrast, กฎบ้าน, axe), เอกสารต่อหน้า component,
   CI workflow, CHANGELOG/CONTRIBUTING/SECURITY/templates
 
+- **v0.4** — หน้าตั้งค่าแบบเต็มจอ (การ์ดภาพตัวอย่าง), accent 10 สี, โทนเทา 5 แบบ, ฟอนต์ 4 แบบ, แถบเมนูบนใหม่ (Apps, กระดิ่ง, เมนูผู้ใช้) — แนวเดียวกับ lotline ทำจากภาพอ้างอิง ไม่ได้ใช้โค้ดของ lotline
+
 ## คะแนนประเมินตัวเอง (ก่อน/หลัง v0.3)
 
 ก่อน ≈ 6.5/10 → หลัง ≈ 8.7/10 ที่ยังขาดไปถึง 10: ทดสอบกับ screen reader จริง (NVDA/VoiceOver) และผู้ใช้จริง,
