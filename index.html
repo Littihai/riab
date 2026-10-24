@@ -11,6 +11,11 @@
         var dark = t === "dark" || ((!t || t === "system") && matchMedia("(prefers-color-scheme: dark)").matches);
         document.documentElement.dataset.theme = dark ? "dark" : "light";
         if (localStorage.getItem("riab.lang") === "en") document.documentElement.lang = "en";
+        var a = JSON.parse(localStorage.getItem("riab.app") || "{}");
+        if (a.accent && a.accent !== "ink") document.documentElement.dataset.accent = a.accent;
+        if (a.radius && a.radius !== "soft") document.documentElement.dataset.radius = a.radius;
+        if (a.density && a.density !== "comfortable") document.documentElement.dataset.density = a.density;
+        if (a.motion === "reduce") document.documentElement.dataset.motion = "reduce";
       } catch (e) {}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,8 +24,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/riab/assets/index-D6Pa9t1s.js"></script>
-    <link rel="stylesheet" crossorigin href="/riab/assets/index-GBnPwmB7.css">
+    <script type="module" crossorigin src="/riab/assets/index-DSg0GDtr.js"></script>
+    <link rel="stylesheet" crossorigin href="/riab/assets/index-CV-Ao6ic.css">
   </head>
   <body>
     <div id="root"></div>
