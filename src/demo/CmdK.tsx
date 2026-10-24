@@ -36,7 +36,7 @@ export function CmdK({ open, onClose, commands }: { open: boolean; onClose: () =
   };
 
   return (
-    <div className="scrim scrim-top" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div className="scrim scrim-top" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label={t("cmdk.title")} className="cmdk menu-slide">
         <input
           className="input cmdk-input"

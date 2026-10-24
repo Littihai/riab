@@ -94,6 +94,8 @@ export function DashboardPage() {
               <h3>{t("table.title")}</h3>
               <a href="#all">{t("table.all")} →</a>
             </div>
+            {/* keyboard-reachable so a wide table scrolls without a mouse */}
+            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
             <div className="table-wrap" tabIndex={0} role="region" aria-label={t("table.title")}>
             <table className="ledger">
               <thead>

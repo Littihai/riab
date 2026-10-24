@@ -17,7 +17,7 @@ export function Modal({ open, onClose, title, children, footer }: {
 
   if (!open) return null;
   return (
-    <div className="scrim" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div className="scrim" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label={title} className="modal">
         <h3 className="modal-title">{title}</h3>
         {children}

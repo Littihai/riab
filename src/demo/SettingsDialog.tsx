@@ -34,7 +34,7 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
   );
 
   return (
-    <div className="scrim" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div className="scrim" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label={t("set.title")} className="settings menu-slide">
         <nav className="set-nav" aria-label={t("set.title")}>
           {SECTIONS.map((s) => (

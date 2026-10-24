@@ -84,6 +84,7 @@ export function TablePage() {
             <p className="sub">{t("tbl.emptyHint")}</p>
           </div>
         ) : (
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- keyboard-reachable scroll region
           <div className="table-wrap" tabIndex={0} role="region" aria-label={t("tbl.title")}>
             <table className="ledger">
               <thead>

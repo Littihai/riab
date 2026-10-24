@@ -1,0 +1,7 @@
+dist
+node_modules
+coverage
+mockup
+package-lock.json
+*.svg
+*.jpg
