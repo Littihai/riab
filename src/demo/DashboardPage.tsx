@@ -100,7 +100,7 @@ export function DashboardPage() {
       <div className="columns">
         <section className="card panel">
           <div className="panel-head">
-            <h3>{t("table.title")}</h3>
+            <h2>{t("table.title")}</h2>
             <a href="#all">{t("table.all")} →</a>
           </div>
           {/* keyboard-reachable so a wide table scrolls without a mouse */}
@@ -152,7 +152,7 @@ export function DashboardPage() {
               />
             </svg>
           </div>
-          <h3>{t("empty.title")}</h3>
+          <h2>{t("empty.title")}</h2>
           <p className="sub">{t("empty.sub")}</p>
           <Button>{t("empty.cta")}</Button>
         </section>

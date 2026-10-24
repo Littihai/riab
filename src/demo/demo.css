@@ -272,7 +272,7 @@
   display: grid;
   place-items: center;
 }
-.empty h3 {
+.empty h2 {
   margin-bottom: 6px;
 }
 .empty .sub {

@@ -91,7 +91,7 @@ export function TablePage() {
 
         {shown.length === 0 ? (
           <div className="empty">
-            <h3>{t("tbl.empty")}</h3>
+            <h2>{t("tbl.empty")}</h2>
             <p className="sub">{t("tbl.emptyHint")}</p>
           </div>
         ) : (

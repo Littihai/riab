@@ -33,7 +33,10 @@ h2 {
   font-size: var(--fs-h2);
   line-height: 1.3;
 }
-h3 {
+h3,
+.card h2,
+.panel-head h2,
+.empty h2 {
   font-size: var(--fs-h3);
   line-height: 1.35;
 }

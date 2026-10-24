@@ -46,7 +46,7 @@ export function ComponentsPage() {
 
       <div className="cmp-grid">
         <section className="card section-card">
-          <h3>{t("cmp.buttons")}</h3>
+          <h2>{t("cmp.buttons")}</h2>
           <div className="row-wrap">
             <Button>{t("cmp.primary")}</Button>
             <Button variant="ghost">{t("cmp.ghost")}</Button>
@@ -55,7 +55,7 @@ export function ComponentsPage() {
         </section>
 
         <section className="card section-card">
-          <h3>{t("cmp.badges")}</h3>
+          <h2>{t("cmp.badges")}</h2>
           <div className="row-wrap">
             <Badge>{t("cmp.badge.plain")}</Badge>
             <Badge tone="ok">{t("status.approved")}</Badge>
@@ -71,7 +71,7 @@ export function ComponentsPage() {
         </section>
 
         <section className="card section-card">
-          <h3>{t("cmp.alerts")}</h3>
+          <h2>{t("cmp.alerts")}</h2>
           <Alert tone="ok" title={t("cmp.alert.okTitle")}>
             {t("cmp.alert.okBody")}
           </Alert>
@@ -84,7 +84,7 @@ export function ComponentsPage() {
         </section>
 
         <section className="card section-card">
-          <h3>{t("cmp.form")}</h3>
+          <h2>{t("cmp.form")}</h2>
           <Field label={t("cmp.f.name")} hint={t("cmp.f.nameHint")}>
             <Input placeholder="PR-2610-0042" />
           </Field>
@@ -107,7 +107,7 @@ export function ComponentsPage() {
         </section>
 
         <section className="card section-card">
-          <h3>{t("cmp.tabs")}</h3>
+          <h2>{t("cmp.tabs")}</h2>
           <Tabs
             tabs={tabs}
             value={tab}
@@ -119,7 +119,7 @@ export function ComponentsPage() {
           <div className="tab-panel" role="tabpanel" id={panelId} aria-labelledby={tabId(tabsBase, tab)}>
             {t("cmp.tab.body")} {tabs.find((x) => x.id === tab)?.label}
           </div>
-          <h3>{t("cmp.pager")}</h3>
+          <h2>{t("cmp.pager")}</h2>
           <Pager
             page={page}
             pages={5}
@@ -131,7 +131,7 @@ export function ComponentsPage() {
         </section>
 
         <section className="card section-card">
-          <h3>{t("cmp.choices")}</h3>
+          <h2>{t("cmp.choices")}</h2>
           <div className="col-gap">
             <Checkbox label={t("cmp.check1")} checked={digest} onChange={setDigest} />
             <Checkbox label={t("cmp.check2")} checked={inApp} onChange={setInApp} />
@@ -144,7 +144,7 @@ export function ComponentsPage() {
         </section>
 
         <section className="card section-card">
-          <h3>{t("cmp.loading")}</h3>
+          <h2>{t("cmp.loading")}</h2>
           <div className="row-wrap">
             <Spinner label={t("cmp.loadingLabel")} />
             <span className="muted">{t("cmp.loadingLabel")}</span>
@@ -157,7 +157,7 @@ export function ComponentsPage() {
         </section>
 
         <section className="card section-card">
-          <h3>{t("cmp.overlays")}</h3>
+          <h2>{t("cmp.overlays")}</h2>
           <div className="row-wrap">
             <Button onClick={() => setModalOpen(true)}>{t("cmp.openModal")}</Button>
             <Button variant="ghost" onClick={() => toast(t("cmp.toastMsg"))}>
