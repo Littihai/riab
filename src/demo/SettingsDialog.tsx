@@ -2,8 +2,9 @@ import { useRef, useState } from "react";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { useI18n } from "@/providers/I18nProvider";
 import { useTheme, type ThemePref } from "@/providers/ThemeProvider";
-import { useAppearance, type Accent, type Density, type Motion, type NavLayout, type Radius } from "@/providers/AppearanceProvider";
+import { useAppearance, type Accent, type Density, type Icons, type Motion, type NavLayout, type Radius } from "@/providers/AppearanceProvider";
 import { Segmented } from "@/components/ui/Segmented";
+import { Icon } from "@/components/ui/Icon";
 
 /**
  * The settings dialog: a section rail on the left, the section's controls on
@@ -11,7 +12,7 @@ import { Segmented } from "@/components/ui/Segmented";
  * the moment it is picked and is remembered on this device.
  */
 
-const ACCENTS: Accent[] = ["ink", "clay", "pine", "blue"];
+const ACCENTS: Accent[] = ["ink", "clay", "pine", "blue", "indigo"];
 const SECTIONS = ["general", "appearance", "about"] as const;
 type Section = (typeof SECTIONS)[number];
 
@@ -52,7 +53,7 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
         <div className="set-body">
           <div className="set-head">
             <h2>{t(`set.${section}`)}</h2>
-            <button type="button" className="icon-btn" aria-label={t("set.close")} onClick={onClose}>✕</button>
+            <button type="button" className="icon-btn" aria-label={t("set.close")} onClick={onClose}><Icon name="close" size={18} /></button>
           </div>
 
           {section === "general" && (
@@ -109,6 +110,17 @@ export function SettingsDialog({ open, onClose }: { open: boolean; onClose: () =
                     />
                   ))}
                 </div>
+              ))}
+              {row(t("set.icons"), (
+                <Segmented
+                  ariaLabel={t("set.icons")}
+                  value={ap.icons}
+                  onChange={(v) => ap.set("icons", v as Icons)}
+                  options={[
+                    { value: "mono", label: t("set.icons.mono") },
+                    { value: "color", label: t("set.icons.color") },
+                  ]}
+                />
               ))}
               {row(t("set.radius"), (
                 <Segmented

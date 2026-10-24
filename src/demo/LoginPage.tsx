@@ -1,3 +1,4 @@
+import { Icon } from "@/components/ui/Icon";
 import { useState, type FormEvent } from "react";
 import { useI18n } from "@/providers/I18nProvider";
 import { useTheme } from "@/providers/ThemeProvider";
@@ -38,7 +39,7 @@ export function LoginPage() {
           title={t("header.theme")}
           onClick={() => setPref(resolved === "dark" ? "light" : "dark")}
         >
-          ◐
+          <Icon name="contrast" />
         </button>
         <span className="lang-toggle" role="group" aria-label={t("header.lang")}>
           <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>ไทย</button>

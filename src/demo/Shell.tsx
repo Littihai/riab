@@ -7,6 +7,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { SettingsDialog } from "@/demo/SettingsDialog";
 import { CmdK, type Command } from "@/demo/CmdK";
 import { SideNav, NAV } from "@/demo/SideNav";
+import { Icon } from "@/components/ui/Icon";
 
 /**
  * The app frame every demo page shares. The nav lives where the Customize
@@ -61,7 +62,7 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
       )}
       <span className="flex-1" />
       <button type="button" className="search-chip" onClick={() => setPaletteOpen(true)}>
-        <span aria-hidden>⌕</span>
+        <Icon name="search" size={16} />
         <span className="hint">{t("header.search")}</span>
         <kbd>Ctrl K</kbd>
       </button>
@@ -72,7 +73,7 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
         title={t("header.theme")}
         onClick={() => setPref(resolved === "dark" ? "light" : "dark")}
       >
-        ◐
+        <Icon name="contrast" />
       </button>
       <button
         type="button"
@@ -82,7 +83,7 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
         aria-haspopup="dialog"
         onClick={() => setSettingsOpen(true)}
       >
-        ⛭
+        <Icon name="gear" />
       </button>
       <span className="lang-toggle" role="group" aria-label={t("header.lang")}>
         <button type="button" aria-pressed={lang === "th"} onClick={() => setLang("th")}>ไทย</button>

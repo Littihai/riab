@@ -166,6 +166,29 @@
 .kpis .kpi:nth-child(4) {
   --delay: 120ms;
 }
+.kpi {
+  position: relative;
+}
+.kpi-ic {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-md);
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+[data-icons="color"] .kpi-ic {
+  background: color-mix(in srgb, var(--chip-hue) 14%, var(--surface));
+  color: var(--chip-hue);
+}
+[data-icons="color"] .kpi-ic[data-hue="blue"] { --chip-hue: var(--hue-blue); }
+[data-icons="color"] .kpi-ic[data-hue="violet"] { --chip-hue: var(--hue-violet); }
+[data-icons="color"] .kpi-ic[data-hue="amber"] { --chip-hue: var(--hue-amber); }
+[data-icons="color"] .kpi-ic[data-hue="teal"] { --chip-hue: var(--hue-teal); }
 .kpi .label {
   font-size: var(--fs-caption);
   font-weight: 600;
@@ -418,60 +441,112 @@
   top: 0;
   height: 100vh;
   flex: none;
-  width: 220px;
+  width: 248px;
   background: var(--surface);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 14px 10px;
+  overflow: hidden;
+  transition: width var(--dur-2) var(--ease);
 }
 .side.rail {
-  width: 64px;
-  align-items: center;
+  width: 72px;
 }
 .side-brand {
   text-decoration: none;
   color: var(--text);
   padding: 0 8px;
+  white-space: nowrap;
 }
-.side.rail .side-brand {
-  padding: 0;
+.side-label {
+  white-space: nowrap;
+  transition: opacity var(--dur-2) var(--ease), transform var(--dur-2) var(--ease);
+}
+.side.rail .side-label {
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
 }
 .side-list {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   width: 100%;
 }
 .side-item {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
-  border-radius: var(--r-sm);
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 8px;
+  border-radius: var(--r-md);
   color: var(--muted);
   font-size: 14.5px;
   font-weight: 500;
   text-decoration: none;
+  transition: background var(--dur-1), color var(--dur-1);
 }
-.side.rail .side-item {
-  justify-content: center;
-  padding: 10px 0;
+.side-icon {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-sm);
+  display: grid;
+  place-items: center;
+  transition: background var(--dur-1), color var(--dur-1), transform var(--dur-2) var(--ease);
 }
 .side-item:hover {
   color: var(--text);
   background: var(--surface-2);
 }
-.side-item[aria-current="page"] {
-  color: var(--text);
-  background: var(--surface-2);
-  box-shadow: inset 3px 0 0 var(--accent-fill);
+.side-item:hover .side-icon {
+  transform: scale(1.08);
 }
-.side-icon {
-  font-size: 16px;
-  width: 18px;
-  text-align: center;
+.side-item[aria-current="page"] {
+  color: var(--accent-text);
+  font-weight: 600;
+  background: var(--accent-tint);
+}
+.side-item[aria-current="page"] .side-icon {
+  background: var(--accent-fill);
+  color: var(--on-accent);
+}
+.side-item[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  bottom: 10px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--accent-fill);
+}
+[data-icons="color"] .side-item[data-hue="blue"]:not([aria-current="page"]) .side-icon { color: var(--hue-blue); }
+[data-icons="color"] .side-item[data-hue="violet"]:not([aria-current="page"]) .side-icon { color: var(--hue-violet); }
+[data-icons="color"] .side-item[data-hue="teal"]:not([aria-current="page"]) .side-icon { color: var(--hue-teal); }
+.side-toggle {
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform var(--dur-2) var(--ease), color var(--dur-1);
+}
+.side.rail .side-toggle {
+  align-self: center;
+  transform: rotate(180deg);
+}
+.side-toggle:hover {
+  color: var(--text);
 }
 
 /* command palette: top-aligned sheet with a filterable list */
@@ -597,10 +672,11 @@
   border-radius: 50%;
   border: 1px solid var(--border-strong);
 }
-.accent-dot[data-a="ink"] { background: #18181b; }
-.accent-dot[data-a="clay"] { background: #a63f24; }
-.accent-dot[data-a="pine"] { background: #2f5d50; }
-.accent-dot[data-a="blue"] { background: #1d4ed8; }
+.accent-dot[data-a="ink"] { background: var(--swatch-ink); }
+.accent-dot[data-a="clay"] { background: var(--swatch-clay); }
+.accent-dot[data-a="pine"] { background: var(--swatch-pine); }
+.accent-dot[data-a="blue"] { background: var(--swatch-blue); }
+.accent-dot[data-a="indigo"] { background: var(--swatch-indigo); }
 .accent-dot[aria-checked="true"] {
   outline: 2px solid var(--accent-text);
   outline-offset: 2px;

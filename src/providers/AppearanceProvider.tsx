@@ -1,16 +1,17 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 /**
- * The Customize choices: accent, corners, density, motion. Each applies as a
+ * The Customize choices: accent, corners, density, icon tone, motion. Each applies as a
  * data attribute on <html> (the default removes the attribute), persists in
  * one localStorage key, and is re-applied before first paint by the inline
  * script in index.html.
  */
 
-export type Accent = "ink" | "clay" | "pine" | "blue";
+export type Accent = "ink" | "clay" | "pine" | "blue" | "indigo";
 export type Radius = "none" | "soft" | "round";
 export type Density = "comfortable" | "compact";
 export type Motion = "system" | "reduce";
+export type Icons = "mono" | "color";
 export type NavLayout = "top" | "side" | "rail";
 
 export interface Appearance {
@@ -19,9 +20,10 @@ export interface Appearance {
   density: Density;
   motion: Motion;
   nav: NavLayout;
+  icons: Icons;
 }
 
-const DEFAULTS: Appearance = { accent: "ink", radius: "soft", density: "comfortable", motion: "system", nav: "top" };
+const DEFAULTS: Appearance = { accent: "ink", radius: "soft", density: "comfortable", motion: "system", nav: "top", icons: "mono" };
 const KEY = "riab.app";
 
 interface AppearanceValue extends Appearance {
@@ -51,6 +53,7 @@ export function AppearanceProvider({ children }: { children: ReactNode }) {
     apply("accent", state.accent, DEFAULTS.accent);
     apply("radius", state.radius, DEFAULTS.radius);
     apply("density", state.density, DEFAULTS.density);
+    apply("icons", state.icons, DEFAULTS.icons);
     apply("motion", state.motion === "reduce" ? "reduce" : "system", "system");
   }, [state]);
 

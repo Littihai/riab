@@ -55,6 +55,11 @@
   margin: 0 8px 3px;
 }
 
+.icon {
+  display: block;
+  flex: none;
+}
+
 /* stamp: thin-border status badge, always icon + text, never color alone */
 .stamp {
   display: inline-flex;
@@ -263,6 +268,7 @@ textarea.input {
 }
 .alert .alert-icon {
   flex: none;
+  margin-top: 1px;
 }
 .alert .alert-title {
   font-weight: 600;

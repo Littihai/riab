@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useI18n } from "@/providers/I18nProvider";
 import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { Stamp, type StampTone } from "@/components/ui/Stamp";
 import "./demo.css";
 
@@ -42,6 +43,7 @@ export function DashboardPage() {
 
         <section className="kpis">
           <div className="card lift kpi rise">
+            <span className="kpi-ic" data-hue="blue"><Icon name="doc" size={18} /></span>
             <div className="label">{t("kpi.pending")}</div>
             <div className="num">12</div>
             <div className="leader-row">
@@ -52,6 +54,7 @@ export function DashboardPage() {
             <Spark points="0,20 15,16 30,18 45,12 60,14 75,9 90,11 105,6 120,8" />
           </div>
           <div className="card lift kpi rise">
+            <span className="kpi-ic" data-hue="violet"><Icon name="cash" size={18} /></span>
             <div className="label">{t("kpi.spend")}</div>
             <div className="num">{fmtMoney(1245300)}</div>
             <div className="leader-row">
@@ -62,6 +65,7 @@ export function DashboardPage() {
             <Spark points="0,24 15,22 30,19 45,20 60,15 75,13 90,12 105,9 120,5" />
           </div>
           <div className="card lift kpi rise">
+            <span className="kpi-ic" data-hue="amber"><Icon name="alert" size={18} /></span>
             <div className="label">{t("kpi.lowStock")}</div>
             <div className="num">4</div>
             <div className="leader-row">
@@ -72,6 +76,7 @@ export function DashboardPage() {
             <Spark points="0,8 15,10 30,9 45,14 60,12 75,18 90,16 105,21 120,19" tone="chart-2" />
           </div>
           <div className="card lift kpi rise">
+            <span className="kpi-ic" data-hue="teal"><Icon name="truck" size={18} /></span>
             <div className="label">{t("kpi.receive")}</div>
             <div className="num">7</div>
             <div className="leader-row">

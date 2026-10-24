@@ -26,6 +26,12 @@
   --chart-1: #52525b;
   --chart-2: #a16207;
 
+  /* category hues: used for icon chips only when Customize "icons: color" is on */
+  --hue-blue: #2563eb;
+  --hue-teal: #0f766e;
+  --hue-amber: #b45309;
+  --hue-violet: #7c3aed;
+
   --ok: #166534;
   --warn: #854d0e;
   --stop: #b91c1c;
@@ -54,6 +60,11 @@
 
   --chart-1: #a1a1aa;
   --chart-2: #e8c063;
+
+  --hue-blue: #93c5fd;
+  --hue-teal: #5eead4;
+  --hue-amber: #fbbf24;
+  --hue-violet: #c4b5fd;
 
   --ok: #5fd38d;
   --warn: #e8c063;
@@ -98,6 +109,16 @@
   --space-4: 32px;
   --page-pad: 32px;
   --page-max: 1240px;
+
+  /* active-row wash: a whisper of the accent over the surface */
+  --accent-tint: color-mix(in srgb, var(--accent-fill) 9%, var(--surface));
+
+  /* Customize swatches show each preset regardless of the active one */
+  --swatch-ink: #18181b;
+  --swatch-clay: #a63f24;
+  --swatch-pine: #2f5d50;
+  --swatch-blue: #1d4ed8;
+  --swatch-indigo: #4f46e5;
 }
 
 [data-density="compact"] {
@@ -145,6 +166,19 @@
   --accent-hover: #bfdbfe;
   --on-accent: #0f172a;
   --accent-text: #93c5fd;
+}
+
+[data-accent="indigo"] {
+  --accent-fill: #4f46e5;
+  --accent-hover: #4338ca;
+  --on-accent: #ffffff;
+  --accent-text: #4338ca;
+}
+[data-theme="dark"][data-accent="indigo"] {
+  --accent-fill: #a5b4fc;
+  --accent-hover: #c7d2fe;
+  --on-accent: #12122b;
+  --accent-text: #a5b4fc;
 }
 
 /* ── Customize: corner presets (default is the "soft" 6/10/16 above) ── */
