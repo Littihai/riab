@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useI18n } from "@/providers/I18nProvider";
-import { useTheme } from "@/providers/ThemeProvider";
 import { Button } from "@/components/ui/Button";
 import { Stamp, type StampTone } from "@/components/ui/Stamp";
 import "./demo.css";
@@ -24,44 +23,11 @@ function Spark({ points, tone = "chart-1" }: { points: string; tone?: "chart-1" 
 }
 
 export function DashboardPage() {
-  const { t, lang, setLang, fmtMoney } = useI18n();
-  const { resolved, setPref } = useTheme();
+  const { t, fmtMoney } = useI18n();
   const [selected, setSelected] = useState("PR-2610-0040");
 
   return (
-    <>
-      <header className="app-header">
-        <span className="brand">
-          <span className="tile">ร</span>
-          {t("app.name")}
-        </span>
-        <nav className="app-nav" aria-label={t("nav.home")}>
-          <button className="nav-item" aria-current="page">{t("nav.home")}</button>
-          <button className="nav-item">{t("nav.overview")}</button>
-          <button className="nav-item">{t("nav.docs")}</button>
-          <button className="nav-item">{t("nav.warehouse")}</button>
-        </nav>
-        <span className="flex-1" />
-        <button className="search-chip">
-          <span aria-hidden>⌕</span>
-          <span className="hint">{t("header.search")}</span>
-          <kbd>Ctrl K</kbd>
-        </button>
-        <button
-          className="icon-btn"
-          aria-label={t("header.theme")}
-          title={t("header.theme")}
-          onClick={() => setPref(resolved === "dark" ? "light" : "dark")}
-        >
-          ◐
-        </button>
-        <span className="lang-toggle" role="group" aria-label="Language">
-          <button aria-pressed={lang === "th"} onClick={() => setLang("th")}>ไทย</button>
-          <button aria-pressed={lang === "en"} onClick={() => setLang("en")}>EN</button>
-        </span>
-      </header>
-
-      <main className="page">
+    <main className="page">
         <div className="crumb">{t("home.crumb")}</div>
         <div className="page-head">
           <div>
@@ -159,12 +125,6 @@ export function DashboardPage() {
             <Button>{t("empty.cta")}</Button>
           </section>
         </div>
-      </main>
-
-      <footer className="app-footer">
-        <span>{t("footer.note")}</span>
-        <span>Inter + Noto Sans Thai</span>
-      </footer>
-    </>
+    </main>
   );
 }

@@ -43,6 +43,7 @@
   font-weight: 600;
   color: var(--muted);
   border-radius: var(--r-sm);
+  text-decoration: none;
 }
 .nav-item:hover {
   color: var(--text);
@@ -242,6 +243,33 @@
   color: var(--muted);
   font-size: 13.5px;
   margin-bottom: 16px;
+}
+
+.cmp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-2);
+}
+.section-card {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.row-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.switch-row {
+  cursor: pointer;
+  font-size: var(--fs-small);
+}
+.tab-panel {
+  font-size: var(--fs-small);
+  color: var(--muted);
+  padding: 10px 2px;
 }
 
 .app-footer {
