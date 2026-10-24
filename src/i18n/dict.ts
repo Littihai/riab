@@ -314,6 +314,13 @@ export const DICT = {
   "bell.n1": { th: "ใบขอซื้อ PR-2610-0041 รออนุมัติ", en: "PR-2610-0041 is waiting for approval" },
   "bell.n2": { th: "สินค้า 4 รายการต่ำกว่าจุดปลอดภัย", en: "4 items are below safety stock" },
   "bell.n3": { th: "งานรับเข้าวันนี้เสร็จแล้ว 5 รายการ", en: "5 receipts done today" },
+  "footer.nav": { th: "ลิงก์ท้ายหน้า", en: "Footer links" },
+  "footer.github": { th: "GitHub", en: "GitHub" },
+  "footer.docs": { th: "เอกสาร", en: "Docs" },
+  "footer.changelog": { th: "บันทึกการเปลี่ยนแปลง", en: "Changelog" },
+  "footer.contact": { th: "ติดต่อและแจ้งปัญหา", en: "Contact and issues" },
+  "footer.license": { th: "MIT · © 2026 Littihai", en: "MIT · © 2026 Littihai" },
+  "common.newTab": { th: "(เปิดแท็บใหม่)", en: "(opens in a new tab)" },
 } as const satisfies Record<string, Entry>;
 
 /** A key that exists in the dictionary: a typo in `t("...")` fails to compile. */

@@ -7,7 +7,8 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { SettingsDialog } from "@/demo/SettingsDialog";
 import { CmdK, type Command } from "@/demo/CmdK";
 import { SideNav, NAV } from "@/demo/SideNav";
-import { Icon } from "@/components/ui/Icon";
+import { Icon, type IconName } from "@/components/ui/Icon";
+import { LINKS } from "@/demo/links";
 import { Menu } from "@/components/ui/Menu";
 import { Popover } from "@/components/ui/Popover";
 import type { DictKey } from "@/i18n/dict";
@@ -173,10 +174,32 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
     </header>
   );
 
+  const ext = (href: string, icon: IconName, label: string) => (
+    <a className="footer-link" href={href} target="_blank" rel="noopener noreferrer">
+      <Icon name={icon} size={16} />
+      {label}
+      <span className="sr-only"> {t("common.newTab")}</span>
+    </a>
+  );
+
   const footer = (
     <footer className="app-footer">
-      <span>{t("footer.note")}</span>
-      <span>Inter + Noto Sans Thai</span>
+      <div className="footer-inner">
+        <div className="footer-brand">
+          <span className="brand">
+            <span className="tile">ร</span>
+            {t("app.name")}
+          </span>
+          <p>{t("footer.note")}</p>
+        </div>
+        <nav className="footer-links" aria-label={t("footer.nav")}>
+          {ext(LINKS.github, "github", t("footer.github"))}
+          {ext(LINKS.docs, "book", t("footer.docs"))}
+          {ext(LINKS.changelog, "doc", t("footer.changelog"))}
+          {ext(LINKS.contact, "mail", t("footer.contact"))}
+        </nav>
+        <p className="footer-legal">{t("footer.license")}</p>
+      </div>
     </footer>
   );
 

@@ -2,6 +2,13 @@
 
 All notable changes to this project. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/) (0.x: minor versions may change things).
 
+## [Unreleased]
+
+### Added
+
+- A footer with the brand, links to GitHub, the docs, the changelog and a contact page (GitHub issues), and the license line. External links open in a new tab with `rel="noopener noreferrer"` and say so to screen readers. `src/demo/links.ts` holds the URLs.
+- Icons: github, mail, book.
+
 ## [0.4.0] - 2026-10-24
 
 ### Added
