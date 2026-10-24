@@ -4,6 +4,13 @@
   "version": "0.2.0",
   "type": "module",
   "description": "A themeable UI starter: design tokens, dark mode, user-customizable appearance, th/en i18n",
+  "license": "MIT",
+  "author": "Littihai",
+  "homepage": "https://littihai.github.io/riab/",
+  "repository": { "type": "git", "url": "git+https://github.com/Littihai/riab.git" },
+  "bugs": { "url": "https://github.com/Littihai/riab/issues" },
+  "keywords": ["react", "vite", "typescript", "starter", "template", "design-tokens", "dark-mode", "thai", "i18n", "accessibility"],
+  "engines": { "node": ">=20" },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

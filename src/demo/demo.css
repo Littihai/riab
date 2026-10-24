@@ -150,7 +150,7 @@
 
 .kpis {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(216px, 1fr));
   gap: var(--space-2);
   margin-bottom: var(--space-3);
 }
@@ -171,11 +171,11 @@
 }
 .kpi-ic {
   position: absolute;
-  top: 16px;
+  top: 18px;
   right: 16px;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--r-md);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-sm);
   display: grid;
   place-items: center;
   background: var(--surface-2);
@@ -190,6 +190,10 @@
 [data-icons="color"] .kpi-ic[data-hue="amber"] { --chip-hue: var(--hue-amber); }
 [data-icons="color"] .kpi-ic[data-hue="teal"] { --chip-hue: var(--hue-teal); }
 .kpi .label {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  padding-right: 36px;
   font-size: var(--fs-caption);
   font-weight: 600;
   color: var(--muted);
@@ -459,6 +463,9 @@
   color: var(--text);
   padding: 0 8px;
   white-space: nowrap;
+}
+.side-brand .tile {
+  flex: none;
 }
 .side-label {
   white-space: nowrap;
