@@ -1,0 +1,20 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "v4",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": [
+        "pnpm",
+        "--filter=v4",
+        "exec",
+        "next",
+        "dev",
+        "--turbopack",
+        "--port",
+        "4000"
+      ],
+      "port": 4000
+    }
+  ]
+}
