@@ -71,7 +71,7 @@
     "fumadocs-mdx": "15.0.12",
     "fumadocs-ui": "16.10.5",
     "input-otp": "^1.4.2",
-    "jotai": "^2.15.0",
+    "jotai": "^3.0.1",
     "little-date": "^1.0.0",
     "lodash": "^4.18.1",
     "lru-cache": "^11.2.4",
