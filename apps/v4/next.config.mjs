@@ -217,6 +217,12 @@ const nextConfig = {
         destination: "/palette",
         permanent: true,
       },
+      // The example apps were removed; docs still link to /examples/tasks.
+      {
+        source: "/examples/:path*",
+        destination: "/docs/components",
+        permanent: false,
+      },
       {
         source: "/code/:path*",
         destination:
