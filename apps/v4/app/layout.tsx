@@ -16,7 +16,6 @@ import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/
 import { Toaster as BaseToaster } from "@/styles/base-nova/ui/toast"
 
 import "@/app/globals.css"
-import "@/app/(app)/(typeset)/typeset.css"
 
 export const metadata: Metadata = {
   title: {
@@ -43,7 +42,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    alternateLocale: ["th_TH"],
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,

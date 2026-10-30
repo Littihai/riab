@@ -1,11 +1,9 @@
 import { type Metadata } from "next"
-import Image from "next/image"
 
 import { siteConfig } from "@/lib/config"
 import { getDictionary } from "@/lib/i18n"
+import { HomeFeatures } from "@/components/home-features"
 import { HomeHero } from "@/components/home-hero"
-
-import { CardsDemo } from "./cards"
 
 // Metadata is static (force-static page), so it uses the default locale.
 const title = getDictionary().home.title
@@ -20,7 +18,7 @@ const websiteJsonLd = {
   name: siteConfig.name,
   alternateName: ["riab", "riab ui"],
   description: siteConfig.description,
-  inLanguage: ["en-US", "th-TH"],
+  inLanguage: "en-US",
   sameAs: [siteConfig.links.github, siteConfig.links.twitter],
 }
 
@@ -73,31 +71,7 @@ export default function IndexPage() {
         }}
       />
       <HomeHero />
-      <div className="container-wrapper flex-1 p-0">
-        <div className="container overflow-hidden md:px-0 lg:max-w-none">
-          <section className="-mx-4 w-[140vw] overflow-hidden md:hidden">
-            <Image
-              src="/images/full-light.png"
-              width={2560}
-              height={2764}
-              alt="Dashboard"
-              className="block h-auto w-full dark:hidden"
-              priority
-            />
-            <Image
-              src="/images/full-dark.png"
-              width={2560}
-              height={2764}
-              alt="Dashboard"
-              className="hidden h-auto w-full dark:block"
-              priority
-            />
-          </section>
-          <section className="hidden md:block">
-            <CardsDemo />
-          </section>
-        </div>
-      </div>
+      <HomeFeatures />
     </div>
   )
 }

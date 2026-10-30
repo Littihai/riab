@@ -80,6 +80,6 @@ export const LOCALE_INIT_SCRIPT = `
   try {
     var m = document.cookie.match(/(?:^|; )${LOCALE_COOKIE}=([^;]*)/);
     var l = m ? decodeURIComponent(m[1]) : null;
-    if (l === 'th' || l === 'en') document.documentElement.lang = l;
+    if (l === 'en') document.documentElement.lang = l;
   } catch (_) {}
 `

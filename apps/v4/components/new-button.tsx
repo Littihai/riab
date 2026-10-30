@@ -12,7 +12,7 @@ export function NewButton() {
 
   return (
     <Button asChild size="sm" className="h-[31px] rounded-lg">
-      <Link href="/create">
+      <Link href="/palette">
         <HugeiconsIcon icon={PlusSignIcon} />
         {t.header.new}
       </Link>

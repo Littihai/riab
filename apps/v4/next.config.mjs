@@ -214,7 +214,7 @@ const nextConfig = {
       },
       {
         source: "/themes",
-        destination: "/create",
+        destination: "/palette",
         permanent: true,
       },
       {

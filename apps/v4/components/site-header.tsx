@@ -2,12 +2,11 @@ import { getColors } from "@/lib/colors"
 import { siteConfig } from "@/lib/config"
 import { source } from "@/lib/source"
 import { CommandMenu } from "@/components/command-menu"
-import { DesignerActions } from "@/components/designer-actions"
 import { GitHubLink } from "@/components/github-link"
-import { LocaleSwitcher } from "@/components/locale-switcher"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
+import { BrandMark } from "@/components/brand-mark"
 import { NewButton } from "@/components/new-button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
@@ -16,7 +15,7 @@ export function SiteHeader() {
   const pageTree = source.pageTree
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/55 backdrop-blur-xl supports-[backdrop-filter]:bg-background/45">
       <div className="container-wrapper px-6 group-has-data-[slot=designer]/layout:max-w-none 3xl:fixed:px-0">
         <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4! group-has-data-[slot=designer]/layout:fixed:max-w-none 3xl:fixed:container">
           <MobileNav
@@ -24,6 +23,7 @@ export function SiteHeader() {
             items={siteConfig.navItems}
             className="flex lg:hidden"
           />
+          <BrandMark className="mr-4 hidden lg:flex" />
           <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
@@ -39,9 +39,7 @@ export function SiteHeader() {
             />
             <GitHubLink />
             <Separator orientation="vertical" />
-            <LocaleSwitcher />
             <ModeSwitcher />
-            <DesignerActions />
             <div className="flex items-center gap-2 group-has-data-[slot=designer]/layout:hidden">
               <Separator orientation="vertical" />
               <NewButton />

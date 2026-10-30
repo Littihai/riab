@@ -20,6 +20,11 @@ export const siteConfig = {
       label: "Palette",
     },
     {
+      href: "/chat",
+      key: "chat",
+      label: "Chat",
+    },
+    {
       href: "/docs/installation",
       key: "docs",
       label: "Docs",
@@ -38,21 +43,6 @@ export const siteConfig = {
       href: "/charts/area",
       key: "charts",
       label: "Charts",
-    },
-    {
-      href: "/docs/directory",
-      key: "directory",
-      label: "Directory",
-    },
-    {
-      href: "/typeset",
-      key: "typeset",
-      label: "Typeset",
-    },
-    {
-      href: "/create",
-      key: "create",
-      label: "Create",
     },
   ],
 } as const
