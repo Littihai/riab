@@ -42,6 +42,13 @@ const nextConfig = {
   },
   experimental: {
     turbopackSharedRuntime: false,
+    // Production builds run `next build --webpack` on Vercel's 8 GB build
+    // machine; Turbopack and default webpack both OOM on this app's size.
+    // Trade build speed for a smaller peak: no in-memory webpack cache,
+    // compile in a separate worker, fewer pages exported at once.
+    webpackMemoryOptimizations: true,
+    webpackBuildWorker: true,
+    staticGenerationMaxConcurrency: 4,
     // Rewrite barrel imports to deep imports so a single icon doesn't pull the
     // whole package into the module graph. Next already optimizes lucide-react,
     // @tabler/icons-react, date-fns and lodash-es by default; these are the
